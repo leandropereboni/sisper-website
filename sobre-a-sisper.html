@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sobre Nós | SISPER Consultoria e Projetos</title>
+    <meta name="description" content="Mais de 25 anos de experiência prática e engenharia aplicada no segmento de energia crítica e consultoria independente para grupos geradores." />
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        heading: ['Montserrat', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            green: '#277928',
+                            neon: '#76E025',
+                            lead: '#4F4F4F',
+                            gray: '#6D6D6D',
+                            light: '#F4F7F4',
+                        }
+                    },
+                    boxShadow: {
+                        'glass': '0 8px 32px 0 rgba(39, 121, 40, 0.15)',
+                        'glow': '0 0 15px rgba(118, 224, 37, 0.5)',
+                        'card': '0 10px 30px -10px rgba(0,0,0,0.1)',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #FAFAFA; overflow-x: hidden; }
+        h1, h2, h3, h4, h5, h6 { font-family: 'Montserrat', sans-serif; }
+
+        .animate-on-scroll {
+            opacity: 0.01;
+            filter: blur(10px);
+            transform: translateY(20px);
+            transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        .animate-on-scroll.in-view {
+            opacity: 1;
+            filter: blur(0);
+            transform: translateY(0);
+        }
+        
+        .btn-beam-container {
+            position: relative;
+            overflow: hidden; 
+            border-radius: 9999px;
+            padding: 2px;
+        }
+        .beam-border {
+            position: absolute;
+            inset: -4px;
+            border-radius: 9999px;
+            pointer-events: none;
+            z-index: 0;
+            opacity: 0;
+            background: conic-gradient(from 0deg at 50% 50%, transparent 0deg, rgba(118, 224, 37, 1) 60deg, transparent 120deg);
+            animation: rotate-beam 2s linear infinite;
+            transition: opacity 0.3s;
+        }
+        .btn-beam-container:hover .beam-border {
+            opacity: 1;
+        }
+        @keyframes rotate-beam {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body class="text-zinc-800 antialiased relative selection:bg-brand-green selection:text-white pt-[80px]">
+    
+    <!-- HEADER -->
+    <header id="site-header"></header>
+
+    <div class="bg-zinc-50 min-h-screen pb-24">
+      
+      <!-- HEADER & BREADCRUMBS -->
+      <div class="bg-white border-b border-zinc-200/60 py-6">
+        <div class="max-w-[1300px] mx-auto px-6">
+          <!-- Breadcrumbs -->
+          <nav class="flex text-xs text-zinc-400 font-medium items-center gap-1.5" aria-label="Breadcrumb">
+            <a href="index.html" class="hover:text-brand-green transition-colors">Início</a>
+            <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
+            <span class="text-zinc-500 font-semibold">Sobre a SISPER</span>
+          </nav>
+          
+          <h1 class="font-heading font-black text-3xl sm:text-4xl lg:text-5xl text-brand-lead mt-4">
+            Sobre a SISPER
+          </h1>
+          <p class="text-base text-zinc-500 mt-2 max-w-3xl leading-relaxed">
+            Mais de 25 anos de experiência prática e engenharia aplicada no segmento de energia crítica.
+          </p>
+        </div>
+      </div>
+
+      <div class="max-w-[1300px] mx-auto px-6 mt-16 space-y-20">
+        
+        <!-- SEÇÃO 1 - HISTÓRIA E ESTRATÉGIA -->
+        <section class="grid lg:grid-cols-12 gap-12 lg:gap-16 items-center animate-on-scroll">
+          <div class="lg:col-span-7 space-y-6">
+            <h2 class="font-heading font-black text-2xl md:text-3xl text-brand-lead">
+              Apoiando decisões de alto impacto técnico e financeiro.
+            </h2>
+            <p class="text-sm md:text-base text-zinc-600 leading-relaxed">
+              Fundada sob a premissa de que sistemas de energia de emergência não admitem margem para incertezas, a <strong>SISPER Consultoria e Projetos</strong> se consolidou como uma referência técnica independente no mercado brasileiro.
+            </p>
+            <p class="text-sm md:text-base text-zinc-600 leading-relaxed">
+              Diferente de empresas prestadoras de manutenção física que lucram com a venda de reparos e peças, a SISPER posiciona-se de forma estratégica: somos o <strong>parceiro técnico independente</strong> do cliente. Nossa missão é fiscalizar a qualidade da manutenção preventiva contratada pelo condomínio ou empresa, apontar falhas imperceptíveis nas rotinas de teste e validar orçamentos de intervenções de grande porte.
+            </p>
+            <p class="text-sm md:text-base text-zinc-600 leading-relaxed">
+              Com mais de duas décadas de vivência, unimos conhecimento em engenharia mecânica, elétrica e segurança do trabalho para entregar inteligência diagnóstica que reduz riscos operacionais e elimina desperdícios financeiros para nossos parceiros B2B.
+            </p>
+          </div>
+
+          <div class="lg:col-span-5 bg-white p-8 rounded-2xl border border-zinc-200 shadow-sm relative overflow-hidden">
+            <div class="absolute top-0 right-0 w-24 h-24 bg-brand-green/5 rounded-full blur-xl"></div>
+            <span class="text-[10px] font-bold text-brand-green uppercase tracking-wider block mb-2">Mensagem Central</span>
+            <blockquote class="text-base italic text-zinc-800 font-medium leading-relaxed">
+              "Antecipamos riscos técnicos antes que se transformem em falhas, prejuízos e paralisações operacionais."
+            </blockquote>
+            
+            <hr class="border-zinc-100 my-6" />
+
+            <span class="text-[10px] font-bold text-brand-green uppercase tracking-wider block mb-2">Proposta de Valor</span>
+            <p class="text-sm text-zinc-600 leading-relaxed">
+              Consultoria especializada para decisões mais seguras em sistemas de energia crítica.
+            </p>
+          </div>
+        </section>
+
+        <!-- SEÇÃO 2 - VALORES -->
+        <section class="space-y-12 animate-on-scroll">
+          <div class="text-center max-w-2xl mx-auto">
+            <h2 class="font-heading font-black text-2xl md:text-3xl text-brand-lead">
+              Pilares da Nossa Atuação
+            </h2>
+            <p class="text-xs md:text-sm text-zinc-500 mt-2">
+              Valores que sustentam nossa prestação de serviço de engenharia há mais de 25 anos.
+            </p>
+          </div>
+
+          <div class="grid md:grid-cols-3 gap-6">
+            <!-- Valor 1 -->
+            <div class="bg-white border border-zinc-200 rounded-2xl p-6 md:p-8 hover:shadow-lg transition-shadow">
+              <div class="p-3 bg-brand-light text-brand-green rounded-xl w-max mb-6">
+                <i data-lucide="shield-check" class="w-6 h-6"></i>
+              </div>
+              <h3 class="font-heading font-bold text-lg text-zinc-900 mb-3 leading-tight">
+                Independência Absoluta
+              </h3>
+              <p class="text-xs md:text-sm text-zinc-500 leading-relaxed">
+                Como não realizamos manutenções corretivas e nem comercializamos peças de reposição ou geradores, nossa avaliação técnica é 100% livre de interesses comerciais cruzados.
+              </p>
+            </div>
+            <!-- Valor 2 -->
+            <div class="bg-white border border-zinc-200 rounded-2xl p-6 md:p-8 hover:shadow-lg transition-shadow">
+              <div class="p-3 bg-brand-light text-brand-green rounded-xl w-max mb-6">
+                <i data-lucide="award" class="w-6 h-6"></i>
+              </div>
+              <h3 class="font-heading font-bold text-lg text-zinc-900 mb-3 leading-tight">
+                Precisão e Rigor Técnico
+              </h3>
+              <p class="text-xs md:text-sm text-zinc-500 leading-relaxed">
+                Nossos laudos, pareceres e projetos são estruturados por engenheiros seniores experientes, com análises baseadas em normas nacionais e internacionais vigentes.
+              </p>
+            </div>
+            <!-- Valor 3 -->
+            <div class="bg-white border border-zinc-200 rounded-2xl p-6 md:p-8 hover:shadow-lg transition-shadow">
+              <div class="p-3 bg-brand-light text-brand-green rounded-xl w-max mb-6">
+                <i data-lucide="compass" class="w-6 h-6"></i>
+              </div>
+              <h3 class="font-heading font-bold text-lg text-zinc-900 mb-3 leading-tight">
+                Foco na Prevenção de Riscos
+              </h3>
+              <p class="text-xs md:text-sm text-zinc-500 leading-relaxed">
+                Buscamos antecipar problemas físicos e operacionais antes que eles se transformem em blecautes, acidentes ou prejuízos financeiros severos.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- SEÇÃO 3 - CTA -->
+        <section class="bg-zinc-950 text-white rounded-3xl p-8 md:p-12 relative overflow-hidden animate-on-scroll">
+          <div class="absolute inset-0 bg-gradient-to-br from-zinc-900 via-zinc-950 to-brand-green/20 pointer-events-none"></div>
+          
+          <div class="relative z-10 max-w-3xl space-y-6">
+            <h2 class="font-heading font-black text-2xl md:text-4xl leading-tight">
+              Precisa de critério técnico independente para o seu sistema de geradores?
+            </h2>
+            <p class="text-sm md:text-base text-zinc-400 leading-relaxed max-w-2xl">
+              Fale diretamente com nossa diretoria técnica e agende uma avaliação para blindar sua operação predial ou comercial.
+            </p>
+            <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-2">
+              <a href="contato.html" class="w-full sm:w-auto">
+                <button class="relative btn-beam-container group w-full">
+                  <div class="beam-border"></div>
+                  <span class="relative z-10 flex items-center justify-center bg-brand-green text-white px-6 py-3 rounded-full text-sm font-semibold shadow-lg hover:bg-green-800 transition-colors w-full">
+                    Fale com um Especialista
+                  </span>
+                </button>
+              </a>
+              <a
+                href="https://wa.me/5511988949290?text=Ol%C3%A1%2C%20gostaria%20de%20conversar%20sobre%20a%20consultoria%20da%20SISPER."
+                target="_blank"
+                rel="noopener noreferrer"
+                class="w-full sm:w-auto"
+              >
+                <button class="w-full text-white border border-white/20 hover:bg-white/10 px-6 py-3 rounded-full text-sm font-semibold transition-all">
+                  WhatsApp Direto
+                </button>
+              </a>
+            </div>
+          </div>
+        </section>
+
+      </div>
+
+    </div>
+
+    <!-- FOOTER -->
+    <footer id="site-footer"></footer>
+
+    <!-- COMMON SCRIPTS -->
+    <script src="js/components.js"></script>
+</body>
+</html>

@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Auditoria de Manutenção de Geradores | SISPER Consultoria e Projetos</title>
+    <meta name="description" content="Antes de aprovar um reparo caro ou descobrir uma falha em uma emergência, conte com uma auditoria técnica independente de grupos geradores." />
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        heading: ['Montserrat', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            green: '#277928',
+                            neon: '#76E025',
+                            lead: '#4F4F4F',
+                            gray: '#6D6D6D',
+                            light: '#F4F7F4',
+                        }
+                    },
+                    boxShadow: {
+                        'glass': '0 8px 32px 0 rgba(39, 121, 40, 0.15)',
+                        'glow': '0 0 15px rgba(118, 224, 37, 0.5)',
+                        'card': '0 10px 30px -10px rgba(0,0,0,0.1)',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #FAFAFA; overflow-x: hidden; }
+        h1, h2, h3, h4, h5, h6 { font-family: 'Montserrat', sans-serif; }
+
+        .animate-on-scroll {
+            opacity: 0.01;
+            filter: blur(10px);
+            transform: translateY(20px);
+            transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        .animate-on-scroll.in-view {
+            opacity: 1;
+            filter: blur(0);
+            transform: translateY(0);
+        }
+        
+        .btn-beam-container {
+            position: relative;
+            overflow: hidden; 
+            border-radius: 9999px;
+            padding: 2px;
+        }
+        .beam-border {
+            position: absolute;
+            inset: -4px;
+            border-radius: 9999px;
+            pointer-events: none;
+            z-index: 0;
+            opacity: 0;
+            background: conic-gradient(from 0deg at 50% 50%, transparent 0deg, rgba(118, 224, 37, 1) 60deg, transparent 120deg);
+            animation: rotate-beam 2s linear infinite;
+            transition: opacity 0.3s;
+        }
+        .btn-beam-container:hover .beam-border {
+            opacity: 1;
+        }
+        @keyframes rotate-beam {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body class="text-zinc-800 antialiased relative selection:bg-brand-green selection:text-white pt-[80px]">
+    
+    <!-- HEADER -->
+    <header id="site-header"></header>
+
+    <div class="bg-zinc-50 min-h-screen pb-24">
+      
+      <!-- 1. TOP HEADER & BREADCRUMBS -->
+      <div class="bg-white border-b border-zinc-200/60 py-6">
+        <div class="max-w-[1300px] mx-auto px-6">
+          <!-- Breadcrumbs -->
+          <nav class="flex text-xs text-zinc-400 font-medium items-center gap-1.5" aria-label="Breadcrumb">
+            <a href="index.html" class="hover:text-brand-green transition-colors">Início</a>
+            <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
+            <span class="text-zinc-400">Serviços</span>
+            <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
+            <span class="text-zinc-500 font-semibold">Auditoria de Manutenção</span>
+          </nav>
+          
+          <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-6 mt-4">
+            <div class="max-w-3xl">
+              <span class="text-[10px] font-bold text-brand-green tracking-widest uppercase bg-brand-light px-3 py-1 rounded-full border border-brand-green/10">
+                Serviço Principal
+              </span>
+              <h1 class="font-heading font-black text-3xl sm:text-4xl lg:text-5xl text-brand-lead mt-3 leading-tight">
+                Auditoria de Manutenção Preventiva de Geradores
+              </h1>
+              <p class="text-base text-zinc-500 mt-4 leading-relaxed">
+                Antes de aprovar um reparo caro ou descobrir uma falha em uma emergência, conte com uma análise técnica independente.
+              </p>
+            </div>
+            <a href="#conversao" class="shrink-0">
+              <button class="relative btn-beam-container group w-full lg:w-auto">
+                <div class="beam-border"></div>
+                <span class="relative z-10 flex items-center justify-center bg-brand-green text-white px-6 py-3.5 rounded-full text-sm font-semibold shadow-lg hover:bg-green-800 transition-colors w-full">
+                  Solicitar avaliação técnica
+                </span>
+              </button>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="max-w-[1300px] mx-auto px-6 mt-16 grid lg:grid-cols-12 gap-12 lg:gap-16">
+        
+        <!-- COLUNA ESQUERDA - CONTEÚDO -->
+        <div class="lg:col-span-7 space-y-12">
+          
+          <!-- Posicionamento Estratégico -->
+          <section class="animate-on-scroll bg-white p-8 rounded-2xl border border-zinc-200 shadow-sm space-y-6">
+            <h2 class="font-heading font-black text-xl md:text-2xl text-brand-lead border-b border-zinc-100 pb-4">
+              Por que a Auditoria Independente é Indispensável?
+            </h2>
+            <p class="text-sm md:text-base text-zinc-600 leading-relaxed font-sans">
+              O maior risco de um sistema de energia crítica não é a falta de manutenção mensal, mas a <strong>falsa sensação de segurança</strong> criada por rotinas de vistoria meramente formais. Um gerador de energia pode apresentar parâmetros adequados durante testes rápidos sem carga elétrica, mas falhar instantaneamente ao assumir o fluxo operacional real em um blecaute.
+            </p>
+            <p class="text-sm md:text-base text-zinc-600 leading-relaxed font-sans">
+              A SISPER atua como uma <strong>camada de inteligência técnica imparcial</strong>. Sem conflito de interesse — já que não prestamos serviço de manutenção ou reposição de componentes —, auditamos com rigor técnico as condições reais da instalação e orientamos gestores sobre a veracidade de diagnósticos emitidos pelas prestadoras contratadas.
+            </p>
+
+            <div class="grid sm:grid-cols-3 gap-4 pt-4">
+              <div class="p-4 bg-brand-light/40 border border-brand-green/10 rounded-xl">
+                <i data-lucide="shield-check" class="w-6 h-6 text-brand-green mb-2"></i>
+                <span class="text-xs font-bold text-zinc-900 block leading-tight font-sans">Imparcialidade</span>
+                <span class="text-[10px] text-zinc-400 mt-1 block font-sans">Foco exclusivo na sua segurança</span>
+              </div>
+              <div class="p-4 bg-brand-light/40 border border-brand-green/10 rounded-xl">
+                <i data-lucide="trending-down" class="w-6 h-6 text-brand-green mb-2"></i>
+                <span class="text-xs font-bold text-zinc-900 block leading-tight font-sans">Redução de Custos</span>
+                <span class="text-[10px] text-zinc-400 mt-1 block font-sans">Corte em peças e corretivas desnecessárias</span>
+              </div>
+              <div class="p-4 bg-brand-light/40 border border-brand-green/10 rounded-xl">
+                <i data-lucide="activity" class="w-6 h-6 text-brand-green mb-2"></i>
+                <span class="text-xs font-bold text-zinc-900 block leading-tight font-sans">Disponibilidade</span>
+                <span class="text-[10px] text-zinc-400 mt-1 block font-sans">Garantia de resposta em emergências</span>
+              </div>
+            </div>
+          </section>
+
+          <!-- Escopo do Serviço -->
+          <section class="animate-on-scroll space-y-6">
+            <h2 class="font-heading font-black text-xl md:text-2xl text-brand-lead">
+              Escopo Completo da Auditoria
+            </h2>
+            <div class="grid sm:grid-cols-2 gap-4">
+              <!-- Item 1 -->
+              <div class="bg-white border border-zinc-200 p-5 rounded-2xl">
+                <h3 class="font-heading font-bold text-sm md:text-base text-zinc-900 mb-2 flex items-start gap-2.5 leading-snug">
+                  <i data-lucide="check-circle" class="w-4.5 h-4.5 text-brand-green shrink-0 mt-0.5"></i>
+                  Acompanhamento Técnico em Campo
+                </h3>
+                <p class="text-xs text-zinc-500 leading-relaxed font-sans">
+                  Presença de engenheiro durante as visitas mensais de manutenção executadas pela empresa terceirizada para fiscalizar a conformidade.
+                </p>
+              </div>
+              <!-- Item 2 -->
+              <div class="bg-white border border-zinc-200 p-5 rounded-2xl">
+                <h3 class="font-heading font-bold text-sm md:text-base text-zinc-900 mb-2 flex items-start gap-2.5 leading-snug">
+                  <i data-lucide="check-circle" class="w-4.5 h-4.5 text-brand-green shrink-0 mt-0.5"></i>
+                  Avaliação Procedimental
+                </h3>
+                <p class="text-xs text-zinc-500 leading-relaxed font-sans">
+                  Auditoria para garantir que todas as etapas de testes e checagens de fluidos e filtros sejam rigorosamente executadas.
+                </p>
+              </div>
+              <!-- Item 3 -->
+              <div class="bg-white border border-zinc-200 p-5 rounded-2xl">
+                <h3 class="font-heading font-bold text-sm md:text-base text-zinc-900 mb-2 flex items-start gap-2.5 leading-snug">
+                  <i data-lucide="check-circle" class="w-4.5 h-4.5 text-brand-green shrink-0 mt-0.5"></i>
+                  Mapeamento de Riscos Incipientes
+                </h3>
+                <p class="text-xs text-zinc-500 leading-relaxed font-sans">
+                  Identificação precoce de oxidações, desgastes e fugas em componentes elétricos e mecânicos antes que virem quebras.
+                </p>
+              </div>
+              <!-- Item 4 -->
+              <div class="bg-white border border-zinc-200 p-5 rounded-2xl">
+                <h3 class="font-heading font-bold text-sm md:text-base text-zinc-900 mb-2 flex items-start gap-2.5 leading-snug">
+                  <i data-lucide="check-circle" class="w-4.5 h-4.5 text-brand-green shrink-0 mt-0.5"></i>
+                  Validação de Orçamentos
+                </h3>
+                <p class="text-xs text-zinc-500 leading-relaxed font-sans">
+                  Revisão crítica e independente das propostas de reparos e peças de reposição recomendadas pela contratada.
+                </p>
+              </div>
+              <!-- Item 5 -->
+              <div class="bg-white border border-zinc-200 p-5 rounded-2xl">
+                <h3 class="font-heading font-bold text-sm md:text-base text-zinc-900 mb-2 flex items-start gap-2.5 leading-snug">
+                  <i data-lucide="check-circle" class="w-4.5 h-4.5 text-brand-green shrink-0 mt-0.5"></i>
+                  Apoio à Gestão de Facilidades
+                </h3>
+                <p class="text-xs text-zinc-500 leading-relaxed font-sans">
+                  Suporte técnico a síndicos, conselhos de condomínios, gestores de facilities e gerentes operacionais em suas reuniões decisórias.
+                </p>
+              </div>
+              <!-- Item 6 -->
+              <div class="bg-white border border-zinc-200 p-5 rounded-2xl">
+                <h3 class="font-heading font-bold text-sm md:text-base text-zinc-900 mb-2 flex items-start gap-2.5 leading-snug">
+                  <i data-lucide="check-circle" class="w-4.5 h-4.5 text-brand-green shrink-0 mt-0.5"></i>
+                  Priorização de Ações Técnicas
+                </h3>
+                <p class="text-xs text-zinc-500 leading-relaxed font-sans">
+                  Direcionamento claro de recursos com relatórios classificados por gravidade física real.
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <!-- FAQ -->
+          <section class="animate-on-scroll bg-white p-8 rounded-2xl border border-zinc-200 shadow-sm space-y-6">
+            <h2 class="font-heading font-black text-xl md:text-2xl text-brand-lead border-b border-zinc-100 pb-4 flex items-center gap-2">
+              <i data-lucide="help-circle" class="w-6 h-6 text-brand-green"></i>
+              Perguntas Frequentes
+            </h2>
+            <div class="space-y-6">
+              <!-- Q1 -->
+              <div class="space-y-2">
+                <h3 class="font-heading font-bold text-sm md:text-base text-zinc-900 leading-tight">
+                  A SISPER realiza a manutenção física ou troca de peças dos geradores?
+                </h3>
+                <p class="text-xs md:text-sm text-zinc-500 leading-relaxed font-sans">
+                  Não. A SISPER atua estritamente na camada de consultoria e auditoria independente. Não executamos a manutenção e não vendemos peças. Isso garante 100% de imparcialidade, eliminando conflito de interesses na recomendação de corretivas.
+                </p>
+                <hr class="border-zinc-100 mt-4" />
+              </div>
+              <!-- Q2 -->
+              <div class="space-y-2">
+                <h3 class="font-heading font-bold text-sm md:text-base text-zinc-900 leading-tight">
+                  Já tenho uma empresa terceirizada que cuida da manutenção. Por que preciso da SISPER?
+                </h3>
+                <p class="text-xs md:text-sm text-zinc-500 leading-relaxed font-sans">
+                  A empresa de manutenção foca na execução prática de rotinas contratuais e na venda de peças corretivas. A SISPER foca na inteligência técnica independente para auditar se a execução foi correta, se o preço cobrado pelas peças é justo e se o sistema de contingência realmente responderá na emergência.
+                </p>
+                <hr class="border-zinc-100 mt-4" />
+              </div>
+              <!-- Q3 -->
+              <div class="space-y-2">
+                <h3 class="font-heading font-bold text-sm md:text-base text-zinc-900 leading-tight">
+                  Como a SISPER ajuda a economizar recursos no plano de manutenção?
+                </h3>
+                <p class="text-xs md:text-sm text-zinc-500 leading-relaxed font-sans">
+                  Evitamos gastos desnecessários de duas formas: validando se as propostas corretivas enviadas pela terceirizada são realmente necessárias e identificando desgastes no início, o que evita quebras de grande porte e o encarecimento das intervenções em regime de urgência.
+                </p>
+                <hr class="border-zinc-100 mt-4" />
+              </div>
+              <!-- Q4 -->
+              <div class="space-y-2">
+                <h3 class="font-heading font-bold text-sm md:text-base text-zinc-900 leading-tight">
+                  Como é feito o acompanhamento técnico da manutenção preventiva?
+                </h3>
+                <p class="text-xs md:text-sm text-zinc-500 leading-relaxed font-sans">
+                  Nossa engenharia comparece à edificação na data agendada para a manutenção preventiva mensal ou semestral. Acompanhamos o técnico, supervisionamos a realização de testes com carga e em vazio, coletamos parâmetros físicos e emitimos um relatório detalhado com a avaliação do serviço executado.
+                </p>
+              </div>
+            </div>
+          </section>
+
+        </div>
+
+        <!-- COLUNA DIREITA - FORMULÁRIO DE CAPTURA -->
+        <div id="conversao" class="lg:col-span-5">
+          <div class="sticky top-24 bg-white border border-zinc-200 rounded-2xl p-6 md:p-8 shadow-sm">
+            <h3 class="font-heading font-bold text-lg text-zinc-900 mb-2 leading-tight">
+              Solicitar Avaliação Técnica
+            </h3>
+            <p class="text-xs text-zinc-400 mb-6 font-sans">
+              Preencha para receber um contato rápido da engenharia de auditoria.
+            </p>
+
+            <form class="lead-form space-y-4">
+              <input type="hidden" name="servico" value="Auditoria de Manutenção Preventiva" />
+              
+              <div>
+                <label class="block text-[10px] font-bold text-zinc-700 uppercase tracking-wider mb-1.5 font-sans">Nome Completo *</label>
+                <input
+                  type="text"
+                  name="nome"
+                  required
+                  placeholder="Seu nome"
+                  class="w-full border border-zinc-200 rounded-xl px-4 py-2.5 text-xs focus:outline-none focus:border-brand-green font-sans"
+                />
+              </div>
+
+              <div>
+                <label class="block text-[10px] font-bold text-zinc-700 uppercase tracking-wider mb-1.5 font-sans">Empresa / Condomínio *</label>
+                <input
+                  type="text"
+                  name="empresa"
+                  required
+                  placeholder="Nome da empresa ou condomínio"
+                  class="w-full border border-zinc-200 rounded-xl px-4 py-2.5 text-xs focus:outline-none focus:border-brand-green font-sans"
+                />
+              </div>
+
+              <div>
+                <label class="block text-[10px] font-bold text-zinc-700 uppercase tracking-wider mb-1.5 font-sans">E-mail Corporativo *</label>
+                <input
+                  type="email"
+                  name="email"
+                  required
+                  placeholder="exemplo@empresa.com.br"
+                  class="w-full border border-zinc-200 rounded-xl px-4 py-2.5 text-xs focus:outline-none focus:border-brand-green font-sans"
+                />
+              </div>
+
+              <div>
+                <label class="block text-[10px] font-bold text-zinc-700 uppercase tracking-wider mb-1.5 font-sans">Telefone / WhatsApp *</label>
+                <input
+                  type="tel"
+                  name="telefone"
+                  required
+                  placeholder="(11) 98888-8888"
+                  class="w-full border border-zinc-200 rounded-xl px-4 py-2.5 text-xs focus:outline-none focus:border-brand-green font-sans"
+                />
+              </div>
+
+              <div>
+                <label class="block text-[10px] font-bold text-zinc-700 uppercase tracking-wider mb-1.5 font-sans">Mensagem</label>
+                <textarea
+                  name="mensagem"
+                  rows="3"
+                  placeholder="Fale sobre seu gerador ou contrato..."
+                  class="w-full border border-zinc-200 rounded-xl px-4 py-2.5 text-xs focus:outline-none focus:border-brand-green font-sans"
+                ></textarea>
+              </div>
+
+              <div class="pt-2">
+                <button
+                  type="submit"
+                  class="w-full relative btn-beam-container group"
+                >
+                  <div class="beam-border"></div>
+                  <span class="relative z-10 flex items-center justify-center bg-brand-green text-white px-5 py-3 rounded-full text-xs font-semibold shadow-lg hover:bg-green-800 transition-colors gap-2 w-full">
+                    Solicitar Auditoria
+                    <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+                  </span>
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- FOOTER -->
+    <footer id="site-footer"></footer>
+
+    <!-- COMMON SCRIPTS -->
+    <script src="js/components.js"></script>
+</body>
+</html>

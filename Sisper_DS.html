@@ -1,0 +1,936 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Design System - Sisper_DS</title>
+
+    <!-- Google Fonts: Montserrat para Títulos, Inter para Corpo -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Lucide Icons (via CDN para uso imediato) -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        heading: ['Montserrat', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            green: '#277928',
+                            neon: '#76E025',
+                            lead: '#4F4F4F',
+                            gray: '#6D6D6D',
+                            light: '#F4F7F4', // Tom bem claro de verde para fundos
+                        }
+                    },
+                    boxShadow: {
+                        'glass': '0 8px 32px 0 rgba(39, 121, 40, 0.15)',
+                        'glow': '0 0 15px rgba(118, 224, 37, 0.5)',
+                        'card': '0 10px 30px -10px rgba(0,0,0,0.1)',
+                    },
+                    animation: {
+                        'vertical-scroll': 'vertical-scroll 12s cubic-bezier(0.4, 0, 0.2, 1) infinite',
+                    },
+                    keyframes: {
+                        'vertical-scroll': {
+                            '0%, 25%': { transform: 'translateY(0)' },
+                            '33.33%, 58.33%': { transform: 'translateY(-33.33%)' },
+                            '66.66%, 91.66%': { transform: 'translateY(-66.66%)' },
+                            '100%': { transform: 'translateY(0)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        /* Estilos Glassmorphism */
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.07);
+        }
+
+        .glass-dark {
+            background: rgba(39, 39, 42, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Gradientes Decorativos em Bordas */
+        [style*="--border-gradient"]::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            padding: 1px;
+            border-radius: var(--border-radius-before, inherit);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            background: var(--border-gradient);
+            pointer-events: none;
+        }
+
+        /* Scrollbar suave */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+
+        /* Animações Avançadas (Scroll, Beam, Flashlight, Rotator) */
+        .char {
+            display: inline-block;
+            opacity: 0;
+            transform: translateY(100%);
+            clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .char.revealed {
+            opacity: 1;
+            transform: translateY(0);
+            clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+        }
+
+        .animate-on-scroll {
+            opacity: 0.01;
+            filter: blur(10px);
+            transform: translateY(20px);
+            transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .animate-on-scroll.in-view {
+            opacity: 1;
+            filter: blur(0);
+            transform: translateY(0);
+        }
+
+        .btn-beam-container {
+            position: relative;
+        }
+
+        .beam-border {
+            position: absolute;
+            inset: -2px;
+            border-radius: 9999px;
+            pointer-events: none;
+            z-index: -1;
+            opacity: 0;
+            background: conic-gradient(from 0deg at 50% 50%, transparent 0deg, rgba(39, 121, 40, 0.6) 60deg, transparent 120deg);
+            animation: rotate-beam 2s linear infinite;
+            transition: opacity 0.3s;
+        }
+
+        .btn-beam-container:hover .beam-border {
+            opacity: 1;
+        }
+
+        @keyframes rotate-beam {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        :root {
+            --mouse-x: 50%;
+            --mouse-y: 50%;
+        }
+
+        .flashlight-card {
+            position: relative;
+            background-color: rgba(255, 255, 255, 0.8);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+        }
+
+        .flashlight-card::before {
+            content: "";
+            position: absolute;
+            height: 100%;
+            width: 100%;
+            left: 0;
+            top: 0;
+            border-radius: inherit;
+            background: radial-gradient(800px circle at var(--mouse-x) var(--mouse-y),
+                    rgba(39, 121, 40, 0.05),
+                    transparent 40%);
+            opacity: 0;
+            transition: opacity 0.5s;
+            pointer-events: none;
+            z-index: 3;
+        }
+
+        .flashlight-border {
+            position: absolute;
+            inset: 0;
+            border-radius: inherit;
+            padding: 1px;
+            background: radial-gradient(600px circle at var(--mouse-x) var(--mouse-y),
+                    rgba(39, 121, 40, 0.3),
+                    transparent 40%);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            opacity: 0;
+            transition: opacity 0.5s;
+        }
+
+        .flashlight-card:hover::before,
+        .flashlight-card:hover .flashlight-border {
+            opacity: 1;
+        }
+
+        .rotator-card {
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+        }
+    </style>
+</head>
+
+<body class="bg-zinc-100 text-zinc-800 min-h-screen relative flex flex-col items-center xl:p-8">
+
+    <!-- Background Abstrato para Elegância -->
+    <div class="fixed inset-0 z-0 overflow-hidden pointer-events-none">
+        <div class="absolute -top-[20%] -left-[10%] w-[50%] h-[50%] rounded-full bg-brand-green/10 blur-[120px]"></div>
+        <div class="absolute top-[40%] -right-[10%] w-[40%] h-[60%] rounded-full bg-brand-neon/5 blur-[100px]"></div>
+    </div>
+
+    <!-- Navegação (Header) -->
+    <nav
+        class="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-white/40 px-6 py-4 shadow-sm">
+        <div class="max-w-[1300px] mx-auto flex items-center justify-between gap-4">
+            <div class="flex items-center gap-3">
+                <img src="assets/image/logo_sisper_v2_sem fundo.jpg" alt="Sisper Logo"
+                    class="h-8 w-auto mix-blend-multiply rounded-md object-contain"
+                    onerror="this.src='https://via.placeholder.com/32x32.png?text=S'; this.classList.remove('mix-blend-multiply')">
+                <span class="font-heading font-bold text-brand-lead text-xl tracking-tight">Sisper<span
+                        class="font-light text-zinc-400">_DS</span></span>
+            </div>
+
+            <div class="hidden md:flex gap-6 text-xs font-semibold uppercase tracking-wider text-zinc-500">
+                <a href="#hero" class="hover:text-brand-green transition-colors">Hero</a>
+                <a href="#typography" class="hover:text-brand-green transition-colors">Tipografia</a>
+                <a href="#colors" class="hover:text-brand-green transition-colors">Cores</a>
+                <a href="#components" class="hover:text-brand-green transition-colors">Componentes</a>
+                <a href="#animations" class="hover:text-brand-green transition-colors">Animações</a>
+            </div>
+
+            <a href="#components"
+                class="text-xs font-semibold bg-brand-green text-white px-5 py-2.5 rounded-full shadow-lg shadow-brand-green/30 hover:bg-green-800 hover:shadow-brand-green/50 hover:-translate-y-0.5 transition-all flex items-center gap-2">
+                <span>Explorar</span>
+                <i data-lucide="arrow-right" class="w-4 h-4"></i>
+            </a>
+        </div>
+    </nav>
+
+    <!-- Container Principal do Design System -->
+    <main
+        class="glass-panel w-full max-w-[1300px] rounded-none xl:rounded-[2rem] border border-white/60 shadow-2xl relative z-10 mt-16 p-8 md:p-12 flex flex-col gap-24">
+
+        <!-- Linhas de Grid Verticais de Fundo -->
+        <div class="absolute inset-0 flex justify-between pointer-events-none px-12 opacity-50 z-0">
+            <div class="w-px h-full bg-zinc-200"></div>
+            <div class="w-px h-full bg-zinc-200 hidden sm:block"></div>
+            <div class="w-px h-full bg-zinc-200 hidden md:block"></div>
+            <div class="w-px h-full bg-zinc-200 hidden lg:block"></div>
+            <div class="w-px h-full bg-zinc-200"></div>
+        </div>
+
+        <!-- Seção: Hero -->
+        <section id="hero" class="relative z-10 pt-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center">
+                <!-- Coluna Esquerda -->
+                <div class="lg:col-span-7 flex flex-col justify-center">
+                    <div
+                        class="inline-flex bg-white shadow-sm border border-zinc-100 rounded-full px-4 py-1.5 items-center gap-2 mb-8 w-max">
+                        <span class="flex h-2 w-2 relative">
+                            <span
+                                class="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-neon opacity-75"></span>
+                            <span class="relative inline-flex rounded-full h-2 w-2 bg-brand-green"></span>
+                        </span>
+                        <span class="text-xs font-semibold text-brand-lead tracking-wide">Versão 1.0 Documentada</span>
+                    </div>
+
+                    <h1
+                        class="font-heading font-extrabold text-5xl md:text-6xl lg:text-7xl tracking-tighter text-zinc-900 leading-[1.05] mb-6">
+                        A Fundação<br>
+                        <span
+                            class="text-transparent bg-clip-text bg-gradient-to-r from-brand-green to-green-600">Sisper
+                            Digital</span>
+                    </h1>
+
+                    <p
+                        class="text-base text-zinc-500 max-w-lg mb-10 leading-relaxed border-l-2 border-brand-green/30 pl-4">
+                        O Design System oficial da Sisper Consultoria. Um guia absoluto contendo todos os tokens
+                        visuais, componentes interativos e regras de design para a criação de uma experiência unificada,
+                        confiável e tecnológica.
+                    </p>
+
+                    <div class="flex flex-wrap items-center gap-4">
+                        <button
+                            class="bg-brand-green hover:bg-green-800 text-white font-medium px-8 py-3.5 rounded-full shadow-lg shadow-brand-green/30 hover:shadow-brand-green/50 hover:-translate-y-0.5 transition-all flex items-center gap-2">
+                            Acessar Componentes
+                            <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+                        </button>
+                        <button
+                            class="bg-white border border-zinc-200 hover:border-zinc-300 hover:bg-zinc-50 text-zinc-700 font-medium px-8 py-3.5 rounded-full shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all flex items-center gap-2">
+                            Ver Diretrizes
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Coluna Direita (Visual Card) -->
+                <div class="lg:col-span-5 relative group perspective-1000">
+                    <div class="aspect-[4/5] rounded-[2rem] overflow-hidden shadow-2xl relative border border-white/40">
+                        <!-- Background Escuro do Card -->
+                        <div class="absolute inset-0 bg-gradient-to-br from-zinc-800 to-zinc-950"></div>
+
+                        <!-- Elementos Flutuantes -->
+                        <div class="absolute inset-0 p-8 flex flex-col justify-between">
+                            <div class="flex justify-between items-start">
+                                <div class="glass-dark px-4 py-2 rounded-full flex items-center gap-2">
+                                    <i data-lucide="layers" class="w-4 h-4 text-brand-neon"></i>
+                                    <span class="text-xs font-semibold text-white tracking-wider">UI LIBRARY</span>
+                                </div>
+                            </div>
+
+                            <div
+                                class="self-end glass-dark p-5 rounded-2xl w-full max-w-[260px] transform transition-transform duration-500 hover:-translate-y-2 border border-white/10 shadow-glow">
+                                <div class="flex justify-between items-center mb-4">
+                                    <span class="text-white text-sm font-semibold">Conversão</span>
+                                    <span class="text-brand-neon text-xs font-mono font-bold">+84%</span>
+                                </div>
+                                <div class="flex items-end gap-1.5 h-16 w-full">
+                                    <div class="w-1/5 bg-white/20 rounded-t h-[30%]"></div>
+                                    <div class="w-1/5 bg-white/20 rounded-t h-[50%]"></div>
+                                    <div class="w-1/5 bg-white/30 rounded-t h-[40%]"></div>
+                                    <div class="w-1/5 bg-white/40 rounded-t h-[75%]"></div>
+                                    <div
+                                        class="w-1/5 bg-brand-neon rounded-t h-[100%] shadow-[0_0_15px_rgba(118,224,37,0.6)]">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div
+                                class="glass-dark rounded-xl p-4 mt-auto border border-white/10 flex items-center gap-4">
+                                <div class="w-10 h-10 rounded-full bg-brand-green flex items-center justify-center">
+                                    <i data-lucide="check" class="text-white w-5 h-5"></i>
+                                </div>
+                                <div>
+                                    <p class="text-white text-sm font-semibold">Status do Sistema</p>
+                                    <p class="text-zinc-400 text-xs">Pronto para produção</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Divisor -->
+        <hr class="border-zinc-200 relative z-10">
+
+        <!-- Seção: Tipografia -->
+        <section id="typography" class="relative z-10">
+            <div class="mb-10">
+                <h2 class="font-heading font-bold text-3xl md:text-4xl text-zinc-900 tracking-tight mb-3">Tipografia
+                </h2>
+                <p class="text-zinc-500 font-medium">As fontes oficiais: Montserrat para garantir personalidade em
+                    títulos, e Inter para extrema legibilidade no corpo do texto.</p>
+            </div>
+
+            <div class="space-y-6">
+                <!-- H1 -->
+                <div
+                    class="flex flex-col md:flex-row md:items-center justify-between border-b border-zinc-100 pb-6 gap-4">
+                    <div class="flex-1">
+                        <h1 class="font-heading font-extrabold text-5xl text-zinc-900 mb-1">Heading 1 (H1)</h1>
+                        <p class="text-sm text-zinc-400">Títulos principais de páginas e heros</p>
+                    </div>
+                    <div class="md:text-right">
+                        <span class="text-xs font-mono font-semibold text-zinc-400 block">Montserrat ExtraBold</span>
+                        <span class="text-xs font-mono text-zinc-400">48px / leading-tight</span>
+                    </div>
+                </div>
+                <!-- H2 -->
+                <div
+                    class="flex flex-col md:flex-row md:items-center justify-between border-b border-zinc-100 pb-6 gap-4">
+                    <div class="flex-1">
+                        <h2 class="font-heading font-bold text-4xl text-zinc-900 mb-1">Heading 2 (H2)</h2>
+                        <p class="text-sm text-zinc-400">Títulos de seções</p>
+                    </div>
+                    <div class="md:text-right">
+                        <span class="text-xs font-mono font-semibold text-zinc-400 block">Montserrat Bold</span>
+                        <span class="text-xs font-mono text-zinc-400">36px / leading-tight</span>
+                    </div>
+                </div>
+                <!-- H3 -->
+                <div
+                    class="flex flex-col md:flex-row md:items-center justify-between border-b border-zinc-100 pb-6 gap-4">
+                    <div class="flex-1">
+                        <h3 class="font-heading font-semibold text-2xl text-zinc-900 mb-1">Heading 3 (H3)</h3>
+                        <p class="text-sm text-zinc-400">Subtítulos ou títulos de cards</p>
+                    </div>
+                    <div class="md:text-right">
+                        <span class="text-xs font-mono font-semibold text-zinc-400 block">Montserrat SemiBold</span>
+                        <span class="text-xs font-mono text-zinc-400">24px / leading-snug</span>
+                    </div>
+                </div>
+                <!-- Body Base -->
+                <div
+                    class="flex flex-col md:flex-row md:items-center justify-between border-b border-zinc-100 pb-6 gap-4">
+                    <div class="flex-1">
+                        <p class="font-sans font-normal text-base text-zinc-700 leading-relaxed mb-1">O corpo de texto
+                            padrão (Body Base). Utilizado na maior parte do site para descrições, parágrafos de texto
+                            corridos e leitura fluida.</p>
+                        <p class="text-sm text-zinc-400">Texto corrido geral</p>
+                    </div>
+                    <div class="md:text-right">
+                        <span class="text-xs font-mono font-semibold text-zinc-400 block">Inter Regular</span>
+                        <span class="text-xs font-mono text-zinc-400">16px / leading-relaxed</span>
+                    </div>
+                </div>
+                <!-- Body Small -->
+                <div
+                    class="flex flex-col md:flex-row md:items-center justify-between border-b border-zinc-100 pb-6 gap-4">
+                    <div class="flex-1">
+                        <p class="font-sans font-medium text-sm text-zinc-600 mb-1">Texto secundário (Body Small). Ideal
+                            para legendas, rodapés e metadados.</p>
+                        <p class="text-sm text-zinc-400">Legendas e informações auxiliares</p>
+                    </div>
+                    <div class="md:text-right">
+                        <span class="text-xs font-mono font-semibold text-zinc-400 block">Inter Medium</span>
+                        <span class="text-xs font-mono text-zinc-400">14px / leading-normal</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção: Cores -->
+        <section id="colors" class="relative z-10">
+            <div class="mb-10">
+                <h2 class="font-heading font-bold text-3xl md:text-4xl text-zinc-900 tracking-tight mb-3">Paleta de
+                    Cores</h2>
+                <p class="text-zinc-500 font-medium">Combinação do DNA Verde da Sisper com tons neutros e sofisticados
+                    (Zinc) para interfaces limpas e profissionais.</p>
+            </div>
+
+            <div class="space-y-10">
+                <!-- Cores Principais -->
+                <div>
+                    <h3 class="font-heading font-semibold text-xl mb-4 text-brand-lead">Brand Colors</h3>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                        <div class="rounded-xl overflow-hidden shadow-sm border border-zinc-200">
+                            <div class="h-24 bg-brand-green w-full"></div>
+                            <div class="p-3 bg-white">
+                                <p class="text-sm font-semibold text-zinc-800">Verde Corporativo</p>
+                                <p class="text-xs font-mono text-zinc-500">#277928</p>
+                            </div>
+                        </div>
+                        <div class="rounded-xl overflow-hidden shadow-sm border border-zinc-200">
+                            <div class="h-24 bg-brand-neon w-full"></div>
+                            <div class="p-3 bg-white">
+                                <p class="text-sm font-semibold text-zinc-800">Verde Neon</p>
+                                <p class="text-xs font-mono text-zinc-500">#76E025</p>
+                            </div>
+                        </div>
+                        <div class="rounded-xl overflow-hidden shadow-sm border border-zinc-200">
+                            <div class="h-24 bg-brand-lead w-full"></div>
+                            <div class="p-3 bg-white">
+                                <p class="text-sm font-semibold text-zinc-800">Chumbo</p>
+                                <p class="text-xs font-mono text-zinc-500">#4F4F4F</p>
+                            </div>
+                        </div>
+                        <div class="rounded-xl overflow-hidden shadow-sm border border-zinc-200">
+                            <div class="h-24 bg-brand-gray w-full"></div>
+                            <div class="p-3 bg-white">
+                                <p class="text-sm font-semibold text-zinc-800">Cinza Médio</p>
+                                <p class="text-xs font-mono text-zinc-500">#6D6D6D</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Cores de Expansão (Superfícies) -->
+                <div>
+                    <h3 class="font-heading font-semibold text-xl mb-4 text-brand-lead">Superfícies Neutras</h3>
+                    <div class="grid grid-cols-2 md:grid-cols-5 gap-4">
+                        <div
+                            class="rounded-lg p-4 bg-white border border-zinc-200 shadow-sm flex flex-col items-center">
+                            <div class="w-10 h-10 rounded-full bg-white border border-zinc-200 mb-2 shadow-sm"></div>
+                            <span class="text-xs font-medium text-zinc-700">Branco Puro</span>
+                        </div>
+                        <div
+                            class="rounded-lg p-4 bg-zinc-50 border border-zinc-200 shadow-sm flex flex-col items-center">
+                            <div class="w-10 h-10 rounded-full bg-zinc-50 border border-zinc-200 mb-2"></div>
+                            <span class="text-xs font-medium text-zinc-700">Zinc 50 (Bg)</span>
+                        </div>
+                        <div
+                            class="rounded-lg p-4 bg-zinc-100 border border-zinc-200 shadow-sm flex flex-col items-center">
+                            <div class="w-10 h-10 rounded-full bg-zinc-100 border border-zinc-200 mb-2"></div>
+                            <span class="text-xs font-medium text-zinc-700">Zinc 100 (Hover)</span>
+                        </div>
+                        <div
+                            class="rounded-lg p-4 bg-zinc-200 border border-zinc-300 shadow-sm flex flex-col items-center">
+                            <div class="w-10 h-10 rounded-full bg-zinc-200 border border-zinc-300 mb-2"></div>
+                            <span class="text-xs font-medium text-zinc-700">Zinc 200 (Borders)</span>
+                        </div>
+                        <div
+                            class="rounded-lg p-4 bg-brand-light border border-brand-green/20 shadow-sm flex flex-col items-center">
+                            <div class="w-10 h-10 rounded-full bg-brand-light border border-brand-green/20 mb-2"></div>
+                            <span class="text-xs font-medium text-zinc-700">Light Green</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Divisor -->
+        <hr class="border-zinc-200 relative z-10">
+
+        <!-- Seção: Componentes -->
+        <section id="components" class="relative z-10">
+            <div class="mb-10">
+                <h2 class="font-heading font-bold text-3xl md:text-4xl text-zinc-900 tracking-tight mb-3">Componentes UI
+                </h2>
+                <p class="text-zinc-500 font-medium">Elementos de interação desenvolvidos com estados perfeitos (hover,
+                    active) para garantir alta conversão e feedback visual instantâneo.</p>
+            </div>
+
+            <!-- Botões -->
+            <div class="mb-16">
+                <h3 class="font-heading font-semibold text-xl mb-6 text-brand-lead">Botões (Buttons)</h3>
+                <div class="flex flex-wrap gap-6 items-end p-8 bg-white border border-zinc-100 rounded-2xl shadow-sm">
+                    <!-- Primary -->
+                    <div class="flex flex-col gap-2">
+                        <span class="text-xs text-zinc-400 font-medium">Primary</span>
+                        <button
+                            class="bg-brand-green text-white font-medium px-6 py-3 rounded-full shadow-lg shadow-brand-green/30 hover:bg-green-800 hover:shadow-brand-green/50 hover:-translate-y-0.5 transition-all flex items-center justify-center gap-2">
+                            Entrar em Contato
+                        </button>
+                    </div>
+
+                    <!-- Primary High Conversion (Neon) -->
+                    <div class="flex flex-col gap-2">
+                        <span class="text-xs text-zinc-400 font-medium">Call to Action (Highlight)</span>
+                        <button
+                            class="bg-brand-neon text-zinc-900 font-semibold px-6 py-3 rounded-full shadow-lg shadow-brand-neon/40 hover:bg-[#6bd61c] hover:shadow-brand-neon/60 hover:-translate-y-0.5 transition-all flex items-center justify-center gap-2">
+                            Contratar Consultoria
+                            <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                        </button>
+                    </div>
+
+                    <!-- Secondary / Outline -->
+                    <div class="flex flex-col gap-2">
+                        <span class="text-xs text-zinc-400 font-medium">Secondary (Outline)</span>
+                        <button
+                            class="bg-transparent border-2 border-zinc-300 text-zinc-700 font-medium px-6 py-[10px] rounded-full hover:border-brand-lead hover:text-brand-lead transition-colors flex items-center justify-center">
+                            Saber Mais
+                        </button>
+                    </div>
+
+                    <!-- Ghost -->
+                    <div class="flex flex-col gap-2">
+                        <span class="text-xs text-zinc-400 font-medium">Ghost</span>
+                        <button
+                            class="bg-transparent text-brand-green font-medium px-4 py-3 rounded-full hover:bg-brand-green/10 transition-colors flex items-center justify-center">
+                            Fazer Login
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Cards -->
+            <div class="mb-16">
+                <h3 class="font-heading font-semibold text-xl mb-6 text-brand-lead">Cards e Superfícies</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+                    <!-- Solid Card -->
+                    <div
+                        class="bg-white p-6 rounded-2xl border border-zinc-200 shadow-card hover:shadow-lg transition-shadow">
+                        <div
+                            class="w-12 h-12 bg-brand-light rounded-xl flex items-center justify-center mb-4 text-brand-green">
+                            <i data-lucide="bar-chart-3" class="w-6 h-6"></i>
+                        </div>
+                        <h4 class="font-heading font-bold text-lg text-zinc-900 mb-2">Análise de Dados</h4>
+                        <p class="text-sm text-zinc-500 leading-relaxed">Card sólido padrão para apresentar serviços e
+                            features, com elevação suave em shadow-card.</p>
+                    </div>
+
+                    <!-- Interactive Glass Card -->
+                    <div class="glass-card p-6 rounded-2xl cursor-pointer group hover:-translate-y-1 transition-all">
+                        <div
+                            class="w-12 h-12 bg-white/60 backdrop-blur-sm border border-white/80 rounded-xl flex items-center justify-center mb-4 text-brand-green shadow-sm">
+                            <i data-lucide="shield-check"
+                                class="w-6 h-6 group-hover:scale-110 transition-transform"></i>
+                        </div>
+                        <h4 class="font-heading font-bold text-lg text-zinc-900 mb-2">Auditoria e Compliance</h4>
+                        <p class="text-sm text-zinc-600 leading-relaxed mb-4">Efeito Glassmorphism com hover interativo
+                            para seções de destaque do site.</p>
+                        <span
+                            class="text-brand-green text-sm font-semibold flex items-center gap-1 group-hover:gap-2 transition-all">
+                            Saiba mais <i data-lucide="arrow-right" class="w-3 h-3"></i>
+                        </span>
+                    </div>
+
+                    <!-- Dark Card -->
+                    <div class="bg-zinc-900 p-6 rounded-2xl border border-zinc-800 shadow-xl relative overflow-hidden">
+                        <div class="absolute -right-4 -top-4 w-24 h-24 bg-brand-neon/20 rounded-full blur-2xl"></div>
+                        <div
+                            class="w-12 h-12 bg-zinc-800 rounded-xl flex items-center justify-center mb-4 text-brand-neon border border-zinc-700 z-10 relative">
+                            <i data-lucide="zap" class="w-6 h-6"></i>
+                        </div>
+                        <h4 class="font-heading font-bold text-lg text-white mb-2 relative z-10">Execução Rápida</h4>
+                        <p class="text-sm text-zinc-400 leading-relaxed relative z-10">Card para modo escuro, criando um
+                            forte contraste e utilizando o verde neon como ponto de luz.</p>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Formulários -->
+            <div>
+                <h3 class="font-heading font-semibold text-xl mb-6 text-brand-lead">Formulários e Inputs</h3>
+                <div class="max-w-md bg-white p-8 rounded-2xl border border-zinc-100 shadow-sm">
+                    <form onsubmit="event.preventDefault()">
+                        <div class="mb-5">
+                            <label class="block text-sm font-semibold text-zinc-700 mb-2">Nome Completo</label>
+                            <input type="text"
+                                class="w-full bg-zinc-50 border border-zinc-200 text-zinc-800 text-sm rounded-xl px-4 py-3 outline-none focus:border-brand-green focus:ring-4 focus:ring-brand-green/10 transition-all placeholder:text-zinc-400"
+                                placeholder="Ex: João Silva">
+                        </div>
+                        <div class="mb-5">
+                            <label class="block text-sm font-semibold text-zinc-700 mb-2">E-mail Corporativo</label>
+                            <div class="relative">
+                                <div
+                                    class="absolute inset-y-0 left-0 flex items-center pl-4 pointer-events-none text-zinc-400">
+                                    <i data-lucide="mail" class="w-4 h-4"></i>
+                                </div>
+                                <input type="email"
+                                    class="w-full bg-zinc-50 border border-zinc-200 text-zinc-800 text-sm rounded-xl px-4 py-3 pl-11 outline-none focus:border-brand-green focus:ring-4 focus:ring-brand-green/10 transition-all placeholder:text-zinc-400"
+                                    placeholder="voce@empresa.com">
+                            </div>
+                        </div>
+                        <button
+                            class="w-full bg-brand-green text-white font-medium px-6 py-3 rounded-xl shadow-md shadow-brand-green/20 hover:bg-green-800 transition-colors">
+                            Enviar Solicitação
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- Divisor -->
+        <hr class="border-zinc-200 relative z-10">
+
+        <!-- Seção: Animações e Interações -->
+        <section id="animations" class="relative z-10 animate-on-scroll">
+            <div class="mb-10">
+                <h2 class="font-heading font-bold text-3xl md:text-4xl text-zinc-900 tracking-tight mb-3">Animações
+                    Avançadas</h2>
+                <p class="text-zinc-500 font-medium">Interações de alto desempenho com fundos claros para destacar a
+                    interface sem pesar o layout.</p>
+            </div>
+
+            <!-- Botões Animados -->
+            <div class="mb-16">
+                <h3 class="font-heading font-semibold text-xl mb-6 text-brand-lead">Botão Border Beam</h3>
+                <div class="flex flex-wrap gap-6 items-end p-8 bg-white border border-zinc-100 rounded-2xl shadow-sm">
+                    <button class="relative btn-beam-container group">
+                        <div class="beam-border"></div>
+                        <span
+                            class="relative z-10 flex items-center justify-center gap-2 bg-white text-brand-green border border-brand-green/30 px-6 py-3 rounded-full font-semibold shadow-sm transition-all hover:bg-zinc-50">
+                            Botão com Feixe de Luz
+                            <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                        </span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Flashlight Grid Section -->
+            <div class="mb-16">
+                <h3 class="font-heading font-semibold text-xl mb-6 text-brand-lead">Flashlight Cards (Hover Tracker)
+                </h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="flashlight-grid">
+                    <!-- Card 1 -->
+                    <div
+                        class="flashlight-card rounded-2xl p-6 h-48 flex flex-col justify-end group cursor-default shadow-sm hover:shadow-md transition-shadow">
+                        <div class="flashlight-border"></div>
+                        <div class="relative z-10">
+                            <div
+                                class="w-10 h-10 bg-brand-light rounded-lg flex items-center justify-center mb-3 text-brand-green group-hover:scale-110 transition-transform duration-300">
+                                <i data-lucide="cpu" class="w-5 h-5"></i>
+                            </div>
+                            <h4 class="text-base font-bold text-zinc-900 mb-1">Alta Performance</h4>
+                            <p class="text-xs text-zinc-500 leading-relaxed">Design otimizado e componentes leves.</p>
+                        </div>
+                    </div>
+                    <!-- Card 2 -->
+                    <div
+                        class="flashlight-card rounded-2xl p-6 h-48 flex flex-col justify-end group cursor-default shadow-sm hover:shadow-md transition-shadow">
+                        <div class="flashlight-border"></div>
+                        <div class="relative z-10">
+                            <div
+                                class="w-10 h-10 bg-brand-light rounded-lg flex items-center justify-center mb-3 text-brand-green group-hover:scale-110 transition-transform duration-300">
+                                <i data-lucide="globe" class="w-5 h-5"></i>
+                            </div>
+                            <h4 class="text-base font-bold text-zinc-900 mb-1">Escala Global</h4>
+                            <p class="text-xs text-zinc-500 leading-relaxed">Conexão transparente e rápida.</p>
+                        </div>
+                    </div>
+                    <!-- Card 3 -->
+                    <div
+                        class="flashlight-card rounded-2xl p-6 h-48 flex flex-col justify-end group cursor-default shadow-sm hover:shadow-md transition-shadow">
+                        <div class="flashlight-border"></div>
+                        <div class="relative z-10">
+                            <div
+                                class="w-10 h-10 bg-brand-light rounded-lg flex items-center justify-center mb-3 text-brand-green group-hover:scale-110 transition-transform duration-300">
+                                <i data-lucide="shield" class="w-5 h-5"></i>
+                            </div>
+                            <h4 class="text-base font-bold text-zinc-900 mb-1">Segurança</h4>
+                            <p class="text-xs text-zinc-500 leading-relaxed">Criptografia e proteção de dados contínua.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card Rotator -->
+            <div class="mb-16">
+                <h3 class="font-heading font-semibold text-xl mb-6 text-brand-lead">Card Rotator</h3>
+                <div
+                    class="grid lg:grid-cols-2 gap-12 items-center bg-white p-8 rounded-2xl border border-zinc-100 shadow-sm animate-on-scroll">
+                    <div class="space-y-4">
+                        <div class="feature-btn p-4 rounded-xl border border-zinc-200 bg-zinc-50 cursor-pointer hover:bg-zinc-100 transition-colors active-feature"
+                            onclick="rotateTo(0)">
+                            <div class="flex items-center gap-3 mb-2">
+                                <i data-lucide="zap" class="text-brand-green w-5 h-5"></i>
+                                <h4 class="text-zinc-900 font-bold">Sync em Tempo Real</h4>
+                            </div>
+                            <p class="text-sm text-zinc-500 pl-8">Mudanças propagadas instantaneamente.</p>
+                        </div>
+                        <div class="feature-btn p-4 rounded-xl border border-transparent hover:bg-zinc-50 transition-colors cursor-pointer"
+                            onclick="rotateTo(1)">
+                            <div class="flex items-center gap-3 mb-2">
+                                <i data-lucide="shield" class="text-zinc-400 w-5 h-5"></i>
+                                <h4 class="text-zinc-500 font-bold">Criptografia Segura</h4>
+                            </div>
+                            <p class="text-sm text-zinc-500 pl-8">Dados mantidos em segurança máxima.</p>
+                        </div>
+                        <div class="feature-btn p-4 rounded-xl border border-transparent hover:bg-zinc-50 transition-colors cursor-pointer"
+                            onclick="rotateTo(2)">
+                            <div class="flex items-center gap-3 mb-2">
+                                <i data-lucide="bar-chart" class="text-zinc-400 w-5 h-5"></i>
+                                <h4 class="text-zinc-500 font-bold">Analytics Profundo</h4>
+                            </div>
+                            <p class="text-sm text-zinc-500 pl-8">Relatórios detalhados e insights gerados.</p>
+                        </div>
+                    </div>
+
+                    <!-- Rotator Card Visual -->
+                    <div
+                        class="relative h-[300px] w-full bg-zinc-50 rounded-2xl border border-zinc-200 overflow-hidden">
+                        <div class="absolute inset-0 w-full h-full p-6" id="card-stack">
+                            <!-- Card 1 -->
+                            <div class="rotator-card bg-white rounded-xl border border-zinc-200 p-6 shadow-xl flex flex-col justify-between"
+                                style="opacity: 1; transform: scale(1) translateZ(0);">
+                                <div
+                                    class="w-12 h-12 rounded-lg bg-brand-light flex items-center justify-center text-brand-green mb-4">
+                                    <i data-lucide="zap" class="w-6 h-6"></i>
+                                </div>
+                                <div class="space-y-3">
+                                    <div class="h-2 w-2/3 bg-zinc-200 rounded"></div>
+                                    <div class="h-2 w-1/2 bg-zinc-200 rounded"></div>
+                                    <div class="h-2 w-3/4 bg-zinc-200 rounded"></div>
+                                </div>
+                            </div>
+                            <!-- Card 2 -->
+                            <div class="rotator-card bg-white rounded-xl border border-zinc-200 p-6 shadow-xl flex flex-col justify-between"
+                                style="opacity: 0; transform: scale(0.9) translateZ(0);">
+                                <div
+                                    class="w-12 h-12 rounded-lg bg-brand-light flex items-center justify-center text-brand-green mb-4">
+                                    <i data-lucide="shield" class="w-6 h-6"></i>
+                                </div>
+                                <div class="flex items-center justify-center h-24">
+                                    <i data-lucide="lock" class="w-12 h-12 text-zinc-300"></i>
+                                </div>
+                            </div>
+                            <!-- Card 3 -->
+                            <div class="rotator-card bg-white rounded-xl border border-zinc-200 p-6 shadow-xl flex flex-col justify-between"
+                                style="opacity: 0; transform: scale(0.9) translateZ(0);">
+                                <div
+                                    class="w-12 h-12 rounded-lg bg-brand-light flex items-center justify-center text-brand-green mb-4">
+                                    <i data-lucide="bar-chart" class="w-6 h-6"></i>
+                                </div>
+                                <div class="flex items-end justify-between h-24 gap-2 px-4 pb-2">
+                                    <div class="w-full bg-zinc-200 rounded-t" style="height: 40%"></div>
+                                    <div class="w-full bg-zinc-300 rounded-t" style="height: 70%"></div>
+                                    <div class="w-full bg-brand-green rounded-t" style="height: 55%"></div>
+                                    <div class="w-full bg-zinc-200 rounded-t" style="height: 80%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="mt-20 py-8 text-center text-zinc-500 text-sm font-medium z-10 relative">
+        <p>&copy; 2026 Sisper Consultoria. Design System Document.</p>
+    </footer>
+
+    <!-- Inicializar Ícones Lucide e Animações -->
+    <script>
+        lucide.createIcons();
+
+        // 1. Scroll Animation Observer
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('in-view');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.animate-on-scroll').forEach(el => {
+            observer.observe(el);
+        });
+
+        // 2. Card Rotator
+        let currentCard = 0;
+        const cards = document.querySelectorAll('.rotator-card');
+        const btns = document.querySelectorAll('.feature-btn');
+
+        function updateCards() {
+            cards.forEach((card, index) => {
+                if (index === currentCard) {
+                    card.style.opacity = '1';
+                    card.style.transform = 'scale(1) translateZ(0)';
+                    card.style.zIndex = '10';
+                } else {
+                    card.style.opacity = '0';
+                    card.style.transform = 'scale(0.9) translateZ(0)';
+                    card.style.zIndex = '0';
+                }
+            });
+
+            btns.forEach((btn, index) => {
+                if (index === currentCard) {
+                    btn.classList.add('bg-zinc-50', 'border-zinc-200');
+                    btn.classList.remove('border-transparent');
+                    btn.querySelector('i').classList.remove('text-zinc-400');
+                    btn.querySelector('i').classList.add('text-brand-green');
+                    btn.querySelector('h4').classList.remove('text-zinc-500');
+                    btn.querySelector('h4').classList.add('text-zinc-900');
+                } else {
+                    btn.classList.remove('bg-zinc-50', 'border-zinc-200');
+                    btn.classList.add('border-transparent');
+                    btn.querySelector('i').classList.add('text-zinc-400');
+                    btn.querySelector('i').classList.remove('text-brand-green');
+                    btn.querySelector('h4').classList.add('text-zinc-500');
+                    btn.querySelector('h4').classList.remove('text-zinc-900');
+                }
+            });
+        }
+
+        function rotateTo(index) {
+            currentCard = index;
+            updateCards();
+            clearInterval(rotatorInterval);
+            rotatorInterval = setInterval(nextCard, 5000);
+        }
+
+        function nextCard() {
+            if (cards.length > 0) {
+                currentCard = (currentCard + 1) % cards.length;
+                updateCards();
+            }
+        }
+
+        let rotatorInterval = setInterval(nextCard, 5000);
+
+        // 3. Flashlight Effect
+        const gridContainer = document.getElementById('flashlight-grid');
+        if (gridContainer) {
+            gridContainer.addEventListener('mousemove', (e) => {
+                const fcards = document.querySelectorAll('.flashlight-card');
+
+                fcards.forEach(card => {
+                    const rect = card.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+
+                    card.style.setProperty('--mouse-x', `${x}px`);
+                    card.style.setProperty('--mouse-y', `${y}px`);
+                });
+            });
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Solicitação Recebida | SISPER Consultoria e Projetos</title>
+    <meta name="description" content="Obrigado por enviar sua solicitação técnica para a SISPER Consultoria e Projetos. Entraremos em contato em breve." />
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        heading: ['Montserrat', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            green: '#277928',
+                            neon: '#76E025',
+                            lead: '#4F4F4F',
+                            gray: '#6D6D6D',
+                            light: '#F4F7F4',
+                        }
+                    },
+                    boxShadow: {
+                        'glass': '0 8px 32px 0 rgba(39, 121, 40, 0.15)',
+                        'glow': '0 0 15px rgba(118, 224, 37, 0.5)',
+                        'card': '0 10px 30px -10px rgba(0,0,0,0.1)',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #FAFAFA; overflow-x: hidden; }
+        h1, h2, h3, h4, h5, h6 { font-family: 'Montserrat', sans-serif; }
+
+        .animate-on-scroll {
+            opacity: 0.01;
+            filter: blur(10px);
+            transform: translateY(20px);
+            transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        .animate-on-scroll.in-view {
+            opacity: 1;
+            filter: blur(0);
+            transform: translateY(0);
+        }
+        
+        .btn-beam-container {
+            position: relative;
+            overflow: hidden; 
+            border-radius: 9999px;
+            padding: 2px;
+        }
+        .beam-border {
+            position: absolute;
+            inset: -4px;
+            border-radius: 9999px;
+            pointer-events: none;
+            z-index: 0;
+            opacity: 0;
+            background: conic-gradient(from 0deg at 50% 50%, transparent 0deg, rgba(118, 224, 37, 1) 60deg, transparent 120deg);
+            animation: rotate-beam 2s linear infinite;
+            transition: opacity 0.3s;
+        }
+        .btn-beam-container:hover .beam-border {
+            opacity: 1;
+        }
+        @keyframes rotate-beam {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body class="text-zinc-800 antialiased relative selection:bg-brand-green selection:text-white pt-[80px]">
+    
+    <!-- HEADER -->
+    <header id="site-header"></header>
+
+    <div class="bg-zinc-50 min-h-[80vh] flex items-center justify-center py-16">
+      <div class="max-w-xl mx-auto px-6 text-center">
+        
+        <!-- Ícone de Sucesso -->
+        <div class="w-20 h-20 bg-brand-light text-brand-green rounded-full flex items-center justify-center mx-auto mb-8 shadow-inner animate-[bounce_1.5s_infinite]">
+          <i data-lucide="check-circle" class="w-12 h-12"></i>
+        </div>
+
+        <h1 class="font-heading font-black text-3xl sm:text-4xl text-brand-lead leading-tight mb-4">
+          Solicitação Técnica Recebida!
+        </h1>
+        
+        <div id="obrigado-mensagem">
+          <p class="text-base text-zinc-600 mb-6 font-sans">
+            Obrigado por entrar em contato. Seus dados foram registrados com sucesso em nosso sistema de controle de engenharia.
+          </p>
+        </div>
+
+        <p class="text-xs md:text-sm text-zinc-400 mb-10 leading-relaxed max-w-md mx-auto font-sans">
+          Nossa equipe de engenharia e consultoria técnica analisará as informações enviadas e entrará em contato em até 24 horas úteis por e-mail ou telefone.
+        </p>
+
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <a
+            href="https://wa.me/5511988949290"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="w-full sm:w-auto"
+            id="wa-speedup-btn"
+          >
+            <button class="w-full bg-brand-neon hover:bg-green-400 text-brand-lead font-bold py-4 px-6 rounded-full text-sm shadow-xl transition-all flex items-center justify-center gap-2">
+              <i data-lucide="message-square" class="w-5 h-5"></i>
+              Acelerar via WhatsApp
+            </button>
+          </a>
+          
+          <a href="index.html" class="w-full sm:w-auto">
+            <button class="w-full bg-white text-zinc-700 border border-zinc-200 py-4 px-6 rounded-full text-sm font-semibold hover:bg-zinc-50 transition-all flex items-center justify-center gap-2">
+              <i data-lucide="arrow-left" class="w-4 h-4"></i>
+              Voltar ao Início
+            </button>
+          </a>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer id="site-footer"></footer>
+
+    <!-- COMMON SCRIPTS -->
+    <script src="js/components.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const name = sessionStorage.getItem('sisper_lead_name');
+            const svc = sessionStorage.getItem('sisper_lead_service');
+            
+            const messageContainer = document.getElementById('obrigado-mensagem');
+            const waBtn = document.getElementById('wa-speedup-btn');
+            
+            let displayName = name || '';
+            let displayService = svc || 'Consultoria';
+            
+            if (name) {
+                messageContainer.innerHTML = `
+                  <p class="text-base text-zinc-600 mb-6 font-sans">
+                    Obrigado, <strong class="text-brand-green">${displayName}</strong>. Suas informações para o serviço de <strong class="text-zinc-800">${displayService}</strong> foram registradas com sucesso em nosso sistema de controle de engenharia.
+                  </p>
+                `;
+            }
+            
+            // Atualizar o botão de WhatsApp acelerado
+            const whatsappNumber = "5511988949290";
+            const defaultText = `Olá, meu nome é ${displayName || 'visitante'} e acabei de preencher o formulário no site para o serviço de ${displayService}. Gostaria de agilizar o contato.`;
+            const encodedText = encodeURIComponent(defaultText);
+            waBtn.href = `https://wa.me/${whatsappNumber}?text=${encodedText}`;
+        });
+    </script>
+</body>
+</html>

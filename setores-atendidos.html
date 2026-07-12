@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Setores Atendidos | SISPER Consultoria e Projetos</title>
+    <meta name="description" content="Mitigando riscos técnicos reais e protegendo a continuidade operacional de sistemas críticos em diferentes mercados e setores B2B." />
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        heading: ['Montserrat', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            green: '#277928',
+                            neon: '#76E025',
+                            lead: '#4F4F4F',
+                            gray: '#6D6D6D',
+                            light: '#F4F7F4',
+                        }
+                    },
+                    boxShadow: {
+                        'glass': '0 8px 32px 0 rgba(39, 121, 40, 0.15)',
+                        'glow': '0 0 15px rgba(118, 224, 37, 0.5)',
+                        'card': '0 10px 30px -10px rgba(0,0,0,0.1)',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #FAFAFA; overflow-x: hidden; }
+        h1, h2, h3, h4, h5, h6 { font-family: 'Montserrat', sans-serif; }
+
+        .animate-on-scroll {
+            opacity: 0.01;
+            filter: blur(10px);
+            transform: translateY(20px);
+            transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        .animate-on-scroll.in-view {
+            opacity: 1;
+            filter: blur(0);
+            transform: translateY(0);
+        }
+        
+        .btn-beam-container {
+            position: relative;
+            overflow: hidden; 
+            border-radius: 9999px;
+            padding: 2px;
+        }
+        .beam-border {
+            position: absolute;
+            inset: -4px;
+            border-radius: 9999px;
+            pointer-events: none;
+            z-index: 0;
+            opacity: 0;
+            background: conic-gradient(from 0deg at 50% 50%, transparent 0deg, rgba(118, 224, 37, 1) 60deg, transparent 120deg);
+            animation: rotate-beam 2s linear infinite;
+            transition: opacity 0.3s;
+        }
+        .btn-beam-container:hover .beam-border {
+            opacity: 1;
+        }
+        @keyframes rotate-beam {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body class="text-zinc-800 antialiased relative selection:bg-brand-green selection:text-white pt-[80px]">
+    
+    <!-- HEADER -->
+    <header id="site-header"></header>
+
+    <div class="bg-zinc-50 min-h-screen pb-24">
+      
+      <!-- HEADER & BREADCRUMBS -->
+      <div class="bg-white border-b border-zinc-200/60 py-6">
+        <div class="max-w-[1300px] mx-auto px-6">
+          <!-- Breadcrumbs -->
+          <nav class="flex text-xs text-zinc-400 font-medium items-center gap-1.5" aria-label="Breadcrumb">
+            <a href="index.html" class="hover:text-brand-green transition-colors">Início</a>
+            <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
+            <span class="text-zinc-500 font-semibold">Setores Atendidos</span>
+          </nav>
+          
+          <h1 class="font-heading font-black text-3xl sm:text-4xl lg:text-5xl text-brand-lead mt-4">
+            Setores Atendidos
+          </h1>
+          <p class="text-base text-zinc-500 mt-2 max-w-3xl leading-relaxed">
+            Mitigando riscos técnicos reais e protegendo a continuidade operacional de sistemas críticos em diferentes mercados.
+          </p>
+        </div>
+      </div>
+
+      <div class="max-w-[1300px] mx-auto px-6 mt-16 space-y-16">
+        
+        <!-- GRID DE SETORES -->
+        <section class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 animate-on-scroll">
+          
+          <!-- Setor 1 -->
+          <div class="bg-white border border-zinc-200 p-6 md:p-8 rounded-2xl hover:border-brand-green hover:shadow-lg transition-all flex flex-col h-full">
+            <div class="flex items-center gap-3.5 mb-6 border-b border-zinc-100 pb-4">
+              <div class="p-2.5 bg-brand-light text-brand-green rounded-xl shrink-0">
+                <i data-lucide="building" class="w-6 h-6"></i>
+              </div>
+              <h3 class="font-heading font-bold text-base md:text-lg text-zinc-950 leading-tight">
+                Condomínios Comerciais
+              </h3>
+            </div>
+
+            <div class="space-y-4 flex-grow">
+              <div>
+                <span class="text-[10px] font-black text-red-500 uppercase tracking-wider block mb-1">
+                  Risco Associado:
+                </span>
+                <p class="text-xs text-zinc-500 leading-relaxed font-sans">
+                  Parada de elevadores, perda de pressurização de escadas de incêndio e interrupção de atividades de dezenas de escritórios corporativos.
+                </p>
+              </div>
+              <div>
+                <span class="text-[10px] font-black text-brand-green uppercase tracking-wider block mb-1">
+                  Atuação da SISPER:
+                </span>
+                <p class="text-xs text-zinc-600 font-medium leading-relaxed font-sans">
+                  Nossa auditoria preventiva mensal garante que o gerador principal e os painéis de transferência atuem em conformidade física imediata na queda da concessionária.
+                </p>
+              </div>
+            </div>
+
+            <div class="pt-6 mt-auto">
+              <a href="contato.html?setor=Condom%C3%ADnios%20Comerciais" class="text-xs font-bold text-brand-green hover:underline flex items-center gap-1.5 group">
+                Solicitar avaliação técnica para este setor
+                <i data-lucide="arrow-right" class="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- Setor 2 -->
+          <div class="bg-white border border-zinc-200 p-6 md:p-8 rounded-2xl hover:border-brand-green hover:shadow-lg transition-all flex flex-col h-full">
+            <div class="flex items-center gap-3.5 mb-6 border-b border-zinc-100 pb-4">
+              <div class="p-2.5 bg-brand-light text-brand-green rounded-xl shrink-0">
+                <i data-lucide="activity" class="w-6 h-6"></i>
+              </div>
+              <h3 class="font-heading font-bold text-base md:text-lg text-zinc-950 leading-tight">
+                Hospitais
+              </h3>
+            </div>
+
+            <div class="space-y-4 flex-grow">
+              <div>
+                <span class="text-[10px] font-black text-red-500 uppercase tracking-wider block mb-1">
+                  Risco Associado:
+                </span>
+                <p class="text-xs text-zinc-500 leading-relaxed font-sans">
+                  Risco imediato à vida. Quedas de energia em salas cirúrgicas, UTIs e laboratórios de conservação de vacinas e medicamentos.
+                </p>
+              </div>
+              <div>
+                <span class="text-[10px] font-black text-brand-green uppercase tracking-wider block mb-1">
+                  Atuação da SISPER:
+                </span>
+                <p class="text-xs text-zinc-600 font-medium leading-relaxed font-sans">
+                  Desenvolvemos dimensionamentos e auditoria com redundância extrema para que o tempo de acionamento do gerador seja o menor possível e com 100% de estabilidade de carga.
+                </p>
+              </div>
+            </div>
+
+            <div class="pt-6 mt-auto">
+              <a href="contato.html?setor=Hospitais" class="text-xs font-bold text-brand-green hover:underline flex items-center gap-1.5 group">
+                Solicitar avaliação técnica para este setor
+                <i data-lucide="arrow-right" class="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- Setor 3 -->
+          <div class="bg-white border border-zinc-200 p-6 md:p-8 rounded-2xl hover:border-brand-green hover:shadow-lg transition-all flex flex-col h-full">
+            <div class="flex items-center gap-3.5 mb-6 border-b border-zinc-100 pb-4">
+              <div class="p-2.5 bg-brand-light text-brand-green rounded-xl shrink-0">
+                <i data-lucide="database" class="w-6 h-6"></i>
+              </div>
+              <h3 class="font-heading font-bold text-base md:text-lg text-zinc-950 leading-tight">
+                Data Centers
+              </h3>
+            </div>
+
+            <div class="space-y-4 flex-grow">
+              <div>
+                <span class="text-[10px] font-black text-red-500 uppercase tracking-wider block mb-1">
+                  Risco Associado:
+                </span>
+                <p class="text-xs text-zinc-500 leading-relaxed font-sans">
+                  Perda de dados, indisponibilidade de servidores corporativos de grande porte e colapso no sistema de climatização técnica.
+                </p>
+              </div>
+              <div>
+                <span class="text-[10px] font-black text-brand-green uppercase tracking-wider block mb-1">
+                  Atuação da SISPER:
+                </span>
+                <p class="text-xs text-zinc-600 font-medium leading-relaxed font-sans">
+                  Consultoria preditiva com inspeções termográficas e testes em carga contínua para evitar flutuações e interrupções elétricas críticas.
+                </p>
+              </div>
+            </div>
+
+            <div class="pt-6 mt-auto">
+              <a href="contato.html?setor=Data%20Centers" class="text-xs font-bold text-brand-green hover:underline flex items-center gap-1.5 group">
+                Solicitar avaliação técnica para este setor
+                <i data-lucide="arrow-right" class="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- Setor 4 -->
+          <div class="bg-white border border-zinc-200 p-6 md:p-8 rounded-2xl hover:border-brand-green hover:shadow-lg transition-all flex flex-col h-full">
+            <div class="flex items-center gap-3.5 mb-6 border-b border-zinc-100 pb-4">
+              <div class="p-2.5 bg-brand-light text-brand-green rounded-xl shrink-0">
+                <i data-lucide="factory" class="w-6 h-6"></i>
+              </div>
+              <h3 class="font-heading font-bold text-base md:text-lg text-zinc-950 leading-tight">
+                Indústrias
+              </h3>
+            </div>
+
+            <div class="space-y-4 flex-grow">
+              <div>
+                <span class="text-[10px] font-black text-red-500 uppercase tracking-wider block mb-1">
+                  Risco Associado:
+                </span>
+                <p class="text-xs text-zinc-500 leading-relaxed font-sans">
+                  Paradas em linhas de montagem, perda de matéria-prima em processamento físico e atrasos severos na cadeia de entregas.
+                </p>
+              </div>
+              <div>
+                <span class="text-[10px] font-black text-brand-green uppercase tracking-wider block mb-1">
+                  Atuação da SISPER:
+                </span>
+                <p class="text-xs text-zinc-600 font-medium leading-relaxed font-sans">
+                  Auditoria de subestações elétricas, laudos de NR-10 e NR-20 e projeto mecânico sob medida de geradores industriais.
+                </p>
+              </div>
+            </div>
+
+            <div class="pt-6 mt-auto">
+              <a href="contato.html?setor=Ind%C3%BAstrias" class="text-xs font-bold text-brand-green hover:underline flex items-center gap-1.5 group">
+                Solicitar avaliação técnica para este setor
+                <i data-lucide="arrow-right" class="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- Setor 5 -->
+          <div class="bg-white border border-zinc-200 p-6 md:p-8 rounded-2xl hover:border-brand-green hover:shadow-lg transition-all flex flex-col h-full">
+            <div class="flex items-center gap-3.5 mb-6 border-b border-zinc-100 pb-4">
+              <div class="p-2.5 bg-brand-light text-brand-green rounded-xl shrink-0">
+                <i data-lucide="truck" class="w-6 h-6"></i>
+              </div>
+              <h3 class="font-heading font-bold text-base md:text-lg text-zinc-950 leading-tight">
+                Centros Logísticos
+              </h3>
+            </div>
+
+            <div class="space-y-4 flex-grow">
+              <div>
+                <span class="text-[10px] font-black text-red-500 uppercase tracking-wider block mb-1">
+                  Risco Associado:
+                </span>
+                <p class="text-xs text-zinc-500 leading-relaxed font-sans">
+                  Parada de transelevadores de carga, sistemas automatizados de expedição e quebra de cadeia de frio em câmaras de congelamento.
+                </p>
+              </div>
+              <div>
+                <span class="text-[10px] font-black text-brand-green uppercase tracking-wider block mb-1">
+                  Atuação da SISPER:
+                </span>
+                <p class="text-xs text-zinc-600 font-medium leading-relaxed font-sans">
+                  Dimensionamento exato de geradores a diesel e verificação periódica de tanques de óleo diesel e bacias de contenção de acordo com a NR-20.
+                </p>
+              </div>
+            </div>
+
+            <div class="pt-6 mt-auto">
+              <a href="contato.html?setor=Centros%20Log%C3%ADsticos" class="text-xs font-bold text-brand-green hover:underline flex items-center gap-1.5 group">
+                Solicitar avaliação técnica para este setor
+                <i data-lucide="arrow-right" class="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- Setor 6 -->
+          <div class="bg-white border border-zinc-200 p-6 md:p-8 rounded-2xl hover:border-brand-green hover:shadow-lg transition-all flex flex-col h-full">
+            <div class="flex items-center gap-3.5 mb-6 border-b border-zinc-100 pb-4">
+              <div class="p-2.5 bg-brand-light text-brand-green rounded-xl shrink-0">
+                <i data-lucide="briefcase" class="w-6 h-6"></i>
+              </div>
+              <h3 class="font-heading font-bold text-base md:text-lg text-zinc-950 leading-tight">
+                Prédios Corporativos
+              </h3>
+            </div>
+
+            <div class="space-y-4 flex-grow">
+              <div>
+                <span class="text-[10px] font-black text-red-500 uppercase tracking-wider block mb-1">
+                  Risco Associado:
+                </span>
+                <p class="text-xs text-zinc-500 leading-relaxed font-sans">
+                  Prejuízo financeiro de inquilinos corporativos por queda de telecomunicações e insatisfação generalizada de facilities prediais.
+                </p>
+              </div>
+              <div>
+                <span class="text-[10px] font-black text-brand-green uppercase tracking-wider block mb-1">
+                  Atuação da SISPER:
+                </span>
+                <p class="text-xs text-zinc-600 font-medium leading-relaxed font-sans">
+                  Auditoria imparcial das empresas terceirizadas de manutenção, garantindo conformidade contratual sem sobrepreço.
+                </p>
+              </div>
+            </div>
+
+            <div class="pt-6 mt-auto">
+              <a href="contato.html?setor=Pr%C3%A9dios%20Corporativos" class="text-xs font-bold text-brand-green hover:underline flex items-center gap-1.5 group">
+                Solicitar avaliação técnica para este setor
+                <i data-lucide="arrow-right" class="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform"></i>
+              </a>
+            </div>
+          </div>
+
+        </section>
+
+        <!-- METODOLOGIA B2B -->
+        <section class="bg-white border border-zinc-200 rounded-3xl p-8 md:p-12 animate-on-scroll grid lg:grid-cols-12 gap-8 items-center">
+          <div class="lg:col-span-8 space-y-4">
+            <h2 class="font-heading font-black text-xl md:text-2xl text-brand-lead">
+              Sua empresa opera em regime de Energia Crítica?
+            </h2>
+            <p class="text-xs md:text-sm text-zinc-500 leading-relaxed font-sans">
+              Trabalhamos junto a síndicos profissionais, administradoras condominiais de grande porte, diretores de facilities e engenheiros de manutenção predial para implantar rotinas rígidas de prevenção e auditoria. Nossa consultoria ajuda a formatar contratos de terceirização, auditar relatórios e garantir aprovação segura de investimentos estruturais em energia de contingência.
+            </p>
+          </div>
+          <div class="lg:col-span-4 lg:text-right shrink-0">
+            <a href="contato.html" class="w-full lg:w-auto">
+              <button class="relative btn-beam-container group w-full lg:w-auto">
+                <div class="beam-border"></div>
+                <span class="relative z-10 flex items-center justify-center bg-brand-green text-white px-6 py-3.5 rounded-full text-sm font-semibold shadow-lg hover:bg-green-800 transition-colors w-full">
+                  Avaliar Minha Instalação
+                </span>
+              </button>
+            </a>
+          </div>
+        </section>
+
+      </div>
+
+    </div>
+
+    <!-- FOOTER -->
+    <footer id="site-footer"></footer>
+
+    <!-- COMMON SCRIPTS -->
+    <script src="js/components.js"></script>
+</body>
+</html>
