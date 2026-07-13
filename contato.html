@@ -1,316 +1,334 @@
 <!DOCTYPE html>
 <html lang="pt-BR" class="scroll-smooth">
+
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Contato e Avaliação Técnica | SISPER Consultoria e Projetos</title>
-    <meta name="description" content="Consulte nossos engenheiros para auditoria de geradores, elaboração de projetos e vistorias de segurança elétrica e de tanques." />
-    
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-    
-    <!-- Lucide Icons -->
-    <script src="https://unpkg.com/lucide@latest"></script>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contato e Avaliação Técnica | SISPER Consultoria e Projetos</title>
+  <meta name="description"
+    content="Consulte nossos engenheiros para auditoria de geradores, elaboração de projetos e vistorias de segurança elétrica e de tanques." />
 
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                        heading: ['Montserrat', 'sans-serif'],
-                    },
-                    colors: {
-                        brand: {
-                            green: '#277928',
-                            neon: '#76E025',
-                            lead: '#4F4F4F',
-                            gray: '#6D6D6D',
-                            light: '#F4F7F4',
-                        }
-                    },
-                    boxShadow: {
-                        'glass': '0 8px 32px 0 rgba(39, 121, 40, 0.15)',
-                        'glow': '0 0 15px rgba(118, 224, 37, 0.5)',
-                        'card': '0 10px 30px -10px rgba(0,0,0,0.1)',
-                    }
-                }
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            heading: ['Montserrat', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              green: '#277928',
+              neon: '#76E025',
+              lead: '#4F4F4F',
+              gray: '#6D6D6D',
+              light: '#F4F7F4',
             }
+          },
+          boxShadow: {
+            'glass': '0 8px 32px 0 rgba(39, 121, 40, 0.15)',
+            'glow': '0 0 15px rgba(118, 224, 37, 0.5)',
+            'card': '0 10px 30px -10px rgba(0,0,0,0.1)',
+          }
         }
-    </script>
+      }
+    }
+  </script>
 
-    <style>
-        body { font-family: 'Inter', sans-serif; background-color: #FAFAFA; overflow-x: hidden; }
-        h1, h2, h3, h4, h5, h6 { font-family: 'Montserrat', sans-serif; }
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #FAFAFA;
+      overflow-x: hidden;
+    }
 
-        .animate-on-scroll {
-            opacity: 0.01;
-            filter: blur(10px);
-            transform: translateY(20px);
-            transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        }
-        .animate-on-scroll.in-view {
-            opacity: 1;
-            filter: blur(0);
-            transform: translateY(0);
-        }
-        
-        .btn-beam-container {
-            position: relative;
-            overflow: hidden; 
-            border-radius: 9999px;
-            padding: 2px;
-        }
-        .beam-border {
-            position: absolute;
-            inset: -4px;
-            border-radius: 9999px;
-            pointer-events: none;
-            z-index: 0;
-            opacity: 0;
-            background: conic-gradient(from 0deg at 50% 50%, transparent 0deg, rgba(118, 224, 37, 1) 60deg, transparent 120deg);
-            animation: rotate-beam 2s linear infinite;
-            transition: opacity 0.3s;
-        }
-        .btn-beam-container:hover .beam-border {
-            opacity: 1;
-        }
-        @keyframes rotate-beam {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
-    </style>
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    .animate-on-scroll {
+      opacity: 0.01;
+      filter: blur(10px);
+      transform: translateY(20px);
+      transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    .animate-on-scroll.in-view {
+      opacity: 1;
+      filter: blur(0);
+      transform: translateY(0);
+    }
+
+    .btn-beam-container {
+      position: relative;
+      overflow: hidden;
+      border-radius: 9999px;
+      padding: 2px;
+    }
+
+    .beam-border {
+      position: absolute;
+      inset: -4px;
+      border-radius: 9999px;
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0;
+      background: conic-gradient(from 0deg at 50% 50%, transparent 0deg, rgba(118, 224, 37, 1) 60deg, transparent 120deg);
+      animation: rotate-beam 2s linear infinite;
+      transition: opacity 0.3s;
+    }
+
+    .btn-beam-container:hover .beam-border {
+      opacity: 1;
+    }
+
+    @keyframes rotate-beam {
+      from {
+        transform: rotate(0deg);
+      }
+
+      to {
+        transform: rotate(360deg);
+      }
+    }
+  </style>
 </head>
+
 <body class="text-zinc-800 antialiased relative selection:bg-brand-green selection:text-white pt-[80px]">
-    
-    <!-- HEADER -->
-    <header id="site-header"></header>
 
-    <div class="bg-zinc-50 min-h-screen pb-24">
-      
-      <!-- HEADER & BREADCRUMBS -->
-      <div class="bg-white border-b border-zinc-200/60 py-6">
-        <div class="max-w-[1300px] mx-auto px-6">
-          <!-- Breadcrumbs -->
-          <nav class="flex text-xs text-zinc-400 font-medium items-center gap-1.5" aria-label="Breadcrumb">
-            <a href="index.html" class="hover:text-brand-green transition-colors">Início</a>
-            <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
-            <span class="text-zinc-500 font-semibold">Contato</span>
-          </nav>
-          
-          <h1 class="font-heading font-black text-3xl sm:text-4xl lg:text-5xl text-brand-lead mt-4">
-            Contato e Avaliação Técnica
-          </h1>
-          <p class="text-base text-zinc-500 mt-2 max-w-3xl leading-relaxed">
-            Consulte nossos engenheiros para auditorias de geradores, elaboração de projetos e vistorias de segurança.
-          </p>
-        </div>
+  <!-- HEADER -->
+  <header id="site-header"></header>
+
+  <div class="bg-zinc-50 min-h-screen pb-24">
+
+    <!-- HEADER & BREADCRUMBS -->
+    <div class="bg-white border-b border-zinc-200/60 py-6">
+      <div class="max-w-[1300px] mx-auto px-6">
+        <!-- Breadcrumbs -->
+        <nav class="flex text-xs text-zinc-400 font-medium items-center gap-1.5" aria-label="Breadcrumb">
+          <a href="index.html" class="hover:text-brand-green transition-colors">Início</a>
+          <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
+          <span class="text-zinc-500 font-semibold">Contato</span>
+        </nav>
+
+        <h1 class="font-heading font-black text-3xl sm:text-4xl lg:text-5xl text-brand-lead mt-4">
+          Contato e Avaliação Técnica
+        </h1>
+        <p class="text-base text-zinc-500 mt-2 max-w-3xl leading-relaxed">
+          Consulte nossos engenheiros para auditorias na manutenção preventiva de geradores, elaboração de projetos e
+          vistorias de segurança elétrica das suas instalações.
+        </p>
       </div>
+    </div>
 
-      <div class="max-w-[1300px] mx-auto px-6 mt-16 grid lg:grid-cols-12 gap-12 lg:gap-16">
-        
-        <!-- COLUNA ESQUERDA - INFORMAÇÕES DE CONTATO -->
-        <div class="lg:col-span-5 space-y-8 animate-on-scroll">
-          
-          <div class="bg-white border border-zinc-200 rounded-2xl p-6 md:p-8 shadow-sm space-y-6">
-            <h2 class="font-heading font-bold text-lg text-zinc-900 border-b border-zinc-100 pb-4">
-              Canais Diretos de Engenharia
-            </h2>
-            
-            <div class="space-y-6">
-              <div class="flex gap-4 items-start">
-                <div class="p-3 bg-brand-light text-brand-green rounded-xl shrink-0">
-                  <i data-lucide="mail" class="w-6 h-6"></i>
-                </div>
-                <div>
-                  <span class="text-[10px] font-bold text-zinc-400 uppercase tracking-widest block font-sans">
-                    E-mail Institucional
-                  </span>
-                  <a href="mailto:sisper.consultoria@gmail.com" class="text-sm font-bold text-zinc-900 hover:text-brand-green transition-colors mt-1 block">
-                    sisper.consultoria@gmail.com
-                  </a>
-                </div>
+    <div class="max-w-[1300px] mx-auto px-6 mt-16 grid lg:grid-cols-12 gap-12 lg:gap-16">
+
+      <!-- COLUNA ESQUERDA - INFORMAÇÕES DE CONTATO -->
+      <div class="lg:col-span-5 space-y-8 animate-on-scroll">
+
+        <div class="bg-white border border-zinc-200 rounded-2xl p-6 md:p-8 shadow-sm space-y-6">
+          <h2 class="font-heading font-bold text-lg text-zinc-900 border-b border-zinc-100 pb-4">
+            Canais Diretos da Engenharia
+          </h2>
+
+          <div class="space-y-6">
+            <div class="flex gap-4 items-start">
+              <div class="p-3 bg-brand-light text-brand-green rounded-xl shrink-0">
+                <i data-lucide="mail" class="w-6 h-6"></i>
               </div>
-
-              <div class="flex gap-4 items-start">
-                <div class="p-3 bg-brand-light text-brand-green rounded-xl shrink-0">
-                  <i data-lucide="phone" class="w-6 h-6"></i>
-                </div>
-                <div>
-                  <span class="text-[10px] font-bold text-zinc-400 uppercase tracking-widest block font-sans">
-                    WhatsApp Comercial
-                  </span>
-                  <a href="tel:+5511988949290" class="text-sm font-bold text-zinc-900 hover:text-brand-green transition-colors mt-1 block">
-                    +55 (11) 98894-9290
-                  </a>
-                </div>
+              <div>
+                <span class="text-[10px] font-bold text-zinc-400 uppercase tracking-widest block font-sans">
+                  E-mail Institucional
+                </span>
+                <a href="mailto:sisper.consultoria@gmail.com"
+                  class="text-sm font-bold text-zinc-900 hover:text-brand-green transition-colors mt-1 block">
+                  sisper.consultoria@gmail.com
+                </a>
               </div>
+            </div>
 
-              <div class="flex gap-4 items-start">
-                <div class="p-3 bg-brand-light text-brand-green rounded-xl shrink-0">
-                  <i data-lucide="clock" class="w-6 h-6"></i>
-                </div>
-                <div>
-                  <span class="text-[10px] font-bold text-zinc-400 uppercase tracking-widest block font-sans">
-                    Horário de Atendimento
-                  </span>
-                  <p class="text-sm font-semibold text-zinc-700 mt-1 font-sans">
-                    Segunda a Sexta: 08h às 18h
-                  </p>
-                </div>
+            <div class="flex gap-4 items-start">
+              <div class="p-3 bg-brand-light text-brand-green rounded-xl shrink-0">
+                <i data-lucide="phone" class="w-6 h-6"></i>
+              </div>
+              <div>
+                <span class="text-[10px] font-bold text-zinc-400 uppercase tracking-widest block font-sans">
+                  WhatsApp Comercial
+                </span>
+                <a href="tel:+5511988949290"
+                  class="text-sm font-bold text-zinc-900 hover:text-brand-green transition-colors mt-1 block">
+                  +55 (11) 98894-9290
+                </a>
+              </div>
+            </div>
+
+            <div class="flex gap-4 items-start">
+              <div class="p-3 bg-brand-light text-brand-green rounded-xl shrink-0">
+                <i data-lucide="clock" class="w-6 h-6"></i>
+              </div>
+              <div>
+                <span class="text-[10px] font-bold text-zinc-400 uppercase tracking-widest block font-sans">
+                  Horário de Atendimento
+                </span>
+                <p class="text-sm font-semibold text-zinc-700 mt-1 font-sans">
+                  Segunda a Sexta: 08h às 18h
+                </p>
               </div>
             </div>
           </div>
-
-          <div class="bg-brand-light/50 border border-brand-green/10 rounded-2xl p-6 md:p-8 space-y-4">
-            <h3 class="font-heading font-bold text-sm text-brand-green uppercase tracking-wider flex items-center gap-2">
-              <i data-lucide="shield-check" class="w-5 h-5"></i>
-              Compromisso SISPER
-            </h3>
-            <p class="text-xs text-zinc-600 leading-relaxed font-sans">
-              Respeitamos estritamente a LGPD. Os dados inseridos no formulário ao lado serão tratados de forma confidencial e utilizados apenas para a qualificação técnica do seu contato comercial.
-            </p>
-          </div>
-
         </div>
 
-        <!-- COLUNA DIREITA - FORMULÁRIO -->
-        <div class="lg:col-span-7">
-          <div class="bg-white border border-zinc-200 rounded-2xl p-6 md:p-8 shadow-sm">
-            <h2 class="font-heading font-black text-xl md:text-2xl text-zinc-900 mb-2 leading-tight">
-              Solicitar Avaliação Técnica
-            </h2>
-            <p class="text-xs md:text-sm text-zinc-500 mb-8 leading-relaxed font-sans">
-              Preencha os dados abaixo com as informações da sua instalação técnica e nossa equipe de engenheiros retornará com brevidade.
-            </p>
-
-            <form class="lead-form space-y-5">
-              <div class="grid sm:grid-cols-2 gap-5">
-                <div>
-                  <label class="block text-xs font-bold text-zinc-700 uppercase tracking-wider mb-2 font-sans">Nome Completo *</label>
-                  <input
-                    type="text"
-                    name="nome"
-                    required
-                    placeholder="Seu nome"
-                    class="w-full border border-zinc-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-brand-green font-sans"
-                  />
-                </div>
-                <div>
-                  <label class="block text-xs font-bold text-zinc-700 uppercase tracking-wider mb-2 font-sans">Empresa / Condomínio *</label>
-                  <input
-                    type="text"
-                    name="empresa"
-                    required
-                    placeholder="Nome da empresa ou condomínio"
-                    class="w-full border border-zinc-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-brand-green font-sans"
-                  />
-                </div>
-              </div>
-
-              <div class="grid sm:grid-cols-2 gap-5">
-                <div>
-                  <label class="block text-xs font-bold text-zinc-700 uppercase tracking-wider mb-2 font-sans">E-mail Corporativo *</label>
-                  <input
-                    type="email"
-                    name="email"
-                    required
-                    placeholder="exemplo@empresa.com.br"
-                    class="w-full border border-zinc-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-brand-green font-sans"
-                  />
-                </div>
-                <div>
-                  <label class="block text-xs font-bold text-zinc-700 uppercase tracking-wider mb-2 font-sans">Telefone / WhatsApp *</label>
-                  <input
-                    type="tel"
-                    name="telefone"
-                    required
-                    placeholder="(11) 98888-8888"
-                    class="w-full border border-zinc-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-brand-green font-sans"
-                  />
-                </div>
-              </div>
-
-              <div>
-                <label class="block text-xs font-bold text-zinc-700 uppercase tracking-wider mb-2 font-sans">Serviço de Interesse *</label>
-                <select
-                  name="servico"
-                  required
-                  class="w-full border border-zinc-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-brand-green bg-white font-sans"
-                >
-                  <option value="Auditoria de Manutenção Preventiva">Auditoria de Manutenção Preventiva de Geradores</option>
-                  <option value="Projetos e Dimensionamento de Geradores">Projetos e Dimensionamento de Geradores</option>
-                  <option value="Laudos de Conformidade NR-20">Laudos de Conformidade NR-20 (Combustíveis)</option>
-                  <option value="Inspeções Elétricas e Termográficas">Inspeções Elétricas e Termográficas (NR-10)</option>
-                  <option value="Contato Geral">Outros assuntos / Dúvidas gerais</option>
-                </select>
-              </div>
-
-              <div>
-                <label class="block text-xs font-bold text-zinc-700 uppercase tracking-wider mb-2 font-sans">Descreva seu Cenário ou Necessidade</label>
-                <textarea
-                  name="mensagem"
-                  rows="4"
-                  placeholder="Conte-nos brevemente sobre sua infraestrutura crítica ou o problema que precisa resolver..."
-                  class="w-full border border-zinc-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-brand-green font-sans"
-                ></textarea>
-              </div>
-
-              <div class="pt-2">
-                <button
-                  type="submit"
-                  class="w-full relative btn-beam-container group"
-                >
-                  <div class="beam-border"></div>
-                  <span class="relative z-10 flex items-center justify-center bg-brand-green text-white px-8 py-4 rounded-full text-base font-semibold shadow-xl shadow-brand-green/30 hover:bg-green-800 transition-colors gap-2 w-full">
-                    Solicitar Avaliação Técnica
-                    <i data-lucide="arrow-right" class="w-5 h-5 group-hover:translate-x-1 transition-transform"></i>
-                  </span>
-                </button>
-              </div>
-            </form>
-          </div>
+        <div class="bg-brand-light/50 border border-brand-green/10 rounded-2xl p-6 md:p-8 space-y-4">
+          <h3 class="font-heading font-bold text-sm text-brand-green uppercase tracking-wider flex items-center gap-2">
+            <i data-lucide="shield-check" class="w-5 h-5"></i>
+            Compromisso SISPER
+          </h3>
+          <p class="text-xs text-zinc-600 leading-relaxed font-sans">
+            Respeitamos estritamente a LGPD. Os dados inseridos no formulário ao lado serão tratados de forma
+            confidencial e utilizados apenas para a qualificação técnica do seu contato comercial.
+          </p>
         </div>
 
+      </div>
+
+      <!-- COLUNA DIREITA - FORMULÁRIO -->
+      <div class="lg:col-span-7">
+        <div class="bg-white border border-zinc-200 rounded-2xl p-6 md:p-8 shadow-sm">
+          <h2 class="font-heading font-black text-xl md:text-2xl text-zinc-900 mb-2 leading-tight">
+            Solicitar Avaliação Técnica
+          </h2>
+          <p class="text-xs md:text-sm text-zinc-500 mb-8 leading-relaxed font-sans">
+            Preencha os dados abaixo com as informações da sua instalação técnica e nossa equipe de engenheiros
+            retornará com brevidade.
+          </p>
+
+          <form class="lead-form space-y-5">
+            <div class="grid sm:grid-cols-2 gap-5">
+              <div>
+                <label for="nome"
+                  class="block text-xs font-bold text-zinc-700 uppercase tracking-wider mb-2 font-sans">Nome Completo
+                  *</label>
+                <input id="nome" type="text" name="nome" required placeholder="Seu nome"
+                  class="w-full border border-zinc-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-brand-green font-sans" />
+              </div>
+              <div>
+                <label for="empresa"
+                  class="block text-xs font-bold text-zinc-700 uppercase tracking-wider mb-2 font-sans">Empresa /
+                  Condomínio *</label>
+                <input id="empresa" type="text" name="empresa" required placeholder="Nome da empresa ou condomínio"
+                  class="w-full border border-zinc-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-brand-green font-sans" />
+              </div>
+            </div>
+
+            <div class="grid sm:grid-cols-2 gap-5">
+              <div>
+                <label for="email"
+                  class="block text-xs font-bold text-zinc-700 uppercase tracking-wider mb-2 font-sans">E-mail
+                  Corporativo *</label>
+                <input id="email" type="email" name="email" required placeholder="exemplo@empresa.com.br"
+                  class="w-full border border-zinc-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-brand-green font-sans" />
+              </div>
+              <div>
+                <label for="telefone"
+                  class="block text-xs font-bold text-zinc-700 uppercase tracking-wider mb-2 font-sans">Telefone /
+                  WhatsApp *</label>
+                <input id="telefone" type="tel" name="telefone" required placeholder="(11) 98888-8888"
+                  class="w-full border border-zinc-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-brand-green font-sans" />
+              </div>
+            </div>
+
+            <div>
+              <label for="servico"
+                class="block text-xs font-bold text-zinc-700 uppercase tracking-wider mb-2 font-sans">Serviço de
+                Interesse *</label>
+              <select id="servico" name="servico" required
+                class="w-full border border-zinc-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-brand-green bg-white font-sans">
+                <option value="Auditoria de Manutenção Preventiva">Auditoria de Manutenção Preventiva de Geradores
+                </option>
+                <option value="Projetos e Dimensionamento de Geradores">Projetos e Dimensionamento de Geradores</option>
+                <option value="Laudos de Conformidade NR-20">Laudos de Conformidade NR-20 (Armazenamento de
+                  combustíveis)</option>
+                <option value="Inspeções Elétricas e Termográficas">Inspeções Elétricas (NR-10) e Termográfica</option>
+                <option value="Contato Geral">Outros assuntos / Dúvidas gerais</option>
+              </select>
+            </div>
+
+            <div>
+              <label for="mensagem"
+                class="block text-xs font-bold text-zinc-700 uppercase tracking-wider mb-2 font-sans">Descreva seu
+                Cenário ou Necessidade</label>
+              <textarea id="mensagem" name="mensagem" rows="4"
+                placeholder="Conte-nos brevemente sobre sua infraestrutura crítica ou o problema que precisa resolver..."
+                class="w-full border border-zinc-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-brand-green font-sans"></textarea>
+            </div>
+
+            <div class="pt-2">
+              <button type="submit" class="w-full relative btn-beam-container group">
+                <div class="beam-border"></div>
+                <span
+                  class="relative z-10 flex items-center justify-center bg-brand-green text-white px-8 py-4 rounded-full text-base font-semibold shadow-xl shadow-brand-green/30 hover:bg-green-800 transition-colors gap-2 w-full">
+                  Solicitar Avaliação Técnica
+                  <i data-lucide="arrow-right" class="w-5 h-5 group-hover:translate-x-1 transition-transform"></i>
+                </span>
+              </button>
+            </div>
+          </form>
+        </div>
       </div>
 
     </div>
 
-    <!-- FOOTER -->
-    <footer id="site-footer"></footer>
+  </div>
 
-    <!-- COMMON SCRIPTS -->
-    <script src="js/components.js"></script>
-    <script>
-        // Pre-select service or sector from query parameters
-        document.addEventListener("DOMContentLoaded", () => {
-            const params = new URLSearchParams(window.location.search);
-            const servicoParam = params.get("servico");
-            const setorParam = params.get("setor");
-            
-            const select = document.querySelector('select[name="servico"]');
-            const textarea = document.querySelector('textarea[name="mensagem"]');
-            
-            if (select) {
-                if (servicoParam) {
-                    // Try exact match or subset
-                    for (let i = 0; i < select.options.length; i++) {
-                        if (select.options[i].value.includes(servicoParam) || servicoParam.includes(select.options[i].value)) {
-                            select.selectedIndex = i;
-                            break;
-                        }
-                    }
-                }
+  <!-- FOOTER -->
+  <footer id="site-footer"></footer>
+
+  <!-- COMMON SCRIPTS -->
+  <script src="js/components.js"></script>
+  <script>
+    // Pre-select service or sector from query parameters
+    document.addEventListener("DOMContentLoaded", () => {
+      const params = new URLSearchParams(window.location.search);
+      const servicoParam = params.get("servico");
+      const setorParam = params.get("setor");
+
+      const select = document.querySelector('select[name="servico"]');
+      const textarea = document.querySelector('textarea[name="mensagem"]');
+
+      if (select) {
+        if (servicoParam) {
+          // Try exact match or subset
+          for (let i = 0; i < select.options.length; i++) {
+            if (select.options[i].value.includes(servicoParam) || servicoParam.includes(select.options[i].value)) {
+              select.selectedIndex = i;
+              break;
             }
-            
-            if (textarea && setorParam) {
-                textarea.value = `Gostaria de solicitar uma avaliação técnica para a área de ${setorParam}.`;
-            }
-        });
-    </script>
+          }
+        }
+      }
+
+      if (textarea && setorParam) {
+        textarea.value = `Gostaria de solicitar uma avaliação técnica para a área de ${setorParam}.`;
+      }
+    });
+  </script>
 </body>
+
 </html>

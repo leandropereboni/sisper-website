@@ -53,23 +53,13 @@ function injectHeader() {
       <div class="max-w-[1300px] mx-auto px-6 flex items-center justify-between">
         
         <!-- LOGO -->
-        <a href="index.html" class="flex items-center gap-3 group">
-          <div class="relative h-10 w-10 flex items-center justify-center bg-zinc-100 rounded-lg overflow-hidden border border-zinc-200/50">
-            <img
-              src="assets/image/logo_sisper_v2_sem fundo.jpg"
-              alt="SISPER Logo"
-              class="h-9 w-auto object-contain"
-              onerror="this.src='https://via.placeholder.com/36x36/277928/ffffff?text=SP';"
-            />
-          </div>
-          <div class="flex flex-col">
-            <span class="font-heading font-extrabold text-brand-lead text-lg md:text-xl tracking-tight leading-none">
-              SISPER
-            </span>
-            <span class="text-[9px] text-brand-green font-bold tracking-widest uppercase mt-0.5 leading-none">
-              Consultoria & Projetos
-            </span>
-          </div>
+        <a href="index.html" class="flex items-center group">
+          <img
+            src="assets/image/Logo_definitiva_br_transparente.png"
+            alt="SISPER Consultoria e Projetos"
+            class="h-12 md:h-14 w-auto object-contain"
+            onerror="this.src='assets/image/Logo_definitiva_br.png';"
+          />
         </a>
 
         <!-- NAVEGAÇÃO DESKTOP -->
@@ -96,7 +86,7 @@ function injectHeader() {
 
             <!-- PAINEL DROPDOWN -->
             <div
-              class="absolute top-full -left-16 mt-2 w-80 bg-white border border-zinc-200 rounded-2xl shadow-xl py-4 opacity-0 -translate-y-2 pointer-events-none group-hover/dropdown:opacity-100 group-hover/dropdown:translate-y-0 group-hover/dropdown:pointer-events-auto transition-all duration-300"
+              class="absolute top-full -left-16 mt-2 w-80 bg-white border border-zinc-200 rounded-2xl shadow-xl py-4 opacity-0 -translate-y-2 pointer-events-none group-hover/dropdown:opacity-100 group-hover/dropdown:translate-y-0 group-hover/dropdown:pointer-events-auto transition-all duration-300 before:content-[''] before:absolute before:-top-3 before:left-0 before:right-0 before:h-3 z-50"
             >
               <div class="px-4 py-2 border-b border-zinc-100 mb-2">
                 <span class="text-[10px] font-bold text-zinc-400 uppercase tracking-widest">
@@ -380,29 +370,20 @@ function injectFooter() {
       <div class="max-w-[1300px] mx-auto px-6 relative z-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 md:gap-12 lg:gap-16">
         
         <!-- Coluna 1 - Identidade -->
-        <div class="lg:col-span-5 flex flex-col gap-6">
-          <div class="flex items-center gap-3">
-            <div class="relative h-9 w-9 bg-zinc-800 rounded-lg flex items-center justify-center border border-white/10 overflow-hidden">
-              <img
-                src="assets/image/logo_sisper_v2_sem fundo.jpg"
-                alt="SISPER Logo"
-                class="h-8 w-auto object-contain brightness-100 invert filter"
-                onerror="this.src='https://via.placeholder.com/32x32/277928/ffffff?text=SP';"
-              />
-            </div>
-            <div class="flex flex-col">
-              <span class="font-heading font-black text-white text-lg tracking-tight leading-none">
-                SISPER
-              </span>
-              <span class="text-[8px] text-brand-neon font-bold tracking-widest uppercase mt-0.5 leading-none">
-                Consultoria & Projetos
-              </span>
-            </div>
-          </div>
+        <div class="lg:col-span-4 flex flex-col items-start gap-6">
+          <a href="index.html" class="flex items-center group">
+            <img
+              src="assets/image/Logo_definitiva_br_transparente.png"
+              alt="SISPER Consultoria e Projetos"
+              class="h-12 w-auto object-contain brightness-0 invert -ml-[13px]"
+              onerror="this.src='assets/image/Logo_definitiva_br.png';"
+            />
+          </a>
           <p class="text-sm text-zinc-400 max-w-sm leading-relaxed">
-            Há mais de 25 anos entregando visão técnica independente, preventiva e estratégica em engenharia de sistemas de energia crítica e conformidade.
+            Fundada em 2020, a SISPER conta com engenheiro responsável com mais de 25 anos de experiência em infraestrutura elétrica, grupos geradores, inspeção termográfica e laudos NR-16 e NR-20.
           </p>
           <div class="flex items-center gap-3">
+            <!-- LinkedIn -->
             <a
               href="https://linkedin.com/company/sisper-consultoria"
               target="_blank"
@@ -410,14 +391,54 @@ function injectFooter() {
               class="w-10 h-10 rounded-full bg-zinc-800 border border-white/10 flex items-center justify-center hover:bg-brand-green hover:text-white transition-colors group"
               title="LinkedIn"
             >
-              <i data-lucide="linkedin" class="w-4 h-4 transition-transform group-hover:scale-110"></i>
+              <svg viewBox="0 0 24 24" class="w-4 h-4 fill-current transition-transform group-hover:scale-110" xmlns="http://www.w3.org/2000/svg">
+                <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.779-1.75-1.75s.784-1.75 1.75-1.75 1.75.779 1.75 1.75-.784 1.75-1.75 1.75zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+              </svg>
+            </a>
+            <!-- Instagram -->
+            <a
+              href="https://instagram.com/sisper.consultoria"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="w-10 h-10 rounded-full bg-zinc-800 border border-white/10 flex items-center justify-center hover:bg-brand-green hover:text-white transition-colors group"
+              title="Instagram"
+            >
+              <svg viewBox="0 0 24 24" class="w-4 h-4 stroke-current fill-none transition-transform group-hover:scale-110" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+              </svg>
+            </a>
+            <!-- WhatsApp -->
+            <a
+              href="https://wa.me/5511988949290?text=Ol%C3%A1%2C%20gostaria%20de%20solicitar%20uma%20avalia%C3%A7%C3%A3o%20técnica."
+              target="_blank"
+              rel="noopener noreferrer"
+              class="w-10 h-10 rounded-full bg-zinc-800 border border-white/10 flex items-center justify-center hover:bg-brand-green hover:text-white transition-colors group"
+              title="WhatsApp"
+            >
+              <svg viewBox="0 0 24 24" class="w-4 h-4 fill-current transition-transform group-hover:scale-110" xmlns="http://www.w3.org/2000/svg">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L0 24l6.335-1.662c1.746.953 3.71 1.458 5.704 1.459h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413" />
+              </svg>
+            </a>
+            <!-- Telegram -->
+            <a
+              href="https://t.me/sisperconsultoria"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="w-10 h-10 rounded-full bg-zinc-800 border border-white/10 flex items-center justify-center hover:bg-brand-green hover:text-white transition-colors group"
+              title="Telegram"
+            >
+              <svg viewBox="0 0 24 24" class="w-4 h-4 fill-current transition-transform group-hover:scale-110" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 0C5.37 0 0 5.37 0 12s5.37 12 12 12 12-5.37 12-12S18.63 0 12 0zm5.56 8.61l-1.91 9.01c-.14.63-.52.79-1.05.49l-2.92-2.15-1.41 1.36c-.16.16-.29.29-.59.29l.21-2.99 5.44-4.92c.24-.21-.05-.33-.37-.11L8.3 14.15l-2.9-.91c-.63-.2-.64-.63.13-.93l11.35-4.38c.52-.19.98.12.68.68z"/>
+              </svg>
             </a>
           </div>
         </div>
 
         <!-- Coluna 2 - Serviços -->
-        <div class="lg:col-span-3 flex flex-col gap-4">
-          <h4 class="font-heading font-bold text-xs text-white uppercase tracking-widest border-l-2 border-brand-neon pl-3">
+        <div class="lg:col-span-3 flex flex-col gap-4 lg:pt-[72px]">
+          <h4 class="font-heading font-bold text-xs text-white uppercase tracking-widest border-l-2 border-brand-neon pl-3 mt-0">
             Serviços
           </h4>
           <ul class="flex flex-col gap-3.5 text-sm">
@@ -445,8 +466,8 @@ function injectFooter() {
         </div>
 
         <!-- Coluna 3 - Links Úteis -->
-        <div class="lg:col-span-2 flex flex-col gap-4">
-          <h4 class="font-heading font-bold text-xs text-white uppercase tracking-widest border-l-2 border-brand-neon pl-3">
+        <div class="lg:col-span-2 flex flex-col gap-4 lg:pt-[72px]">
+          <h4 class="font-heading font-bold text-xs text-white uppercase tracking-widest border-l-2 border-brand-neon pl-3 mt-0">
             Institucional
           </h4>
           <ul class="flex flex-col gap-3.5 text-sm">
@@ -469,14 +490,14 @@ function injectFooter() {
         </div>
 
         <!-- Coluna 4 - Contato / Local -->
-        <div class="lg:col-span-2 flex flex-col gap-4">
-          <h4 class="font-heading font-bold text-xs text-white uppercase tracking-widest border-l-2 border-brand-neon pl-3">
+        <div class="lg:col-span-3 flex flex-col gap-4 lg:pt-[72px]">
+          <h4 class="font-heading font-bold text-xs text-white uppercase tracking-widest border-l-2 border-brand-neon pl-3 mt-0">
             Contato
           </h4>
           <ul class="flex flex-col gap-4 text-xs">
             <li class="flex items-start gap-3">
               <i data-lucide="mail" class="w-4 h-4 text-brand-neon shrink-0 mt-0.5"></i>
-              <a href="mailto:sisper.consultoria@gmail.com" class="hover:text-white transition-colors break-all">
+              <a href="mailto:sisper.consultoria@gmail.com" class="hover:text-white transition-colors whitespace-nowrap">
                 sisper.consultoria@gmail.com
               </a>
             </li>
@@ -496,9 +517,8 @@ function injectFooter() {
       </div>
 
       <div class="max-w-[1300px] mx-auto px-6 mt-16 pt-8 border-t border-white/5 flex flex-col md:flex-row items-center justify-between gap-6 text-xs text-zinc-500">
-        <div class="flex flex-col gap-2 text-center md:text-left">
+        <div class="text-center md:text-left">
           <p>© ${currentYear} SISPER Consultoria e Projetos. Todos os direitos reservados.</p>
-          <p class="text-[10px] text-zinc-600">CNPJ: 00.000.000/0001-00 (Placeholder para preenchimento futuro)</p>
         </div>
         <div class="flex items-center gap-6">
           <a href="politica-de-privacidade.html" class="hover:text-white transition-colors flex items-center gap-1">
