@@ -1,169 +1,213 @@
 <!DOCTYPE html>
 <html lang="pt-BR" class="scroll-smooth">
+
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Inspeção Elétrica e Termografia | SISPER Consultoria e Projetos</title>
-    <meta name="description" content="Identifique anomalias térmicas e riscos elétricos antes que comprometam pessoas, equipamentos e a continuidade da operação com termografia por infravermelho." />
-    
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-    
-    <!-- Lucide Icons -->
-    <script src="https://unpkg.com/lucide@latest"></script>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Inspeção Elétrica e Termografia | SISPER Consultoria e Projetos</title>
+  <meta name="description"
+    content="Identifique anomalias térmicas e riscos elétricos antes que comprometam pessoas, equipamentos e a continuidade da operação com termografia por infravermelho." />
 
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                        heading: ['Montserrat', 'sans-serif'],
-                    },
-                    colors: {
-                        brand: {
-                            green: '#277928',
-                            neon: '#76E025',
-                            lead: '#4F4F4F',
-                            gray: '#6D6D6D',
-                            light: '#F4F7F4',
-                        }
-                    },
-                    boxShadow: {
-                        'glass': '0 8px 32px 0 rgba(39, 121, 40, 0.15)',
-                        'glow': '0 0 15px rgba(118, 224, 37, 0.5)',
-                        'card': '0 10px 30px -10px rgba(0,0,0,0.1)',
-                    }
-                }
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            heading: ['Montserrat', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              green: '#277928',
+              neon: '#76E025',
+              lead: '#4F4F4F',
+              gray: '#6D6D6D',
+              light: '#F4F7F4',
             }
+          },
+          boxShadow: {
+            'glass': '0 8px 32px 0 rgba(39, 121, 40, 0.15)',
+            'glow': '0 0 15px rgba(118, 224, 37, 0.5)',
+            'card': '0 10px 30px -10px rgba(0,0,0,0.1)',
+          }
         }
-    </script>
+      }
+    }
+  </script>
 
-    <style>
-        body { font-family: 'Inter', sans-serif; background-color: #FAFAFA; overflow-x: hidden; }
-        h1, h2, h3, h4, h5, h6 { font-family: 'Montserrat', sans-serif; }
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #FAFAFA;
+      overflow-x: hidden;
+    }
 
-        .animate-on-scroll {
-            opacity: 0.01;
-            filter: blur(10px);
-            transform: translateY(20px);
-            transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        }
-        .animate-on-scroll.in-view {
-            opacity: 1;
-            filter: blur(0);
-            transform: translateY(0);
-        }
-        
-        .btn-beam-container {
-            position: relative;
-            overflow: hidden; 
-            border-radius: 9999px;
-            padding: 2px;
-        }
-        .beam-border {
-            position: absolute;
-            inset: -4px;
-            border-radius: 9999px;
-            pointer-events: none;
-            z-index: 0;
-            opacity: 0;
-            background: conic-gradient(from 0deg at 50% 50%, transparent 0deg, rgba(118, 224, 37, 1) 60deg, transparent 120deg);
-            animation: rotate-beam 2s linear infinite;
-            transition: opacity 0.3s;
-        }
-        .btn-beam-container:hover .beam-border {
-            opacity: 1;
-        }
-        @keyframes rotate-beam {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
-    </style>
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    .animate-on-scroll {
+      opacity: 0.01;
+      filter: blur(10px);
+      transform: translateY(20px);
+      transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    .animate-on-scroll.in-view {
+      opacity: 1;
+      filter: blur(0);
+      transform: translateY(0);
+    }
+
+    .btn-beam-container {
+      position: relative;
+      overflow: hidden;
+      border-radius: 9999px;
+      padding: 2px;
+    }
+
+    .beam-border {
+      position: absolute;
+      inset: -4px;
+      border-radius: 9999px;
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0;
+      background: conic-gradient(from 0deg at 50% 50%, transparent 0deg, rgba(118, 224, 37, 1) 60deg, transparent 120deg);
+      animation: rotate-beam 2s linear infinite;
+      transition: opacity 0.3s;
+    }
+
+    .btn-beam-container:hover .beam-border {
+      opacity: 1;
+    }
+
+    @keyframes rotate-beam {
+      from {
+        transform: rotate(0deg);
+      }
+
+      to {
+        transform: rotate(360deg);
+      }
+    }
+  </style>
 </head>
-<body class="text-zinc-800 antialiased relative selection:bg-brand-green selection:text-white pt-[80px]">
-    
-    <!-- HEADER -->
-    <header id="site-header"></header>
 
-    <div class="bg-zinc-50 min-h-screen pb-24">
-      
-      <!-- 1. TOP HEADER & BREADCRUMBS -->
-      <div class="bg-white border-b border-zinc-200/60 py-6">
-        <div class="max-w-[1300px] mx-auto px-6">
-          <!-- Breadcrumbs -->
-          <nav class="flex text-xs text-zinc-400 font-medium items-center gap-1.5" aria-label="Breadcrumb">
-            <a href="index.html" class="hover:text-brand-green transition-colors">Início</a>
-            <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
-            <span class="text-zinc-400">Serviços</span>
-            <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
-            <span class="text-zinc-500 font-semibold">Inspeção Elétrica e Termografia</span>
-          </nav>
-          
-          <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-6 mt-4">
-            <div class="max-w-4xl flex-1">
-              <span class="text-[10px] font-bold text-brand-green tracking-widest uppercase bg-brand-light px-3 py-1 rounded-full border border-brand-green/10">
-                MANUTENÇÃO PREDITIVA E CONFORMIDADE ELÉTRICA
-              </span>
-              <h1 class="font-heading font-black text-3xl sm:text-4xl lg:text-4xl text-brand-lead mt-3 leading-tight">
-                Inspeção Elétrica e Termografia em Sistemas de Baixa e Média Tensão
-              </h1>
-              <p class="text-base text-zinc-500 mt-4 leading-relaxed">
-                Identifique pontos de sobreaquecimento, falhas de conexão e riscos elétricos antes que causem paradas, danos aos equipamentos ou acidentes. A SISPER realiza inspeções técnicas e termográficas em painéis, quadros elétricos, transformadores, cabos e demais instalações elétricas.
-              </p>
-            </div>
-            <a href="#conversao" class="shrink-0">
-              <button class="relative btn-beam-container group w-full lg:w-auto">
-                <div class="beam-border"></div>
-                <span class="relative z-10 flex items-center justify-center bg-brand-green text-white px-6 py-3.5 rounded-full text-sm font-semibold shadow-lg hover:bg-green-800 transition-colors w-full">
-                  Solicitar inspeção técnica
-                </span>
-              </button>
-            </a>
+<body class="text-zinc-800 antialiased relative selection:bg-brand-green selection:text-white pt-[80px]">
+
+  <!-- HEADER -->
+  <header id="site-header"></header>
+
+  <div class="bg-zinc-50 min-h-screen pb-24">
+
+    <!-- 1. TOP HEADER & BREADCRUMBS -->
+    <div class="bg-white border-b border-zinc-200/60 py-6">
+      <div class="max-w-[1300px] mx-auto px-6">
+        <!-- Breadcrumbs -->
+        <nav class="flex text-xs text-zinc-400 font-medium items-center gap-1.5" aria-label="Breadcrumb">
+          <a href="index.html" class="hover:text-brand-green transition-colors">Início</a>
+          <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
+          <span class="text-zinc-400">Serviços</span>
+          <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
+          <span class="text-zinc-500 font-semibold">Inspeção Elétrica e Termografia</span>
+        </nav>
+
+        <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-6 mt-4">
+          <div class="max-w-4xl flex-1">
+            <span
+              class="text-[10px] font-bold text-brand-green tracking-widest uppercase bg-brand-light px-3 py-1 rounded-full border border-brand-green/10">
+              MANUTENÇÃO PREDITIVA E CONFORMIDADE ELÉTRICA
+            </span>
+            <h1 class="font-heading font-black text-3xl sm:text-4xl lg:text-4xl text-brand-lead mt-3 leading-tight">
+              Inspeção Elétrica e Termografia em Sistemas de Baixa e Média Tensão
+            </h1>
+            <p class="text-base text-zinc-500 mt-4 leading-relaxed">
+              Identifique pontos de sobreaquecimento, falhas de conexão e riscos elétricos antes que causem paradas,
+              danos aos equipamentos ou acidentes. A SISPER realiza inspeções técnicas e termográficas em painéis,
+              quadros elétricos, transformadores, cabos e demais instalações elétricas.
+            </p>
           </div>
+          <a href="#conversao" class="shrink-0">
+            <button class="relative btn-beam-container group w-full lg:w-auto">
+              <div class="beam-border"></div>
+              <span
+                class="relative z-10 flex items-center justify-center bg-brand-green text-white px-6 py-3.5 rounded-full text-sm font-semibold shadow-lg hover:bg-green-800 transition-colors w-full">
+                Solicitar inspeção técnica
+              </span>
+            </button>
+          </a>
         </div>
       </div>
+    </div>
 
-      <div class="max-w-[1300px] mx-auto px-6 mt-16 grid lg:grid-cols-12 gap-12 lg:gap-16">
-        
-        <!-- COLUNA ESQUERDA - CONTEÚDO -->
-        <div class="lg:col-span-7 space-y-12">
-          
+    <div class="max-w-[1300px] mx-auto px-6 mt-16 grid lg:grid-cols-12 gap-12 lg:gap-16">
+
+      <!-- COLUNA ESQUERDA - CONTEÚDO -->
+      <div class="lg:col-span-7 space-y-12">
+
         <!-- Posicionamento Estratégico -->
         <section class="animate-on-scroll bg-white p-8 rounded-2xl border border-zinc-200 shadow-sm space-y-6">
           <h2 class="font-heading font-black text-xl md:text-2xl text-brand-lead border-b border-zinc-100 pb-4">
             Inspeção Elétrica, Termografia e Laudo NR-10 para Quadros Elétricos
           </h2>
           <p class="text-sm md:text-base text-zinc-600 leading-relaxed font-sans">
-            A SISPER realiza <strong>inspeção elétrica com termografia infravermelha</strong> em sistemas de baixa e média tensão, identificando anomalias térmicas em quadros elétricos, disjuntores, barramentos, conexões, cabos e demais componentes da instalação — sem necessidade de interromper a operação, quando as condições de segurança permitirem.
+            A SISPER realiza <strong>inspeção elétrica com termografia infravermelha</strong> em sistemas de baixa e
+            média tensão, identificando anomalias térmicas em quadros elétricos, disjuntores, barramentos, conexões,
+            cabos e demais componentes da instalação — sem necessidade de interromper a operação, quando as condições de
+            segurança permitirem.
           </p>
           <p class="text-sm md:text-base text-zinc-600 leading-relaxed font-sans">
-            Conexões frouxas, sobrecargas, desequilíbrio de fases, oxidação e falhas de contato podem elevar a temperatura dos componentes elétricos e aumentar os riscos de falhas operacionais, danos a equipamentos, paradas não programadas e princípios de incêndio. A termografia permite <strong>visualizar esses pontos críticos</strong> e direcionar as ações de manutenção preventiva e corretiva.
+            Conexões frouxas, sobrecargas, desequilíbrio de fases, oxidação e falhas de contato podem elevar a
+            temperatura dos componentes elétricos e aumentar os riscos de falhas operacionais, danos a equipamentos,
+            paradas não programadas e princípios de incêndio. A termografia permite <strong>visualizar esses pontos
+              críticos</strong> e direcionar as ações de manutenção preventiva e corretiva.
           </p>
           <p class="text-sm md:text-base text-zinc-600 leading-relaxed font-sans">
-            Também executamos vistoria técnica em quadros elétricos conforme os requisitos aplicáveis da <strong>NR-10</strong>, com emissão de laudo técnico fotográfico. O documento registra a situação real de instalação, montagem, identificação, proteção, organização e conservação dos painéis elétricos.
+            Também executamos vistoria técnica em quadros elétricos conforme os requisitos aplicáveis da
+            <strong>NR-10</strong>, com emissão de laudo técnico fotográfico. O documento registra a situação real de
+            instalação, montagem, identificação, proteção, organização e conservação dos painéis elétricos.
           </p>
           <p class="text-sm md:text-base text-zinc-600 leading-relaxed font-sans">
-            O laudo apresenta as não conformidades identificadas, a avaliação técnica dos riscos e as recomendações de reparos, adequações e manutenções necessárias para <strong>melhorar a segurança das instalações</strong> e apoiar a conformidade normativa.
+            O laudo apresenta as não conformidades identificadas, a avaliação técnica dos riscos e as recomendações de
+            reparos, adequações e manutenções necessárias para <strong>melhorar a segurança das instalações</strong> e
+            apoiar a conformidade normativa.
           </p>
 
           <div class="grid sm:grid-cols-2 gap-4 pt-4">
             <div class="p-4 bg-brand-light/40 border border-brand-green/10 rounded-xl flex gap-3 items-start">
               <i data-lucide="search" class="w-5 h-5 text-brand-green shrink-0 mt-0.5"></i>
               <div>
-                <span class="text-xs font-bold text-zinc-900 block leading-tight font-sans">Termografia sem contato</span>
-                <span class="text-[10px] text-zinc-400 mt-1 block font-sans">Identificação de pontos quentes e anomalias térmicas em equipamentos elétricos em operação.</span>
+                <span class="text-xs font-bold text-zinc-900 block leading-tight font-sans">Termografia sem
+                  contato</span>
+                <span class="text-[10px] text-zinc-400 mt-1 block font-sans">Identificação de pontos quentes e anomalias
+                  térmicas em equipamentos elétricos em operação.</span>
               </div>
             </div>
             <div class="p-4 bg-brand-light/40 border border-brand-green/10 rounded-xl flex gap-3 items-start">
               <i data-lucide="camera" class="w-5 h-5 text-brand-green shrink-0 mt-0.5"></i>
               <div>
-                <span class="text-xs font-bold text-zinc-900 block leading-tight font-sans">Laudo fotográfico NR-10</span>
-                <span class="text-[10px] text-zinc-400 mt-1 block font-sans">Registro técnico das condições dos quadros elétricos, com não conformidades e recomendações de adequação.</span>
+                <span class="text-xs font-bold text-zinc-900 block leading-tight font-sans">Laudo fotográfico
+                  NR-10</span>
+                <span class="text-[10px] text-zinc-400 mt-1 block font-sans">Registro técnico das condições dos quadros
+                  elétricos, com não conformidades e recomendações de adequação.</span>
               </div>
             </div>
           </div>
@@ -177,227 +221,305 @@
           <div class="grid sm:grid-cols-2 gap-4">
             <!-- Item 1 -->
             <div class="bg-white border border-zinc-200 p-5 rounded-2xl">
-              <h3 class="font-heading font-bold text-sm md:text-base text-zinc-900 mb-2 flex items-start gap-2.5 leading-snug">
+              <h3
+                class="font-heading font-bold text-sm md:text-base text-zinc-900 mb-2 flex items-start gap-2.5 leading-snug">
                 <i data-lucide="check-circle" class="w-4.5 h-4.5 text-brand-green shrink-0 mt-0.5"></i>
                 Inspeção Termográfica em Quadros Elétricos
               </h3>
               <p class="text-xs text-zinc-500 leading-relaxed font-sans">
-                Leitura térmica de disjuntores, barramentos, conexões, cabos e demais componentes elétricos sob carga, para identificação de pontos de aquecimento anormal não visíveis a olho nu.
+                Leitura térmica de disjuntores, barramentos, conexões, cabos e demais componentes elétricos sob carga,
+                para identificação de pontos de aquecimento anormal não visíveis a olho nu.
               </p>
             </div>
             <!-- Item 2 -->
             <div class="bg-white border border-zinc-200 p-5 rounded-2xl">
-              <h3 class="font-heading font-bold text-sm md:text-base text-zinc-900 mb-2 flex items-start gap-2.5 leading-snug">
+              <h3
+                class="font-heading font-bold text-sm md:text-base text-zinc-900 mb-2 flex items-start gap-2.5 leading-snug">
                 <i data-lucide="check-circle" class="w-4.5 h-4.5 text-brand-green shrink-0 mt-0.5"></i>
                 Vistoria Visual e Técnica Conforme NR-10
               </h3>
               <p class="text-xs text-zinc-500 leading-relaxed font-sans">
-                Avaliação das condições aparentes de instalação, montagem, conservação e manutenção de quadros elétricos, painéis, dispositivos de proteção, aterramento, sinalização e identificação dos circuitos.
+                Avaliação das condições aparentes de instalação, montagem, conservação e manutenção de quadros
+                elétricos, painéis, dispositivos de proteção, aterramento, sinalização e identificação dos circuitos.
               </p>
             </div>
             <!-- Item 3 -->
             <div class="bg-white border border-zinc-200 p-5 rounded-2xl">
-              <h3 class="font-heading font-bold text-sm md:text-base text-zinc-900 mb-2 flex items-start gap-2.5 leading-snug">
+              <h3
+                class="font-heading font-bold text-sm md:text-base text-zinc-900 mb-2 flex items-start gap-2.5 leading-snug">
                 <i data-lucide="check-circle" class="w-4.5 h-4.5 text-brand-green shrink-0 mt-0.5"></i>
                 Laudo Técnico Fotográfico de Quadros Elétricos
               </h3>
               <p class="text-xs text-zinc-500 leading-relaxed font-sans">
-                Elaboração de relatório com registros fotográficos da condition encontrada na instalação, evidenciando irregularidades, riscos observados e pontos que demandam intervenção técnica.
+                Elaboração de relatório com registros fotográficos da condição encontrada na instalação, evidenciando
+                irregularidades, riscos observados e pontos que demandam intervenção técnica.
               </p>
             </div>
             <!-- Item 4 -->
             <div class="bg-white border border-zinc-200 p-5 rounded-2xl">
-              <h3 class="font-heading font-bold text-sm md:text-base text-zinc-900 mb-2 flex items-start gap-2.5 leading-snug">
+              <h3
+                class="font-heading font-bold text-sm md:text-base text-zinc-900 mb-2 flex items-start gap-2.5 leading-snug">
                 <i data-lucide="check-circle" class="w-4.5 h-4.5 text-brand-green shrink-0 mt-0.5"></i>
                 Identificação de Não Conformidades
               </h3>
               <p class="text-xs text-zinc-500 leading-relaxed font-sans">
-                Mapeamento de situações que não atendem aos requisitos técnicos e de segurança aplicáveis, incluindo ausência de identificação, proteções inadequadas, componentes deteriorados, conexões aparentes e falhas de conservação.
+                Mapeamento de situações que não atendem aos requisitos técnicos e de segurança aplicáveis, incluindo
+                ausência de identificação, proteções inadequadas, componentes deteriorados, conexões aparentes e falhas
+                de conservação.
               </p>
             </div>
             <!-- Item 5 -->
             <div class="bg-white border border-zinc-200 p-5 rounded-2xl">
-              <h3 class="font-heading font-bold text-sm md:text-base text-zinc-900 mb-2 flex items-start gap-2.5 leading-snug">
+              <h3
+                class="font-heading font-bold text-sm md:text-base text-zinc-900 mb-2 flex items-start gap-2.5 leading-snug">
                 <i data-lucide="check-circle" class="w-4.5 h-4.5 text-brand-green shrink-0 mt-0.5"></i>
                 Classificação de Criticidade
               </h3>
               <p class="text-xs text-zinc-500 leading-relaxed font-sans">
-                Organização das anomalias térmicas e não conformidades conforme o nível de prioridade, apoiando o planejamento de manutenções corretivas e ações de adequação.
+                Organização das anomalias térmicas e não conformidades conforme o nível de prioridade, apoiando o
+                planejamento de manutenções corretivas e ações de adequação.
               </p>
             </div>
             <!-- Item 6 -->
             <div class="bg-white border border-zinc-200 p-5 rounded-2xl">
-              <h3 class="font-heading font-bold text-sm md:text-base text-zinc-900 mb-2 flex items-start gap-2.5 leading-snug">
+              <h3
+                class="font-heading font-bold text-sm md:text-base text-zinc-900 mb-2 flex items-start gap-2.5 leading-snug">
                 <i data-lucide="check-circle" class="w-4.5 h-4.5 text-brand-green shrink-0 mt-0.5"></i>
                 Recomendações para Reparo e Manutenção
               </h3>
               <p class="text-xs text-zinc-500 leading-relaxed font-sans">
-                Indicação técnica das medidas necessárias para correção dos pontos identificados, como reaperto de conexões, substituição de componentes, adequação de proteções, identificação de circuitos e manutenção preventiva.
+                Indicação técnica das medidas necessárias para correção dos pontos identificados, como reaperto de
+                conexões, substituição de componentes, adequação de proteções, identificação de circuitos e manutenção
+                preventiva.
               </p>
             </div>
             <!-- Item 7 -->
             <div class="bg-white border border-zinc-200 p-5 rounded-2xl">
-              <h3 class="font-heading font-bold text-sm md:text-base text-zinc-900 mb-2 flex items-start gap-2.5 leading-snug">
+              <h3
+                class="font-heading font-bold text-sm md:text-base text-zinc-900 mb-2 flex items-start gap-2.5 leading-snug">
                 <i data-lucide="check-circle" class="w-4.5 h-4.5 text-brand-green shrink-0 mt-0.5"></i>
                 Inspeção em Sistemas Elétricos de Baixa e Média Tensão
               </h3>
               <p class="text-xs text-zinc-500 leading-relaxed font-sans">
-                Atuação em instalações elétricas comerciais e industriais, incluindo quadros de distribuição, centros de controle, painéis, transformadores, circuitos de alimentação e sistemas associados.
+                Atuação em instalações elétricas comerciais e industriais, incluindo quadros de distribuição, centros de
+                controle, painéis, transformadores, circuitos de alimentação e sistemas associados.
               </p>
             </div>
             <!-- Item 8 -->
             <div class="bg-white border border-zinc-200 p-5 rounded-2xl">
-              <h3 class="font-heading font-bold text-sm md:text-base text-zinc-900 mb-2 flex items-start gap-2.5 leading-snug">
+              <h3
+                class="font-heading font-bold text-sm md:text-base text-zinc-900 mb-2 flex items-start gap-2.5 leading-snug">
                 <i data-lucide="check-circle" class="w-4.5 h-4.5 text-brand-green shrink-0 mt-0.5"></i>
                 Relatório Técnico e ART
               </h3>
               <p class="text-xs text-zinc-500 leading-relaxed font-sans">
-                Emissão de relatório técnico com os registros da vistoria, resultados da termografia e recomendações aplicáveis, acompanhado de ART, quando previsto na contratação e responsabilidade técnica do serviço.
+                Emissão de relatório técnico com os registros da vistoria, resultados da termografia e recomendações
+                aplicáveis, acompanhado de ART, quando previsto na contratação e responsabilidade técnica do serviço.
               </p>
             </div>
           </div>
         </section>
 
-          <!-- FAQ -->
-          <section class="animate-on-scroll bg-white p-8 rounded-2xl border border-zinc-200 shadow-sm space-y-6">
-            <h2 class="font-heading font-black text-xl md:text-2xl text-brand-lead border-b border-zinc-100 pb-4 flex items-center gap-2">
-              <i data-lucide="help-circle" class="w-6 h-6 text-brand-green"></i>
-              Perguntas Frequentes
-            </h2>
-            <div class="space-y-6">
-              <!-- Q1 -->
-              <div class="space-y-2">
-                <h3 class="font-heading font-bold text-sm md:text-base text-zinc-900 leading-tight">
-                  O que é a inspeção termográfica em painéis elétricos?
-                </h3>
-                <p class="text-xs md:text-sm text-zinc-500 leading-relaxed font-sans">
-                  É uma técnica preditiva que utiliza termógrafos (câmeras de infravermelho) para medir a radiação térmica emitida pelos componentes elétricos sob carga de operação. Ela detecta conexões frouxas, oxidação de contatos ou sobrecargas de circuitos através do calor localizado provocado pelo Efeito Joule.
-                </p>
-                <hr class="border-zinc-100 mt-4" />
-              </div>
-              <!-- Q2 -->
-              <div class="space-y-2">
-                <h3 class="font-heading font-bold text-sm md:text-base text-zinc-900 leading-tight">
-                  É necessário desligar os equipamentos ou o fornecimento de energia para a termografia?
-                </h3>
-                <p class="text-xs md:text-sm text-zinc-500 leading-relaxed font-sans">
-                  Não. Pelo contrário: para que a termografia apresente resultados confiáveis, a inspeção deve ser feita com o sistema elétrico ligado e operando sob carga normal (preferencialmente acima de 40% da capacidade nominal), permitindo visualizar os gargalos térmicos em tempo real.
-                </p>
-                <hr class="border-zinc-100 mt-4" />
-              </div>
-              <!-- Q3 -->
-              <div class="space-y-2">
-                <h3 class="font-heading font-bold text-sm md:text-base text-zinc-900 leading-tight">
-                  Qual é a periodicidade recomendada para as inspeções térmicas e de NR-10?
-                </h3>
-                <p class="text-xs md:text-sm text-zinc-500 leading-relaxed font-sans">
-                  Recomenda-se a realização de inspeções termográficas ao menos uma vez ao ano em condomínios e edifícios comerciais, e a cada seis meses ou anualmente em subestações industriais e data centers devido ao desgaste térmico contínuo e vibrações das instalações.
-                </p>
-              </div>
+        <!-- FAQ -->
+        <section class="animate-on-scroll bg-white p-8 rounded-2xl border border-zinc-200 shadow-sm space-y-6">
+          <h2
+            class="font-heading font-black text-xl md:text-2xl text-brand-lead border-b border-zinc-100 pb-4 flex items-center gap-2">
+            <i data-lucide="help-circle" class="w-6 h-6 text-brand-green"></i>
+            Perguntas Frequentes
+          </h2>
+          <div class="space-y-6">
+            <!-- Q1 -->
+            <div class="space-y-2">
+              <h3 class="font-heading font-bold text-sm md:text-base text-zinc-900 leading-tight">
+                1. O que é inspeção termográfica em painéis elétricos?
+              </h3>
+              <p class="text-xs md:text-sm text-zinc-500 leading-relaxed font-sans mb-3">
+                A inspeção termográfica é uma técnica de manutenção preditiva que utiliza câmera infravermelha para identificar variações anormais de temperatura em painéis elétricos, disjuntores, barramentos, cabos e conexões.
+              </p>
+              <p class="text-xs md:text-sm text-zinc-500 leading-relaxed font-sans">
+                A SISPER realiza a inspeção termográfica para localizar indícios de mau contato, sobrecarga, oxidação, desequilíbrio de fases e falhas de componentes antes que evoluam para paradas operacionais ou riscos elétricos.
+              </p>
+              <hr class="border-zinc-100 mt-4" />
             </div>
-          </section>
+            <!-- Q2 -->
+            <div class="space-y-2">
+              <h3 class="font-heading font-bold text-sm md:text-base text-zinc-900 leading-tight">
+                2. É necessário desligar os equipamentos para realizar a termografia?
+              </h3>
+              <p class="text-xs md:text-sm text-zinc-500 leading-relaxed font-sans mb-3">
+                Em geral, não. A inspeção termográfica é feita com o sistema elétrico em operação e sob carga, pois é nessa condição que os aquecimentos anormais podem ser identificados com maior precisão.
+              </p>
+              <p class="text-xs md:text-sm text-zinc-500 leading-relaxed font-sans">
+                A SISPER planeja cada inspeção conforme as condições de segurança da instalação, os requisitos da NR-10 e a acessibilidade aos painéis e componentes elétricos.
+              </p>
+              <hr class="border-zinc-100 mt-4" />
+            </div>
+            <!-- Q3 -->
+            <div class="space-y-2">
+              <h3 class="font-heading font-bold text-sm md:text-base text-zinc-900 leading-tight">
+                3. Quais problemas a termografia elétrica pode identificar?
+              </h3>
+              <p class="text-xs md:text-sm text-zinc-500 leading-relaxed font-sans mb-3">
+                A termografia elétrica pode apontar anomalias térmicas associadas a conexões frouxas, mau contato, sobrecarga de circuitos, barramentos aquecidos, oxidação, disjuntores com possível falha e desequilíbrio entre fases.
+              </p>
+              <p class="text-xs md:text-sm text-zinc-500 leading-relaxed font-sans">
+                A SISPER registra as condições encontradas por meio de imagens térmicas e fotográficas, classificando as anomalias e indicando recomendações técnicas para manutenção corretiva ou preventiva.
+              </p>
+              <hr class="border-zinc-100 mt-4" />
+            </div>
+            <!-- Q4 -->
+            <div class="space-y-2">
+              <h3 class="font-heading font-bold text-sm md:text-base text-zinc-900 leading-tight">
+                4. Qual é a diferença entre inspeção termográfica e vistoria elétrica NR-10?
+              </h3>
+              <p class="text-xs md:text-sm text-zinc-500 leading-relaxed font-sans mb-3">
+                A diferença é que a inspeção termográfica analisa o comportamento térmico dos componentes elétricos em funcionamento, identificando pontos de aquecimento que não são visíveis a olho nu. Já a vistoria elétrica verifica também aspectos físicos, condições de conservação, sinalização, aterramento, organização e demais itens aplicáveis à segurança das instalações.
+              </p>
+              <p class="text-xs md:text-sm text-zinc-500 leading-relaxed font-sans">
+                A SISPER integra a termografia à vistoria técnica para oferecer uma avaliação mais completa da condição dos sistemas elétricos de baixa e média tensão.
+              </p>
+              <hr class="border-zinc-100 mt-4" />
+            </div>
+            <!-- Q5 -->
+            <div class="space-y-2">
+              <h3 class="font-heading font-bold text-sm md:text-base text-zinc-900 leading-tight">
+                5. Com que frequência deve ser realizada a inspeção termográfica?
+              </h3>
+              <p class="text-xs md:text-sm text-zinc-500 leading-relaxed font-sans mb-3">
+                A periodicidade depende da criticidade da operação, do histórico de falhas, da carga elétrica, do ambiente de instalação e do plano de manutenção da empresa. Em instalações comerciais e industriais, a avaliação periódica contribui para acompanhar a evolução de anomalias e priorizar intervenções.
+              </p>
+              <p class="text-xs md:text-sm text-zinc-500 leading-relaxed font-sans">
+                A SISPER pode orientar a periodicidade mais adequada após avaliar o perfil dos painéis elétricos, das cargas e dos equipamentos críticos da operação.
+              </p>
+              <hr class="border-zinc-100 mt-4" />
+            </div>
+            <!-- Q6 -->
+            <div class="space-y-2">
+              <h3 class="font-heading font-bold text-sm md:text-base text-zinc-900 leading-tight">
+                6. A SISPER entrega laudo técnico da inspeção termográfica?
+              </h3>
+              <p class="text-xs md:text-sm text-zinc-500 leading-relaxed font-sans mb-3">
+                Sim. A SISPER entrega relatório técnico com registros fotográficos e imagens termográficas dos itens inspecionados, descrição das não conformidades ou anomalias identificadas, classificação de criticidade e recomendações para as ações necessárias.
+              </p>
+              <p class="text-xs md:text-sm text-zinc-500 leading-relaxed font-sans">
+                Quando aplicável ao escopo contratado, a documentação é emitida por profissional habilitado, com a respectiva ART.
+              </p>
+            </div>
+          </div>
+        </section>
 
-        </div>
+      </div>
 
-        <!-- COLUNA DIREITA - FORMULÁRIO DE CAPTURA -->
-        <div id="conversao" class="lg:col-span-5">
-          <div class="sticky top-24 bg-white border border-zinc-200 rounded-2xl p-6 md:p-8 shadow-sm">
-            <h3 class="font-heading font-bold text-lg text-zinc-900 mb-2 leading-tight">
-              Agendar Inspeção
-            </h3>
-            <p class="text-xs text-zinc-400 mb-6 font-sans">
-              Preencha para receber um contato técnico para agendamento de termografia.
-            </p>
+      <!-- COLUNA DIREITA - FORMULÁRIO DE CAPTURA -->
+      <div id="conversao" class="lg:col-span-5">
+        <div class="sticky top-24 bg-white border border-zinc-200 rounded-2xl p-6 md:p-8 shadow-sm">
+          <h3 class="font-heading font-bold text-lg text-zinc-900 mb-2 leading-tight">
+            Solicite sua inspeção termográfica e Laudo NR-10
+          </h3>
+          <p class="text-xs text-zinc-400 mb-6 font-sans">
+            Receba uma avaliação inicial da SISPER para identificar riscos, prevenir falhas elétricas e planejar a manutenção do seu sistema.
+          </p>
 
-            <form class="lead-form space-y-4">
-              <input type="hidden" name="servico" value="Inspeções Elétricas e Termográficas" />
-              
-              <div>
-                <label class="block text-[10px] font-bold text-zinc-700 uppercase tracking-wider mb-1.5 font-sans">Nome Completo *</label>
-                <input
-                  type="text"
-                  name="nome"
-                  required
-                  placeholder="Seu nome"
-                  class="w-full border border-zinc-200 rounded-xl px-4 py-2.5 text-xs focus:outline-none focus:border-brand-green font-sans"
-                />
-              </div>
+          <form class="lead-form space-y-4">
+            <input type="hidden" name="servico" value="Inspeções Elétricas e Termográficas" />
 
-              <div>
-                <label class="block text-[10px] font-bold text-zinc-700 uppercase tracking-wider mb-1.5 font-sans">Empresa / Condomínio *</label>
-                <input
-                  type="text"
-                  name="empresa"
-                  required
-                  placeholder="Nome da empresa ou condomínio"
-                  class="w-full border border-zinc-200 rounded-xl px-4 py-2.5 text-xs focus:outline-none focus:border-brand-green font-sans"
-                />
-              </div>
+            <div>
+              <label class="block text-[10px] font-bold text-zinc-700 uppercase tracking-wider mb-1.5 font-sans">Nome
+                Completo *</label>
+              <input type="text" name="nome" required placeholder="Seu nome"
+                class="w-full border border-zinc-200 rounded-xl px-4 py-2.5 text-xs focus:outline-none focus:border-brand-green font-sans" />
+            </div>
 
-              <div>
-                <label class="block text-[10px] font-bold text-zinc-700 uppercase tracking-wider mb-1.5 font-sans">E-mail Corporativo *</label>
-                <input
-                  type="email"
-                  name="email"
-                  required
-                  placeholder="exemplo@empresa.com.br"
-                  class="w-full border border-zinc-200 rounded-xl px-4 py-2.5 text-xs focus:outline-none focus:border-brand-green font-sans"
-                />
-              </div>
+            <div>
+              <label class="block text-[10px] font-bold text-zinc-700 uppercase tracking-wider mb-1.5 font-sans">Empresa
+                / Condomínio *</label>
+              <input type="text" name="empresa" required placeholder="Nome da empresa ou condomínio"
+                class="w-full border border-zinc-200 rounded-xl px-4 py-2.5 text-xs focus:outline-none focus:border-brand-green font-sans" />
+            </div>
 
-              <div>
-                <label class="block text-[10px] font-bold text-zinc-700 uppercase tracking-wider mb-1.5 font-sans">Telefone / WhatsApp *</label>
-                <input
-                  type="tel"
-                  name="telefone"
-                  required
-                  placeholder="(11) 98888-8888"
-                  class="w-full border border-zinc-200 rounded-xl px-4 py-2.5 text-xs focus:outline-none focus:border-brand-green font-sans"
-                />
-              </div>
+            <div>
+              <label class="block text-[10px] font-bold text-zinc-700 uppercase tracking-wider mb-1.5 font-sans">E-mail
+                Corporativo *</label>
+              <input type="email" name="email" required placeholder="exemplo@empresa.com.br"
+                class="w-full border border-zinc-200 rounded-xl px-4 py-2.5 text-xs focus:outline-none focus:border-brand-green font-sans" />
+            </div>
 
-              <div>
-                <label class="block text-[10px] font-bold text-zinc-700 uppercase tracking-wider mb-1.5 font-sans">Mensagem</label>
-                <textarea
-                  name="mensagem"
-                  rows="3"
-                  placeholder="Fale sobre seus quadros elétricos..."
-                  class="w-full border border-zinc-200 rounded-xl px-4 py-2.5 text-xs focus:outline-none focus:border-brand-green font-sans"
-                ></textarea>
-              </div>
+            <div>
+              <label
+                class="block text-[10px] font-bold text-zinc-700 uppercase tracking-wider mb-1.5 font-sans">Telefone /
+                WhatsApp *</label>
+              <input type="tel" name="telefone" required placeholder="(11) 98888-8888"
+                class="w-full border border-zinc-200 rounded-xl px-4 py-2.5 text-xs focus:outline-none focus:border-brand-green font-sans" />
+            </div>
 
-              <div class="flex items-start gap-2 pt-1">
-                <input type="checkbox" id="lgpd-consent" name="lgpd" required
-                  class="w-3.5 h-3.5 mt-0.5 accent-brand-green rounded border-zinc-300 cursor-pointer" />
-                <label for="lgpd-consent" class="text-[10px] text-zinc-500 leading-tight select-none cursor-pointer font-sans">
-                  Autorizo a SISPER a entrar em contato para tratar da minha solicitação, conforme a Política de Privacidade.
+            <div>
+              <label class="block text-[10px] font-bold text-zinc-700 uppercase tracking-wider mb-2 font-sans">
+                O que você precisa? *
+              </label>
+              <div class="space-y-2">
+                <label class="flex items-center gap-2 text-xs text-zinc-600 font-sans cursor-pointer select-none">
+                  <input type="radio" name="necessidade" value="Inspeção termográfica" required
+                    class="w-4 h-4 accent-brand-green border-zinc-300 focus:ring-brand-green cursor-pointer" />
+                  Inspeção termográfica
+                </label>
+                <label class="flex items-center gap-2 text-xs text-zinc-600 font-sans cursor-pointer select-none">
+                  <input type="radio" name="necessidade" value="Vistoria elétrica e laudo NR-10"
+                    class="w-4 h-4 accent-brand-green border-zinc-300 focus:ring-brand-green cursor-pointer" />
+                  Vistoria elétrica e laudo NR-10
+                </label>
+                <label class="flex items-center gap-2 text-xs text-zinc-600 font-sans cursor-pointer select-none">
+                  <input type="radio" name="necessidade" value="Ambos os serviços"
+                    class="w-4 h-4 accent-brand-green border-zinc-300 focus:ring-brand-green cursor-pointer" />
+                  Ambos os serviços
+                </label>
+                <label class="flex items-center gap-2 text-xs text-zinc-600 font-sans cursor-pointer select-none">
+                  <input type="radio" name="necessidade" value="Ainda preciso de orientação"
+                    class="w-4 h-4 accent-brand-green border-zinc-300 focus:ring-brand-green cursor-pointer" />
+                  Ainda preciso de orientação
                 </label>
               </div>
+            </div>
 
-              <div class="pt-2">
-                <button
-                  type="submit"
-                  class="w-full relative btn-beam-container group"
-                >
-                  <div class="beam-border"></div>
-                  <span class="relative z-10 flex items-center justify-center bg-brand-green text-white px-5 py-3 rounded-full text-xs font-semibold shadow-lg hover:bg-green-800 transition-colors gap-2 w-full">
-                    Solicitar Termografia
-                    <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
-                  </span>
-                </button>
-              </div>
-            </form>
-          </div>
+            <div>
+              <label
+                class="block text-[10px] font-bold text-zinc-700 uppercase tracking-wider mb-1.5 font-sans">Mensagem</label>
+              <textarea name="mensagem" rows="3" placeholder="Qual é a quantidade de quadros, sintomas percebidos, urgência ou tipo de instalação."
+                class="w-full border border-zinc-200 rounded-xl px-4 py-2.5 text-xs focus:outline-none focus:border-brand-green font-sans"></textarea>
+            </div>
+
+            <div class="flex items-start gap-2 pt-1">
+              <input type="checkbox" id="lgpd-consent" name="lgpd" required
+                class="w-3.5 h-3.5 mt-0.5 accent-brand-green rounded border-zinc-300 cursor-pointer" />
+              <label for="lgpd-consent"
+                class="text-[10px] text-zinc-500 leading-tight select-none cursor-pointer font-sans">
+                Autorizo a SISPER a entrar em contato para tratar da minha solicitação, conforme a Política de
+                Privacidade.
+              </label>
+            </div>
+
+            <div class="pt-2">
+              <button type="submit" class="w-full relative btn-beam-container group">
+                <div class="beam-border"></div>
+                <span
+                  class="relative z-10 flex items-center justify-center bg-brand-green text-white px-5 py-3 rounded-full text-xs font-semibold shadow-lg hover:bg-green-800 transition-colors gap-2 w-full">
+                  Quero solicitar uma avaliação técnica
+                  <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+                </span>
+              </button>
+            </div>
+          </form>
         </div>
-
       </div>
 
     </div>
 
-    <!-- FOOTER -->
-    <footer id="site-footer"></footer>
+  </div>
 
-    <!-- COMMON SCRIPTS -->
-    <script src="js/components.js"></script>
+  <!-- FOOTER -->
+  <footer id="site-footer"></footer>
+
+  <!-- COMMON SCRIPTS -->
+  <script src="js/components.js"></script>
 </body>
+
 </html>
