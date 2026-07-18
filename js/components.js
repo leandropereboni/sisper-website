@@ -104,7 +104,7 @@ function injectHeader() {
                     <i data-lucide="activity" class="w-4 h-4"></i>
                   </div>
                   <div>
-                    <div class="text-xs font-bold leading-tight">Manutenção Preventiva</div>
+                    <div class="text-xs font-bold leading-tight">Auditoria na manutenção preventiva</div>
                     <div class="text-[10px] text-zinc-400 leading-normal mt-0.5">Auditoria independente do plano de manutenção preventiva.</div>
                   </div>
                 </a>
@@ -259,7 +259,7 @@ function injectHeader() {
               <div class="p-1 bg-zinc-100 rounded-md text-zinc-500 shrink-0">
                 <i data-lucide="activity" class="w-4 h-4"></i>
               </div>
-              <span class="text-sm font-semibold">Manutenção Preventiva</span>
+              <span class="text-sm font-semibold">Auditoria na manutenção preventiva</span>
             </a>
             <a
               href="projetos-grupos-geradores.html"
