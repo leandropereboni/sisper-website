@@ -1,370 +1,486 @@
 <!DOCTYPE html>
 <html lang="pt-BR" class="scroll-smooth">
+
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Projetos e Dimensionamento de Geradores | SISPER Consultoria e Projetos</title>
-    <meta name="description" content="Desenvolvimento de projetos mecânicos, hidráulicos e elétricos sob medida para instalação de geradores de energia de emergência." />
-    
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-    
-    <!-- Lucide Icons -->
-    <script src="https://unpkg.com/lucide@latest"></script>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Projetos e Dimensionamento de Geradores | SISPER Consultoria e Projetos</title>
+  <meta name="description"
+    content="Desenvolvimento de projetos mecânicos, hidráulicos e elétricos sob medida para instalação de geradores de energia de emergência." />
 
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                        heading: ['Montserrat', 'sans-serif'],
-                    },
-                    colors: {
-                        brand: {
-                            green: '#277928',
-                            neon: '#76E025',
-                            lead: '#4F4F4F',
-                            gray: '#6D6D6D',
-                            light: '#F4F7F4',
-                        }
-                    },
-                    boxShadow: {
-                        'glass': '0 8px 32px 0 rgba(39, 121, 40, 0.15)',
-                        'glow': '0 0 15px rgba(118, 224, 37, 0.5)',
-                        'card': '0 10px 30px -10px rgba(0,0,0,0.1)',
-                    }
-                }
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            heading: ['Montserrat', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              green: '#277928',
+              neon: '#76E025',
+              lead: '#4F4F4F',
+              gray: '#6D6D6D',
+              light: '#F4F7F4',
             }
+          },
+          boxShadow: {
+            'glass': '0 8px 32px 0 rgba(39, 121, 40, 0.15)',
+            'glow': '0 0 15px rgba(118, 224, 37, 0.5)',
+            'card': '0 10px 30px -10px rgba(0,0,0,0.1)',
+          }
         }
-    </script>
+      }
+    }
+  </script>
 
-    <style>
-        body { font-family: 'Inter', sans-serif; background-color: #FAFAFA; overflow-x: hidden; }
-        h1, h2, h3, h4, h5, h6 { font-family: 'Montserrat', sans-serif; }
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #FAFAFA;
+      overflow-x: hidden;
+    }
 
-        .animate-on-scroll {
-            opacity: 0.01;
-            filter: blur(10px);
-            transform: translateY(20px);
-            transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        }
-        .animate-on-scroll.in-view {
-            opacity: 1;
-            filter: blur(0);
-            transform: translateY(0);
-        }
-        
-        .btn-beam-container {
-            position: relative;
-            overflow: hidden; 
-            border-radius: 9999px;
-            padding: 2px;
-        }
-        .beam-border {
-            position: absolute;
-            inset: -4px;
-            border-radius: 9999px;
-            pointer-events: none;
-            z-index: 0;
-            opacity: 0;
-            background: conic-gradient(from 0deg at 50% 50%, transparent 0deg, rgba(118, 224, 37, 1) 60deg, transparent 120deg);
-            animation: rotate-beam 2s linear infinite;
-            transition: opacity 0.3s;
-        }
-        .btn-beam-container:hover .beam-border {
-            opacity: 1;
-        }
-        @keyframes rotate-beam {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
-    </style>
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    .animate-on-scroll {
+      opacity: 0.01;
+      filter: blur(10px);
+      transform: translateY(20px);
+      transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    .animate-on-scroll.in-view {
+      opacity: 1;
+      filter: blur(0);
+      transform: translateY(0);
+    }
+
+    .btn-beam-container {
+      position: relative;
+      overflow: hidden;
+      border-radius: 9999px;
+      padding: 2px;
+    }
+
+    .beam-border {
+      position: absolute;
+      inset: -4px;
+      border-radius: 9999px;
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0;
+      background: conic-gradient(from 0deg at 50% 50%, transparent 0deg, rgba(118, 224, 37, 1) 60deg, transparent 120deg);
+      animation: rotate-beam 2s linear infinite;
+      transition: opacity 0.3s;
+    }
+
+    .btn-beam-container:hover .beam-border {
+      opacity: 1;
+    }
+
+    @keyframes rotate-beam {
+      from {
+        transform: rotate(0deg);
+      }
+
+      to {
+        transform: rotate(360deg);
+      }
+    }
+  </style>
 </head>
-<body class="text-zinc-800 antialiased relative selection:bg-brand-green selection:text-white pt-[80px]">
-    
-    <!-- HEADER -->
-    <header id="site-header"></header>
 
-    <div class="bg-zinc-50 min-h-screen pb-24">
-      
-      <!-- 1. TOP HEADER & BREADCRUMBS -->
-      <div class="bg-white border-b border-zinc-200/60 py-6">
-        <div class="max-w-[1300px] mx-auto px-6">
-          <!-- Breadcrumbs -->
-          <nav class="flex text-xs text-zinc-400 font-medium items-center gap-1.5" aria-label="Breadcrumb">
-            <a href="index.html" class="hover:text-brand-green transition-colors">Início</a>
-            <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
-            <span class="text-zinc-400">Serviços</span>
-            <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
-            <span class="text-zinc-500 font-semibold">Projetos & Dimensionamento</span>
-          </nav>
-          
-          <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-6 mt-4">
-            <div class="max-w-3xl">
-              <span class="text-[10px] font-bold text-brand-green tracking-widest uppercase bg-brand-light px-3 py-1 rounded-full border border-brand-green/10">
-                Engenharia de Projetos
-              </span>
-              <h1 class="font-heading font-black text-3xl sm:text-4xl lg:text-5xl text-brand-lead mt-3 leading-tight">
-                Projetos e Dimensionamento de Geradores
-              </h1>
-              <p class="text-base text-zinc-500 mt-4 leading-relaxed">
-                Projetos de geração de energia de emergência dimensionados para a sua operação — sem excessos, subdimensionamentos ou improvisos.
-              </p>
-            </div>
-            <a href="#conversao" class="shrink-0">
-              <button class="relative btn-beam-container group w-full lg:w-auto">
-                <div class="beam-border"></div>
-                <span class="relative z-10 flex items-center justify-center bg-brand-green text-white px-6 py-3.5 rounded-full text-sm font-semibold shadow-lg hover:bg-green-800 transition-colors w-full">
-                  Planejar meu projeto
-                </span>
-              </button>
-            </a>
+<body class="text-zinc-800 antialiased relative selection:bg-brand-green selection:text-white pt-[80px]">
+
+  <!-- HEADER -->
+  <header id="site-header"></header>
+
+  <div class="bg-zinc-50 min-h-screen pb-24">
+
+    <!-- 1. TOP HEADER & BREADCRUMBS -->
+    <div class="bg-white border-b border-zinc-200/60 py-6">
+      <div class="max-w-[1300px] mx-auto px-6">
+        <!-- Breadcrumbs -->
+        <nav class="flex text-xs text-zinc-400 font-medium items-center gap-1.5" aria-label="Breadcrumb">
+          <a href="index.html" class="hover:text-brand-green transition-colors">Início</a>
+          <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
+          <span class="text-zinc-400">Serviços</span>
+          <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
+          <span class="text-zinc-500 font-semibold">Projetos & Dimensionamento</span>
+        </nav>
+
+        <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-6 mt-4">
+          <div class="max-w-3xl">
+            <span
+              class="text-[10px] font-bold text-brand-green tracking-widest uppercase bg-brand-light px-3 py-1 rounded-full border border-brand-green/10">
+              Engenharia de Projetos para Grupos Geradores
+            </span>
+            <h1 class="font-heading font-black text-3xl sm:text-4xl lg:text-5xl text-brand-lead mt-3 leading-tight">
+              Projetos e Dimensionamento de Grupos Geradores
+            </h1>
+            <p class="text-base text-zinc-500 mt-4 leading-relaxed">
+              Projetos de instalação de grupos geradores para energia de emergência, dimensionados conforme as cargas
+              críticas e requisitos elétricos da sua operação.
+            </p>
           </div>
+          <a href="#conversao" class="shrink-0">
+            <button class="relative btn-beam-container group w-full lg:w-auto">
+              <div class="beam-border"></div>
+              <span
+                class="relative z-10 flex items-center justify-center bg-brand-green text-white px-6 py-3.5 rounded-full text-sm font-semibold shadow-lg hover:bg-green-800 transition-colors w-full">
+                Solicitar avaliação do projeto
+              </span>
+            </button>
+          </a>
         </div>
       </div>
+    </div>
 
-      <div class="max-w-[1300px] mx-auto px-6 mt-16 grid lg:grid-cols-12 gap-12 lg:gap-16">
-        
-        <!-- COLUNA ESQUERDA - CONTEÚDO -->
-        <div class="lg:col-span-7 space-y-12">
-          
-          <!-- Posicionamento Estratégico -->
-          <section class="animate-on-scroll bg-white p-8 rounded-2xl border border-zinc-200 shadow-sm space-y-6">
-            <h2 class="font-heading font-black text-xl md:text-2xl text-brand-lead border-b border-zinc-100 pb-4">
-              Engenharia Personalizada para Sistemas de Emergência
-            </h2>
-            <p class="text-sm md:text-base text-zinc-600 leading-relaxed font-sans">
-              Adquirir um grupo gerador de energia crítica exige investimentos significativos. Um erro de projeto ou especificação física pode custar caro: desde a inviabilidade física da instalação na sala técnica até o desligamento do gerador por superaquecimento elétrico ou deficiência de fluxo de ar.
-            </p>
-            <p class="text-sm md:text-base text-zinc-600 leading-relaxed font-sans">
-              Atuamos como <strong>alfaiates técnicos</strong>. Analisamos o perfil de consumo da instalação, o comportamento transitório na partida de motores e projetamos a arquitetura ideal (mecânica, hidráulica, elétrica e acústica). Com o projeto em mãos, sua empresa tem a liberdade de cotar de forma isonômica com múltiplos fornecedores do mercado.
-            </p>
+    <div class="max-w-[1300px] mx-auto px-6 mt-16 grid lg:grid-cols-12 gap-12 lg:gap-16">
 
-            <div class="grid sm:grid-cols-3 gap-4 pt-4">
-              <div class="p-4 bg-brand-light/40 border border-brand-green/10 rounded-xl">
-                <i data-lucide="cpu" class="w-6 h-6 text-brand-green mb-2"></i>
-                <span class="text-xs font-bold text-zinc-900 block leading-tight font-sans">Dimensionamento Exato</span>
-                <span class="text-[10px] text-zinc-400 mt-1 block font-sans">Potência calibrada para a carga real</span>
-              </div>
-              <div class="p-4 bg-brand-light/40 border border-brand-green/10 rounded-xl">
-                <i data-lucide="file-code" class="w-6 h-6 text-brand-green mb-2"></i>
-                <span class="text-xs font-bold text-zinc-900 block leading-tight font-sans">Projeto Isomórfico</span>
-                <span class="text-[10px] text-zinc-400 mt-1 block font-sans">Plantas elétricas, hidráulicas e de dutos</span>
-              </div>
-              <div class="p-4 bg-brand-light/40 border border-brand-green/10 rounded-xl">
-                <i data-lucide="layers" class="w-6 h-6 text-brand-green mb-2"></i>
-                <span class="text-xs font-bold text-zinc-900 block leading-tight font-sans">Equalização de Custos</span>
-                <span class="text-[10px] text-zinc-400 mt-1 block font-sans">Análise imparcial de orçamentos</span>
-              </div>
+      <!-- COLUNA ESQUERDA - CONTEÚDO -->
+      <div class="lg:col-span-7 space-y-12">
+
+        <!-- Posicionamento Estratégico -->
+        <section class="animate-on-scroll bg-white p-8 rounded-2xl border border-zinc-200 shadow-sm space-y-6">
+          <h2 class="font-heading font-black text-xl md:text-2xl text-brand-lead border-b border-zinc-100 pb-4">
+            Projetos e Dimensionamento de Grupos Geradores
+          </h2>
+          <p class="text-sm md:text-base text-zinc-600 leading-relaxed font-sans">
+            A aquisição ou modernização de um grupo gerador para energia de emergência exige um <strong>projeto técnico
+              preciso</strong>. Um dimensionamento inadequado pode causar falhas na partida, sobrecarga, consumo
+            excessivo de combustível, aquecimento, ruído acima do aceitável e indisponibilidade justamente quando a
+            operação mais precisa de energia.
+          </p>
+          <p class="text-sm md:text-base text-zinc-600 leading-relaxed font-sans">
+            A SISPER desenvolve projetos e dimensionamento de grupos geradores conforme a <strong>demanda real da
+              instalação</strong>. Avaliamos cargas críticas, picos de consumo, partida de motores, autonomia,
+            ventilação, exaustão, instalações elétricas, infraestrutura mecânica e requisitos acústicos.
+          </p>
+          <p class="text-sm md:text-base text-zinc-600 leading-relaxed font-sans">
+            Com um <strong>projeto completo e independente</strong>, sua empresa pode comparar propostas de fornecedores
+            com critérios técnicos equivalentes, evitar especificações superdimensionadas ou insuficientes e investir em
+            uma solução confiável para sistemas de emergência.
+          </p>
+
+          <div class="grid sm:grid-cols-3 gap-4 pt-4">
+            <div class="p-4 bg-brand-light/40 border border-brand-green/10 rounded-xl">
+              <i data-lucide="cpu" class="w-6 h-6 text-brand-green mb-2"></i>
+              <span class="text-xs font-bold text-zinc-900 block leading-tight font-sans">Dimensionamento Técnico
+                Preciso</span>
+              <span class="text-[10px] text-zinc-400 mt-1 block font-sans">Potência do gerador definida conforme cargas
+                críticas, demanda real e condições de partida.</span>
             </div>
-          </section>
-
-          <!-- Escopo do Serviço -->
-          <section class="animate-on-scroll space-y-6">
-            <h2 class="font-heading font-black text-xl md:text-2xl text-brand-lead">
-              Escopo das Etapas do Projeto
-            </h2>
-            <div class="grid sm:grid-cols-2 gap-4">
-              <!-- Item 1 -->
-              <div class="bg-white border border-zinc-200 p-5 rounded-2xl">
-                <h3 class="font-heading font-bold text-sm md:text-base text-zinc-900 mb-2 flex items-start gap-2.5 leading-snug">
-                  <i data-lucide="check-circle" class="w-4.5 h-4.5 text-brand-green shrink-0 mt-0.5"></i>
-                  Levantamento e Análise de Cargas
-                </h3>
-                <p class="text-xs text-zinc-500 leading-relaxed font-sans">
-                  Análise detalhada de todas as cargas críticas que precisam ser suportadas na emergência, incluindo sistemas de TI, elevadores e bombas.
-                </p>
-              </div>
-              <!-- Item 2 -->
-              <div class="bg-white border border-zinc-200 p-5 rounded-2xl">
-                <h3 class="font-heading font-bold text-sm md:text-base text-zinc-900 mb-2 flex items-start gap-2.5 leading-snug">
-                  <i data-lucide="check-circle" class="w-4.5 h-4.5 text-brand-green shrink-0 mt-0.5"></i>
-                  Projetos Mecânicos e Arquitetônicos
-                </h3>
-                <p class="text-xs text-zinc-500 leading-relaxed font-sans">
-                  Desenho da disposição física do gerador, bacias de contenção de combustível, fluxo de ventilação, atenuadores de ruído e exaustão.
-                </p>
-              </div>
-              <!-- Item 3 -->
-              <div class="bg-white border border-zinc-200 p-5 rounded-2xl">
-                <h3 class="font-heading font-bold text-sm md:text-base text-zinc-900 mb-2 flex items-start gap-2.5 leading-snug">
-                  <i data-lucide="check-circle" class="w-4.5 h-4.5 text-brand-green shrink-0 mt-0.5"></i>
-                  Projetos Elétricos de Interligação
-                </h3>
-                <p class="text-xs text-zinc-500 leading-relaxed font-sans">
-                  Diagramação de chaves de transferência, painéis elétricos, sistemas de aterramento e integração física com o QGDE do edifício.
-                </p>
-              </div>
-              <!-- Item 4 -->
-              <div class="bg-white border border-zinc-200 p-5 rounded-2xl">
-                <h3 class="font-heading font-bold text-sm md:text-base text-zinc-900 mb-2 flex items-start gap-2.5 leading-snug">
-                  <i data-lucide="check-circle" class="w-4.5 h-4.5 text-brand-green shrink-0 mt-0.5"></i>
-                  Memorial e Lista de Materiais
-                </h3>
-                <p class="text-xs text-zinc-500 leading-relaxed font-sans">
-                  Elaboração de toda a documentação técnica descritiva e especificação quantitativa exata de materiais para balizar cotações.
-                </p>
-              </div>
-              <!-- Item 5 -->
-              <div class="bg-white border border-zinc-200 p-5 rounded-2xl">
-                <h3 class="font-heading font-bold text-sm md:text-base text-zinc-900 mb-2 flex items-start gap-2.5 leading-snug">
-                  <i data-lucide="check-circle" class="w-4.5 h-4.5 text-brand-green shrink-0 mt-0.5"></i>
-                  Análise de Propostas e Equalização
-                </h3>
-                <p class="text-xs text-zinc-500 leading-relaxed font-sans">
-                  Análise comparativa das propostas recebidas de fornecedores e instaladores para garantir preço justo e conformidade técnica.
-                </p>
-              </div>
-              <!-- Item 6 -->
-              <div class="bg-white border border-zinc-200 p-5 rounded-2xl">
-                <h3 class="font-heading font-bold text-sm md:text-base text-zinc-900 mb-2 flex items-start gap-2.5 leading-snug">
-                  <i data-lucide="check-circle" class="w-4.5 h-4.5 text-brand-green shrink-0 mt-0.5"></i>
-                  Apoio à Decisão de Investimento
-                </h3>
-                <p class="text-xs text-zinc-500 leading-relaxed font-sans">
-                  Orientação imparcial indicando a melhor solução de custo-benefício físico para a tomada de decisão da diretoria.
-                </p>
-              </div>
+            <div class="p-4 bg-brand-light/40 border border-brand-green/10 rounded-xl">
+              <i data-lucide="file-code" class="w-6 h-6 text-brand-green mb-2"></i>
+              <span class="text-xs font-bold text-zinc-900 block leading-tight font-sans">Projeto para Cotação
+                Isônoma</span>
+              <span class="text-[10px] text-zinc-400 mt-1 block font-sans">Documentação técnica para comparar
+                fornecedores, equipamentos e escopos com segurança.</span>
             </div>
-          </section>
-
-          <!-- FAQ -->
-          <section class="animate-on-scroll bg-white p-8 rounded-2xl border border-zinc-200 shadow-sm space-y-6">
-            <h2 class="font-heading font-black text-xl md:text-2xl text-brand-lead border-b border-zinc-100 pb-4 flex items-center gap-2">
-              <i data-lucide="help-circle" class="w-6 h-6 text-brand-green"></i>
-              Perguntas Frequentes
-            </h2>
-            <div class="space-y-6">
-              <!-- Q1 -->
-              <div class="space-y-2">
-                <h3 class="font-heading font-bold text-sm md:text-base text-zinc-900 leading-tight">
-                  O que é a equalização técnica de propostas?
-                </h3>
-                <p class="text-xs md:text-sm text-zinc-500 leading-relaxed font-sans">
-                  É um procedimento onde a SISPER analisa as propostas de instalação enviadas por diferentes empresas. Nós traduzimos os escopos e planilhas para garantir que todas estejam orçando exatamente as mesmas especificações de cabos, disjuntores, atenuadores e serviços, eliminando surpresas financeiras durante a execução da obra.
-                </p>
-                <hr class="border-zinc-100 mt-4" />
-              </div>
-              <!-- Q2 -->
-              <div class="space-y-2">
-                <h3 class="font-heading font-bold text-sm md:text-base text-zinc-900 leading-tight">
-                  Por que o dimensionamento incorreto de um gerador é perigoso?
-                </h3>
-                <p class="text-xs md:text-sm text-zinc-500 leading-relaxed font-sans">
-                  Um gerador subdimensionado não suportará a carga de partida dos motores (ex. elevadores e bombas d'água) e desarmará no momento em que a energia cair. Já um gerador sobredimensionado trabalha abaixo da carga ideal, o que provoca queima incompleta de combustível, carbonização interna do motor (wet stacking) e desperdício de investimento.
-                </p>
-                <hr class="border-zinc-100 mt-4" />
-              </div>
-              <!-- Q3 -->
-              <div class="space-y-2">
-                <h3 class="font-heading font-bold text-sm md:text-base text-zinc-900 leading-tight">
-                  A SISPER vende geradores ou executa a instalação física?
-                </h3>
-                <p class="text-xs md:text-sm text-zinc-500 leading-relaxed font-sans">
-                  Não. A SISPER realiza o projeto de engenharia, detalha os memoriais técnicos e faz a fiscalização de entrega técnica. Mantemos nossa independência comercial sem vínculos com marcas de geradores ou instaladores.
-                </p>
-              </div>
+            <div class="p-4 bg-brand-light/40 border border-brand-green/10 rounded-xl">
+              <i data-lucide="layers" class="w-6 h-6 text-brand-green mb-2"></i>
+              <span class="text-xs font-bold text-zinc-900 block leading-tight font-sans">Redução de Custos e Riscos na
+                Instalação</span>
+              <span class="text-[10px] text-zinc-400 mt-1 block font-sans">Evite gastos com equipamentos inadequados,
+                retrabalho na instalação e paradas operacionais.</span>
             </div>
-          </section>
-
-        </div>
-
-        <!-- COLUNA DIREITA - FORMULÁRIO DE CAPTURA -->
-        <div id="conversao" class="lg:col-span-5">
-          <div class="sticky top-24 bg-white border border-zinc-200 rounded-2xl p-6 md:p-8 shadow-sm">
-            <h3 class="font-heading font-bold text-lg text-zinc-900 mb-2 leading-tight">
-              Solicitar Dimensionamento
-            </h3>
-            <p class="text-xs text-zinc-400 mb-6 font-sans">
-              Preencha para receber um contato técnico para o seu projeto de geradores.
-            </p>
-
-            <form class="lead-form space-y-4">
-              <input type="hidden" name="servico" value="Projetos e Dimensionamento de Geradores" />
-              
-              <div>
-                <label class="block text-[10px] font-bold text-zinc-700 uppercase tracking-wider mb-1.5 font-sans">Nome Completo *</label>
-                <input
-                  type="text"
-                  name="nome"
-                  required
-                  placeholder="Seu nome"
-                  class="w-full border border-zinc-200 rounded-xl px-4 py-2.5 text-xs focus:outline-none focus:border-brand-green font-sans"
-                />
-              </div>
-
-              <div>
-                <label class="block text-[10px] font-bold text-zinc-700 uppercase tracking-wider mb-1.5 font-sans">Empresa / Condomínio *</label>
-                <input
-                  type="text"
-                  name="empresa"
-                  required
-                  placeholder="Nome da empresa ou condomínio"
-                  class="w-full border border-zinc-200 rounded-xl px-4 py-2.5 text-xs focus:outline-none focus:border-brand-green font-sans"
-                />
-              </div>
-
-              <div>
-                <label class="block text-[10px] font-bold text-zinc-700 uppercase tracking-wider mb-1.5 font-sans">E-mail Corporativo *</label>
-                <input
-                  type="email"
-                  name="email"
-                  required
-                  placeholder="exemplo@empresa.com.br"
-                  class="w-full border border-zinc-200 rounded-xl px-4 py-2.5 text-xs focus:outline-none focus:border-brand-green font-sans"
-                />
-              </div>
-
-              <div>
-                <label class="block text-[10px] font-bold text-zinc-700 uppercase tracking-wider mb-1.5 font-sans">Telefone / WhatsApp *</label>
-                <input
-                  type="tel"
-                  name="telefone"
-                  required
-                  placeholder="(11) 98888-8888"
-                  class="w-full border border-zinc-200 rounded-xl px-4 py-2.5 text-xs focus:outline-none focus:border-brand-green font-sans"
-                />
-              </div>
-
-              <div>
-                <label class="block text-[10px] font-bold text-zinc-700 uppercase tracking-wider mb-1.5 font-sans">Mensagem</label>
-                <textarea
-                  name="mensagem"
-                  rows="3"
-                  placeholder="Descreva a demanda de energia do seu local..."
-                  class="w-full border border-zinc-200 rounded-xl px-4 py-2.5 text-xs focus:outline-none focus:border-brand-green font-sans"
-                ></textarea>
-              </div>
-
-              <div class="pt-2">
-                <button
-                  type="submit"
-                  class="w-full relative btn-beam-container group"
-                >
-                  <div class="beam-border"></div>
-                  <span class="relative z-10 flex items-center justify-center bg-brand-green text-white px-5 py-3 rounded-full text-xs font-semibold shadow-lg hover:bg-green-800 transition-colors gap-2 w-full">
-                    Solicitar Projeto
-                    <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
-                  </span>
-                </button>
-              </div>
-            </form>
           </div>
-        </div>
+        </section>
 
+        <!-- Escopo do Serviço -->
+        <section class="animate-on-scroll space-y-6">
+          <h2 class="font-heading font-black text-xl md:text-2xl text-brand-lead">
+            Etapas do Projeto de Instalação de Grupo Gerador
+          </h2>
+          <p class="text-sm text-zinc-500 leading-relaxed font-sans">
+            Desenvolvemos o projeto completo de instalação de grupo gerador, do levantamento de cargas ao memorial
+            descritivo, para viabilizar uma contratação técnica, segura e compatível com a necessidade da operação.
+          </p>
+          <div class="grid sm:grid-cols-2 gap-4">
+            <!-- Item 1 -->
+            <div class="bg-white border border-zinc-200 p-5 rounded-2xl">
+              <h3
+                class="font-heading font-bold text-sm md:text-base text-zinc-900 mb-2 flex items-start gap-2.5 leading-snug">
+                <i data-lucide="check-circle" class="w-4.5 h-4.5 text-brand-green shrink-0 mt-0.5"></i>
+                Levantamento e Análise de Cargas Críticas
+              </h3>
+              <p class="text-xs text-zinc-500 leading-relaxed font-sans">
+                Análise das cargas que precisam permanecer energizadas em uma falta de rede, incluindo TI, elevadores,
+                bombas, sistemas de segurança e processos industriais.
+              </p>
+            </div>
+            <!-- Item 2 -->
+            <div class="bg-white border border-zinc-200 p-5 rounded-2xl">
+              <h3
+                class="font-heading font-bold text-sm md:text-base text-zinc-900 mb-2 flex items-start gap-2.5 leading-snug">
+                <i data-lucide="check-circle" class="w-4.5 h-4.5 text-brand-green shrink-0 mt-0.5"></i>
+                Projetos Mecânicos, Civis e Arquitetônicos
+              </h3>
+              <p class="text-xs text-zinc-500 leading-relaxed font-sans">
+                Definição da instalação do grupo gerador, base de concreto, tanque de combustível, ventilação, exaustão,
+                atenuação acústica e acessos para manutenção.
+              </p>
+            </div>
+            <!-- Item 3 -->
+            <div class="bg-white border border-zinc-200 p-5 rounded-2xl">
+              <h3
+                class="font-heading font-bold text-sm md:text-base text-zinc-900 mb-2 flex items-start gap-2.5 leading-snug">
+                <i data-lucide="check-circle" class="w-4.5 h-4.5 text-brand-green shrink-0 mt-0.5"></i>
+                Projeto Elétrico de Interligação do Gerador
+              </h3>
+              <p class="text-xs text-zinc-500 leading-relaxed font-sans">
+                Diagramas elétricos para interligação do gerador, chave de transferência, quadros elétricos, aterramento
+                e integração com a entrada de energia da edificação.
+              </p>
+            </div>
+            <!-- Item 4 -->
+            <div class="bg-white border border-zinc-200 p-5 rounded-2xl">
+              <h3
+                class="font-heading font-bold text-sm md:text-base text-zinc-900 mb-2 flex items-start gap-2.5 leading-snug">
+                <i data-lucide="check-circle" class="w-4.5 h-4.5 text-brand-green shrink-0 mt-0.5"></i>
+                Memorial Descritivo e Lista de Materiais
+              </h3>
+              <p class="text-xs text-zinc-500 leading-relaxed font-sans">
+                Documentação técnica com especificações, quantitativos e critérios de instalação para orientar cotações
+                e execução do projeto de instalação de grupo gerador.
+              </p>
+            </div>
+            <!-- Item 5 -->
+            <div class="bg-white border border-zinc-200 p-5 rounded-2xl">
+              <h3
+                class="font-heading font-bold text-sm md:text-base text-zinc-900 mb-2 flex items-start gap-2.5 leading-snug">
+                <i data-lucide="check-circle" class="w-4.5 h-4.5 text-brand-green shrink-0 mt-0.5"></i>
+                Análise Técnica e Equalização de Propostas
+              </h3>
+              <p class="text-xs text-zinc-500 leading-relaxed font-sans">
+                Comparação técnica de propostas de instalação de grupos geradores, fornecedores e instaladores para
+                identificar divergências, evitar itens omissos e apoiar uma contratação justa.
+              </p>
+            </div>
+            <!-- Item 6 -->
+            <div class="bg-white border border-zinc-200 p-5 rounded-2xl">
+              <h3
+                class="font-heading font-bold text-sm md:text-base text-zinc-900 mb-2 flex items-start gap-2.5 leading-snug">
+                <i data-lucide="check-circle" class="w-4.5 h-4.5 text-brand-green shrink-0 mt-0.5"></i>
+                Apoio à Decisão de Investimento
+              </h3>
+              <p class="text-xs text-zinc-500 leading-relaxed font-sans">
+                Orientação independente para selecionar a solução de instalação de grupo gerador com melhor equilíbrio
+                entre confiabilidade, desempenho, custo de implantação e manutenção.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- FAQ -->
+        <section class="animate-on-scroll bg-white p-8 rounded-2xl border border-zinc-200 shadow-sm space-y-6">
+          <h2
+            class="font-heading font-black text-xl md:text-2xl text-brand-lead border-b border-zinc-100 pb-4 flex items-center gap-2">
+            <i data-lucide="help-circle" class="w-6 h-6 text-brand-green"></i>
+            Perguntas Frequentes
+          </h2>
+          <div class="space-y-6">
+            <!-- Q1 -->
+            <div class="space-y-2">
+              <h3 class="font-heading font-bold text-sm md:text-base text-zinc-900 leading-tight">
+                O que é a equalização técnica de propostas para grupo gerador?
+              </h3>
+              <p class="text-xs md:text-sm text-zinc-500 leading-relaxed font-sans">
+                A SISPER analisa e padroniza as propostas recebidas para garantir que todas considerem o mesmo escopo
+                técnico, incluindo potência, cabos, disjuntores, atenuadores, quadro de transferência, instalação e
+                serviços. Assim, o cliente compara propostas equivalentes, evita omissões e toma uma decisão segura.
+              </p>
+              <hr class="border-zinc-100 mt-4" />
+            </div>
+            <!-- Q2 -->
+            <div class="space-y-2">
+              <h3 class="font-heading font-bold text-sm md:text-base text-zinc-900 leading-tight">
+                Por que o dimensionamento correto de um grupo gerador é essencial?
+              </h3>
+              <p class="text-xs md:text-sm text-zinc-500 leading-relaxed font-sans">
+                A SISPER dimensiona o grupo gerador conforme a demanda real da instalação, considerando cargas críticas,
+                partidas de motores, elevadores, bombas, fatores de simultaneidade e possibilidade de expansão. Um
+                gerador subdimensionado pode falhar durante uma falta de energia; um superdimensionado aumenta o
+                investimento e pode operar de forma ineficiente.
+              </p>
+              <hr class="border-zinc-100 mt-4" />
+            </div>
+            <!-- Q3 -->
+            <div class="space-y-2">
+              <h3 class="font-heading font-bold text-sm md:text-base text-zinc-900 leading-tight">
+                A SISPER vende grupos geradores ou executa a instalação física?
+              </h3>
+              <p class="text-xs md:text-sm text-zinc-500 leading-relaxed font-sans">
+                Não. A SISPER atua de forma independente na elaboração do projeto de engenharia, dimensionamento,
+                especificações técnicas, memoriais descritivos e fiscalização técnica. Essa independência permite à
+                SISPER defender exclusivamente os interesses do cliente, sem vínculo comercial com fabricantes ou
+                instaladores.
+              </p>
+              <hr class="border-zinc-100 mt-4" />
+            </div>
+            <!-- Q4 -->
+            <div class="space-y-2">
+              <h3 class="font-heading font-bold text-sm md:text-base text-zinc-900 leading-tight">
+                O que está incluído no projeto de grupo gerador da SISPER?
+              </h3>
+              <p class="text-xs md:text-sm text-zinc-500 leading-relaxed font-sans">
+                O projeto da SISPER pode incluir levantamento de cargas, definição da potência do gerador, diagrama
+                unifilar, especificação de quadro de transferência, cabos, proteções elétricas, sistema de combustível,
+                ventilação, exaustão, atenuação acústica, memorial técnico e lista de material. O escopo é definido
+                conforme as necessidades da operação.
+              </p>
+              <hr class="border-zinc-100 mt-4" />
+            </div>
+            <!-- Q5 -->
+            <div class="space-y-2">
+              <h3 class="font-heading font-bold text-sm md:text-base text-zinc-900 leading-tight">
+                Como a SISPER define a potência ideal do gerador?
+              </h3>
+              <p class="text-xs md:text-sm text-zinc-500 leading-relaxed font-sans">
+                A SISPER não define a potência apenas pela soma dos equipamentos. A análise considera o perfil de
+                consumo, cargas prioritárias, corrente de partida, sequência de acionamento, tipo de carga, margem
+                técnica e crescimento futuro. O resultado é um dimensionamento confiável, eficiente e compatível com a
+                realidade da empresa.
+              </p>
+              <hr class="border-zinc-100 mt-4" />
+            </div>
+            <!-- Q6 -->
+            <div class="space-y-2">
+              <h3 class="font-heading font-bold text-sm md:text-base text-zinc-900 leading-tight">
+                Por que é importante ter um projeto antes de comprar um grupo gerador?
+              </h3>
+              <p class="text-xs md:text-sm text-zinc-500 leading-relaxed font-sans">
+                A SISPER recomenda desenvolver o projeto antes da compra porque a potência do equipamento, os sistemas
+                elétricos, a infraestrutura civil, a exaustão, a ventilação e o combustível precisam ser definidos de
+                forma integrada e em atendimento as normas vigentes. Comprar sem projeto pode gerar retrabalho, gastos
+                adicionais, inadequações técnicas e
+                risco de o equipamento não atender às cargas necessárias.
+              </p>
+              <hr class="border-zinc-100 mt-4" />
+            </div>
+            <!-- Q7 -->
+            <div class="space-y-2">
+              <h3 class="font-heading font-bold text-sm md:text-base text-zinc-900 leading-tight">
+                A SISPER acompanha a implantação do projeto do grupo gerador?
+              </h3>
+              <p class="text-xs md:text-sm text-zinc-500 leading-relaxed font-sans">
+                Sim. A SISPER pode realizar o acompanhamento e a fiscalização técnica da implantação para verificar se a
+                execução está conforme o projeto, as especificações técnicas e os requisitos de segurança. Isso
+                proporciona mais controle sobre a qualidade da entrega e reduz riscos na entrada em operação.
+              </p>
+              <hr class="border-zinc-100 mt-4" />
+            </div>
+            <!-- Q8 -->
+            <div class="space-y-2">
+              <h3 class="font-heading font-bold text-sm md:text-base text-zinc-900 leading-tight">
+                A SISPER elabora projetos para baixa e média tensão?
+              </h3>
+              <p class="text-xs md:text-sm text-zinc-500 leading-relaxed font-sans">
+                Sim. A SISPER elabora projetos para integração de grupos geradores em sistemas elétricos de baixa e
+                média tensão, avaliando proteção, seletividade, manobra, transferência de carga e compatibilidade com a
+                instalação existente. Cada solução é desenvolvida de acordo com as características técnicas e
+                operacionais do cliente.
+              </p>
+            </div>
+          </div>
+        </section>
+
+      </div>
+
+      <!-- COLUNA DIREITA - FORMULÁRIO DE CAPTURA -->
+      <div id="conversao" class="lg:col-span-5">
+        <div class="sticky top-24 bg-white border border-zinc-200 rounded-2xl p-6 md:p-8 shadow-sm">
+          <h3 class="font-heading font-bold text-lg text-zinc-900 mb-2 leading-tight">
+            Solicite seu Dimensionamento com a SISPER
+          </h3>
+          <p class="text-xs text-zinc-400 mb-6 font-sans">
+            Informe os dados do seu projeto e a equipe técnica da SISPER entrará em contato para avaliar a melhor solução em grupos geradores.
+          </p>
+
+          <form class="lead-form space-y-4">
+            <input type="hidden" name="servico" value="Projetos e Dimensionamento de Geradores" />
+
+            <div>
+              <label class="block text-[10px] font-bold text-zinc-700 uppercase tracking-wider mb-1.5 font-sans">Nome
+                Completo *</label>
+              <input type="text" name="nome" required placeholder="Seu nome"
+                class="w-full border border-zinc-200 rounded-xl px-4 py-2.5 text-xs focus:outline-none focus:border-brand-green font-sans" />
+            </div>
+
+            <div>
+              <label class="block text-[10px] font-bold text-zinc-700 uppercase tracking-wider mb-1.5 font-sans">Empresa
+                / Condomínio *</label>
+              <input type="text" name="empresa" required placeholder="Nome da empresa ou condomínio"
+                class="w-full border border-zinc-200 rounded-xl px-4 py-2.5 text-xs focus:outline-none focus:border-brand-green font-sans" />
+            </div>
+
+            <div>
+              <label class="block text-[10px] font-bold text-zinc-700 uppercase tracking-wider mb-1.5 font-sans">E-mail
+                Corporativo *</label>
+              <input type="email" name="email" required placeholder="exemplo@empresa.com.br"
+                class="w-full border border-zinc-200 rounded-xl px-4 py-2.5 text-xs focus:outline-none focus:border-brand-green font-sans" />
+            </div>
+
+            <div>
+              <label
+                class="block text-[10px] font-bold text-zinc-700 uppercase tracking-wider mb-1.5 font-sans">Telefone /
+                WhatsApp *</label>
+              <input type="tel" name="telefone" required placeholder="(11) 98888-8888"
+                class="w-full border border-zinc-200 rounded-xl px-4 py-2.5 text-xs focus:outline-none focus:border-brand-green font-sans" />
+            </div>
+
+            <div>
+              <label
+                class="block text-[10px] font-bold text-zinc-700 uppercase tracking-wider mb-1.5 font-sans">Sobre a sua necessidade</label>
+              <textarea name="mensagem" rows="3" placeholder="Descreva brevemente a carga, local de instalação ou necessidade de energia de emergência."
+                class="w-full border border-zinc-200 rounded-xl px-4 py-2.5 text-xs focus:outline-none focus:border-brand-green font-sans"></textarea>
+            </div>
+
+            <div class="pt-2">
+              <button type="submit" class="w-full relative btn-beam-container group">
+                <div class="beam-border"></div>
+                <span
+                  class="relative z-10 flex items-center justify-center bg-brand-green text-white px-5 py-3 rounded-full text-xs font-semibold shadow-lg hover:bg-green-800 transition-colors gap-2 w-full">
+                  Quero meu Dimensionamento SISPER
+                  <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+                </span>
+              </button>
+            </div>
+          </form>
+        </div>
       </div>
 
     </div>
 
-    <!-- FOOTER -->
-    <footer id="site-footer"></footer>
+  </div>
 
-    <!-- COMMON SCRIPTS -->
-    <script src="js/components.js"></script>
+  <!-- FOOTER -->
+  <footer id="site-footer"></footer>
+
+  <!-- COMMON SCRIPTS -->
+  <script src="js/components.js"></script>
 </body>
+
 </html>
