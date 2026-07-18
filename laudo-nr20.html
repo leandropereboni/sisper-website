@@ -1,372 +1,485 @@
 <!DOCTYPE html>
 <html lang="pt-BR" class="scroll-smooth">
+
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Laudos de Conformidade NR-20 | SISPER Consultoria e Projetos</title>
-    <meta name="description" content="Avaliação técnica e orientações para armazenamento seguro de óleo diesel para grupos geradores em edifícios verticais e comerciais de acordo com a NR-20." />
-    
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-    
-    <!-- Lucide Icons -->
-    <script src="https://unpkg.com/lucide@latest"></script>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Laudos de Conformidade NR-20 | SISPER Consultoria e Projetos</title>
+  <meta name="description"
+    content="Avaliação técnica e orientações para armazenamento seguro de óleo diesel para grupos geradores em edifícios verticais e comerciais de acordo com a NR-20." />
 
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                        heading: ['Montserrat', 'sans-serif'],
-                    },
-                    colors: {
-                        brand: {
-                            green: '#277928',
-                            neon: '#76E025',
-                            lead: '#4F4F4F',
-                            gray: '#6D6D6D',
-                            light: '#F4F7F4',
-                        }
-                    },
-                    boxShadow: {
-                        'glass': '0 8px 32px 0 rgba(39, 121, 40, 0.15)',
-                        'glow': '0 0 15px rgba(118, 224, 37, 0.5)',
-                        'card': '0 10px 30px -10px rgba(0,0,0,0.1)',
-                    }
-                }
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            heading: ['Montserrat', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              green: '#277928',
+              neon: '#76E025',
+              lead: '#4F4F4F',
+              gray: '#6D6D6D',
+              light: '#F4F7F4',
             }
+          },
+          boxShadow: {
+            'glass': '0 8px 32px 0 rgba(39, 121, 40, 0.15)',
+            'glow': '0 0 15px rgba(118, 224, 37, 0.5)',
+            'card': '0 10px 30px -10px rgba(0,0,0,0.1)',
+          }
         }
-    </script>
+      }
+    }
+  </script>
 
-    <style>
-        body { font-family: 'Inter', sans-serif; background-color: #FAFAFA; overflow-x: hidden; }
-        h1, h2, h3, h4, h5, h6 { font-family: 'Montserrat', sans-serif; }
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #FAFAFA;
+      overflow-x: hidden;
+    }
 
-        .animate-on-scroll {
-            opacity: 0.01;
-            filter: blur(10px);
-            transform: translateY(20px);
-            transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        }
-        .animate-on-scroll.in-view {
-            opacity: 1;
-            filter: blur(0);
-            transform: translateY(0);
-        }
-        
-        .btn-beam-container {
-            position: relative;
-            overflow: hidden; 
-            border-radius: 9999px;
-            padding: 2px;
-        }
-        .beam-border {
-            position: absolute;
-            inset: -4px;
-            border-radius: 9999px;
-            pointer-events: none;
-            z-index: 0;
-            opacity: 0;
-            background: conic-gradient(from 0deg at 50% 50%, transparent 0deg, rgba(118, 224, 37, 1) 60deg, transparent 120deg);
-            animation: rotate-beam 2s linear infinite;
-            transition: opacity 0.3s;
-        }
-        .btn-beam-container:hover .beam-border {
-            opacity: 1;
-        }
-        @keyframes rotate-beam {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
-    </style>
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    .animate-on-scroll {
+      opacity: 0.01;
+      filter: blur(10px);
+      transform: translateY(20px);
+      transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    .animate-on-scroll.in-view {
+      opacity: 1;
+      filter: blur(0);
+      transform: translateY(0);
+    }
+
+    .btn-beam-container {
+      position: relative;
+      overflow: hidden;
+      border-radius: 9999px;
+      padding: 2px;
+    }
+
+    .beam-border {
+      position: absolute;
+      inset: -4px;
+      border-radius: 9999px;
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0;
+      background: conic-gradient(from 0deg at 50% 50%, transparent 0deg, rgba(118, 224, 37, 1) 60deg, transparent 120deg);
+      animation: rotate-beam 2s linear infinite;
+      transition: opacity 0.3s;
+    }
+
+    .btn-beam-container:hover .beam-border {
+      opacity: 1;
+    }
+
+    @keyframes rotate-beam {
+      from {
+        transform: rotate(0deg);
+      }
+
+      to {
+        transform: rotate(360deg);
+      }
+    }
+  </style>
 </head>
-<body class="text-zinc-800 antialiased relative selection:bg-brand-green selection:text-white pt-[80px]">
-    
-    <!-- HEADER -->
-    <header id="site-header"></header>
 
-    <div class="bg-zinc-50 min-h-screen pb-24">
-      
-      <!-- 1. TOP HEADER & BREADCRUMBS -->
-      <div class="bg-white border-b border-zinc-200/60 py-6">
-        <div class="max-w-[1300px] mx-auto px-6">
-          <!-- Breadcrumbs -->
-          <nav class="flex text-xs text-zinc-400 font-medium items-center gap-1.5" aria-label="Breadcrumb">
-            <a href="index.html" class="hover:text-brand-green transition-colors">Início</a>
-            <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
-            <span class="text-zinc-400">Serviços</span>
-            <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
-            <span class="text-zinc-500 font-semibold">Laudos de Conformidade NR-20</span>
-          </nav>
-          
-          <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-6 mt-4">
-            <div class="max-w-3xl">
-              <span class="text-[10px] font-bold text-brand-green tracking-widest uppercase bg-brand-light px-3 py-1 rounded-full border border-brand-green/10">
-                Segurança & Conformidade
-              </span>
-              <h1 class="font-heading font-black text-3xl sm:text-4xl lg:text-5xl text-brand-lead mt-3 leading-tight">
-                Laudos de Conformidade NR-20
-              </h1>
-              <p class="text-base text-zinc-500 mt-4 leading-relaxed">
-                Avaliação técnica e orientações para armazenamento seguro de óleo diesel para grupos geradores em edifícios verticais e comerciais.
-              </p>
-            </div>
-            <a href="#conversao" class="shrink-0">
-              <button class="relative btn-beam-container group w-full lg:w-auto">
-                <div class="beam-border"></div>
-                <span class="relative z-10 flex items-center justify-center bg-brand-green text-white px-6 py-3.5 rounded-full text-sm font-semibold shadow-lg hover:bg-green-800 transition-colors w-full">
-                  Solicitar análise de conformidade
-                </span>
-              </button>
-            </a>
+<body class="text-zinc-800 antialiased relative selection:bg-brand-green selection:text-white pt-[80px]">
+
+  <!-- HEADER -->
+  <header id="site-header"></header>
+
+  <div class="bg-zinc-50 min-h-screen pb-24">
+
+    <!-- 1. TOP HEADER & BREADCRUMBS -->
+    <div class="bg-white border-b border-zinc-200/60 py-6">
+      <div class="max-w-[1300px] mx-auto px-6">
+        <!-- Breadcrumbs -->
+        <nav class="flex text-xs text-zinc-400 font-medium items-center gap-1.5" aria-label="Breadcrumb">
+          <a href="index.html" class="hover:text-brand-green transition-colors">Início</a>
+          <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
+          <span class="text-zinc-400">Serviços</span>
+          <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
+          <span class="text-zinc-500 font-semibold">Laudos de Conformidade NR-20</span>
+        </nav>
+
+        <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-6 mt-4">
+          <div class="max-w-4xl flex-1">
+            <span
+              class="text-[10px] font-bold text-brand-green tracking-widest uppercase bg-brand-light px-3 py-1 rounded-full border border-brand-green/10">
+              Segurança, Conformidade e Periculosidade
+            </span>
+            <h1 class="font-heading font-black text-3xl sm:text-4xl lg:text-4xl text-brand-lead mt-3 leading-tight">
+              Laudos de Conformidade NR-20 e NR-16 para armazenamento de diesel
+            </h1>
+            <p class="text-base text-zinc-500 mt-4 leading-relaxed">
+              Diagnóstico técnico de conformidade para instalações com óleo diesel, incluindo tanques, sistemas de
+              abastecimento e grupos geradores. Identifique riscos, não conformidades e as adequações necessárias para
+              uma operação mais segura.
+            </p>
           </div>
+          <a href="#conversao" class="shrink-0">
+            <button class="relative btn-beam-container group w-full lg:w-auto">
+              <div class="beam-border"></div>
+              <span
+                class="relative z-10 flex items-center justify-center bg-brand-green text-white px-6 py-3.5 rounded-full text-sm font-semibold shadow-lg hover:bg-green-800 transition-colors w-full">
+                Solicitar meu laudo de conformidade
+              </span>
+            </button>
+          </a>
         </div>
       </div>
+    </div>
 
-      <div class="max-w-[1300px] mx-auto px-6 mt-16 grid lg:grid-cols-12 gap-12 lg:gap-16">
-        
-        <!-- COLUNA ESQUERDA - CONTEÚDO -->
-        <div class="lg:col-span-7 space-y-12">
-          
-          <!-- Posicionamento Estratégico -->
-          <section class="animate-on-scroll bg-white p-8 rounded-2xl border border-zinc-200 shadow-sm space-y-6">
-            <h2 class="font-heading font-black text-xl md:text-2xl text-brand-lead border-b border-zinc-100 pb-4">
-              Gerenciamento de Riscos de Inflamáveis com Rigor Técnico
-            </h2>
-            <p class="text-sm md:text-base text-zinc-600 leading-relaxed font-sans">
-              O armazenamento de óleo diesel para alimentação de grupos geradores de emergência é uma necessidade técnica comum em condomínios e edifícios verticais. No entanto, por se tratar de líquidos inflamáveis, a instalação física de tanques deve atender rigorosamente a critérios de segurança para evitar riscos de incêndio, vazamentos ambientais e problemas regulatórios.
-            </p>
-            <p class="text-sm md:text-base text-zinc-600 leading-relaxed font-semibold font-sans italic border-l-4 border-brand-green/30 pl-4">
-              "Em edificações verticais, o armazenamento de líquidos inflamáveis pode demandar análise técnica criteriosa, especialmente diante de discussões relacionadas à periculosidade."
-            </p>
-            <p class="text-sm md:text-base text-zinc-600 leading-relaxed font-sans">
-              A equipe da SISPER conta com engenheiro de segurança do trabalho e especialização em sistemas de energia para realizar vistorias detalhadas, apontando não conformidades com relação à NR-20 e normas afins, e sugerindo as devidas melhorias estruturais para salvaguardar as pessoas e o patrimônio.
-            </p>
+    <div class="max-w-[1300px] mx-auto px-6 mt-16 grid lg:grid-cols-12 gap-12 lg:gap-16">
 
-            <div class="grid sm:grid-cols-2 gap-4 pt-4">
-              <div class="p-4 bg-brand-light/40 border border-brand-green/10 rounded-xl flex gap-3 items-start">
-                <i data-lucide="flame" class="w-5 h-5 text-brand-green shrink-0 mt-0.5"></i>
-                <div>
-                  <span class="text-xs font-bold text-zinc-900 block leading-tight font-sans">Mitigação de Sinistros</span>
-                  <span class="text-[10px] text-zinc-400 mt-1 block font-sans">Inspeções contra riscos de fogo</span>
-                </div>
-              </div>
-              <div class="p-4 bg-brand-light/40 border border-brand-green/10 rounded-xl flex gap-3 items-start">
-                <i data-lucide="file-check-2" class="w-5 h-5 text-brand-green shrink-0 mt-0.5"></i>
-                <div>
-                  <span class="text-xs font-bold text-zinc-900 block leading-tight font-sans">Laudos Técnicos com ART</span>
-                  <span class="text-[10px] text-zinc-400 mt-1 block font-sans">Documentação assinada por especialista</span>
-                </div>
+      <!-- COLUNA ESQUERDA - CONTEÚDO -->
+      <div class="lg:col-span-7 space-y-12">
+
+        <!-- Posicionamento Estratégico -->
+        <section class="animate-on-scroll bg-white p-8 rounded-2xl border border-zinc-200 shadow-sm space-y-6">
+          <h2 class="font-heading font-black text-xl md:text-2xl text-brand-lead border-b border-zinc-100 pb-4">
+            Avaliação de Conformidade NR-20 e NR-16 para Instalações com Óleo Diesel
+          </h2>
+          <p class="text-sm md:text-base text-zinc-600 leading-relaxed font-sans">
+            O armazenamento de óleo diesel destinado à alimentação de grupos geradores de emergência, motobombas de
+            combate a incêndio e demais equipamentos é uma <strong>necessidade frequente</strong> em condomínios,
+            edifícios comerciais, hospitais, indústrias e centros logísticos.
+          </p>
+          <p class="text-sm md:text-base text-zinc-600 leading-relaxed font-sans">
+            Por se tratar de líquido inflamável, a instalação de tanques, tubulações, sistemas de abastecimento e
+            equipamentos associados deve atender aos requisitos de segurança aplicáveis da <strong>NR-20</strong>, além
+            dos critérios relacionados à caracterização de periculosidade previstos na <strong>NR-16</strong>.
+          </p>
+          <p
+            class="text-sm md:text-base text-zinc-600 leading-relaxed font-semibold font-sans italic border-l-4 border-brand-green/30 pl-4">
+            Em edificações verticais e empreendimentos comerciais, uma <strong>análise técnica criteriosa</strong> das
+            instalações de óleo diesel é fundamental para reduzir riscos de incêndio, vazamentos, passivos regulatórios
+            e discussões relacionadas à periculosidade.
+          </p>
+          <p class="text-sm md:text-base text-zinc-600 leading-relaxed font-sans">
+            A SISPER realiza inspeções e avaliações técnicas para verificar as condições das instalações, identificar
+            não conformidades e orientar as adequações necessárias. Nossa atuação abrange tanques de armazenamento de
+            diesel, grupos geradores, motobombas de combate a incêndio, áreas de abastecimento, sistemas de ventilação,
+            contenção e demais componentes relacionados à <strong>segurança da operação</strong>.
+          </p>
+          <p class="text-sm md:text-base text-zinc-600 leading-relaxed font-sans">
+            Com uma <strong>análise independente e orientada por engenharia</strong>, sua empresa recebe direcionamento
+            técnico para proteger pessoas, patrimônio e a continuidade operacional do empreendimento.
+          </p>
+
+          <div class="grid sm:grid-cols-2 gap-4 pt-4">
+            <div class="p-4 bg-brand-light/40 border border-brand-green/10 rounded-xl flex gap-3 items-start">
+              <i data-lucide="shield" class="w-5 h-5 text-brand-green shrink-0 mt-0.5"></i>
+              <div>
+                <span class="text-xs font-bold text-zinc-900 block leading-tight font-sans">Autoridade e
+                  Experiência</span>
+                <span class="text-[10px] text-zinc-400 mt-1 block font-sans">Engenharia especializada em grupos
+                  geradores, tanques de óleo diesel e motobombas de combate a incêndio, com atuação técnica focada nos
+                  requisitos da NR-20 e na segurança de instalações com inflamáveis.</span>
               </div>
             </div>
-          </section>
-
-          <!-- Escopo do Serviço -->
-          <section class="animate-on-scroll space-y-6">
-            <h2 class="font-heading font-black text-xl md:text-2xl text-brand-lead">
-              Escopo de Atuação e Vistoria
-            </h2>
-            <div class="grid sm:grid-cols-2 gap-4">
-              <!-- Item 1 -->
-              <div class="bg-white border border-zinc-200 p-5 rounded-2xl">
-                <h3 class="font-heading font-bold text-sm md:text-base text-zinc-900 mb-2 flex items-start gap-2.5 leading-snug">
-                  <i data-lucide="check-circle" class="w-4.5 h-4.5 text-brand-green shrink-0 mt-0.5"></i>
-                  Avaliação das Condições Físicas
-                </h3>
-                <p class="text-xs text-zinc-500 leading-relaxed font-sans">
-                  Inspeção técnica presencial para checagem estrutural do local de instalação do tanque e das bacias de segurança.
-                </p>
-              </div>
-              <!-- Item 2 -->
-              <div class="bg-white border border-zinc-200 p-5 rounded-2xl">
-                <h3 class="font-heading font-bold text-sm md:text-base text-zinc-900 mb-2 flex items-start gap-2.5 leading-snug">
-                  <i data-lucide="check-circle" class="w-4.5 h-4.5 text-brand-green shrink-0 mt-0.5"></i>
-                  Identificação de Pontos de Atenção
-                </h3>
-                <p class="text-xs text-zinc-500 leading-relaxed font-sans">
-                  Mapeamento detalhado de não conformidades com relação a respiros, válvulas de corte rápido, aterramentos e sinalizações exigidas.
-                </p>
-              </div>
-              <!-- Item 3 -->
-              <div class="bg-white border border-zinc-200 p-5 rounded-2xl">
-                <h3 class="font-heading font-bold text-sm md:text-base text-zinc-900 mb-2 flex items-start gap-2.5 leading-snug">
-                  <i data-lucide="check-circle" class="w-4.5 h-4.5 text-brand-green shrink-0 mt-0.5"></i>
-                  Orientação para Adequações Técnicas
-                </h3>
-                <p class="text-xs text-zinc-500 leading-relaxed font-sans">
-                  Direcionamento de engenharia para correção física dos desvios observados, com indicação prioritária de ações.
-                </p>
-              </div>
-              <!-- Item 4 -->
-              <div class="bg-white border border-zinc-200 p-5 rounded-2xl">
-                <h3 class="font-heading font-bold text-sm md:text-base text-zinc-900 mb-2 flex items-start gap-2.5 leading-snug">
-                  <i data-lucide="check-circle" class="w-4.5 h-4.5 text-brand-green shrink-0 mt-0.5"></i>
-                  Apoio à Gestão de Riscos
-                </h3>
-                <p class="text-xs text-zinc-500 leading-relaxed font-sans">
-                  Elaboração de planos preventivos para manuseio seguro, rotulação e procedimentos básicos de emergência contra vazamentos.
-                </p>
-              </div>
-              <!-- Item 5 -->
-              <div class="bg-white border border-zinc-200 p-5 rounded-2xl">
-                <h3 class="font-heading font-bold text-sm md:text-base text-zinc-900 mb-2 flex items-start gap-2.5 leading-snug">
-                  <i data-lucide="check-circle" class="w-4.5 h-4.5 text-brand-green shrink-0 mt-0.5"></i>
-                  Emissão de Laudo Técnico e ART
-                </h3>
-                <p class="text-xs text-zinc-500 leading-relaxed font-sans">
-                  Fornecimento de relatório técnico circunstanciado acompanhado de Anotação de Responsabilidade Técnica (ART) por engenheiro habilitado.
-                </p>
-              </div>
-              <!-- Item 6 -->
-              <div class="bg-white border border-zinc-200 p-5 rounded-2xl">
-                <h3 class="font-heading font-bold text-sm md:text-base text-zinc-900 mb-2 flex items-start gap-2.5 leading-snug">
-                  <i data-lucide="check-circle" class="w-4.5 h-4.5 text-brand-green shrink-0 mt-0.5"></i>
-                  Inspeção de Sistemas de Contenção
-                </h3>
-                <p class="text-xs text-zinc-500 leading-relaxed font-sans">
-                  Vistoria física da estanqueidade de bacias e teste visual em tubulações e conexões do sistema de alimentação de óleo diesel.
-                </p>
+            <div class="p-4 bg-brand-light/40 border border-brand-green/10 rounded-xl flex gap-3 items-start">
+              <i data-lucide="file-check-2" class="w-5 h-5 text-brand-green shrink-0 mt-0.5"></i>
+              <div>
+                <span class="text-xs font-bold text-zinc-900 block leading-tight font-sans">Laudo e Responsabilidade
+                  Técnica</span>
+                <span class="text-[10px] text-zinc-400 mt-1 block font-sans">Emissão de laudo de conformidade e ART, com
+                  registro técnico das condições avaliadas, não conformidades identificadas e recomendações para
+                  adequação da instalação.</span>
               </div>
             </div>
-          </section>
-
-          <!-- FAQ -->
-          <section class="animate-on-scroll bg-white p-8 rounded-2xl border border-zinc-200 shadow-sm space-y-6">
-            <h2 class="font-heading font-black text-xl md:text-2xl text-brand-lead border-b border-zinc-100 pb-4 flex items-center gap-2">
-              <i data-lucide="help-circle" class="w-6 h-6 text-brand-green"></i>
-              Perguntas Frequentes
-            </h2>
-            <div class="space-y-6">
-              <!-- Q1 -->
-              <div class="space-y-2">
-                <h3 class="font-heading font-bold text-sm md:text-base text-zinc-900 leading-tight">
-                  Qual é o foco da SISPER na inspeção de NR-20?
-                </h3>
-                <p class="text-xs md:text-sm text-zinc-500 leading-relaxed font-sans">
-                  Nossa atuação é estritamente técnica de engenharia e segurança. Focamos em auditar as condições físicas e materiais do armazenamento de óleo diesel para grupos geradores, emitindo relatórios de diagnóstico das instalações, apontando desvios e fornecendo orientações práticas para a conformidade das estruturas.
-                </p>
-                <hr class="border-zinc-100 mt-4" />
-              </div>
-              <!-- Q2 -->
-              <div class="space-y-2">
-                <h3 class="font-heading font-bold text-sm md:text-base text-zinc-900 leading-tight">
-                  Como é tratada a discussão sobre periculosidade e a OJ-385?
-                </h3>
-                <p class="text-xs md:text-sm text-zinc-500 leading-relaxed font-sans">
-                  Mencionamos esse contexto sob um prisma puramente de engenharia de riscos. Em edificações verticais, o armazenamento de líquidos inflamáveis pode demandar análise técnica criteriosa, especialmente diante de discussões relacionadas à periculosidade. Não oferecemos interpretação jurídica nem garantia de enquadramento processual trabalhista. Apenas atestamos a conformidade material técnica das instalações e tanques em relação à norma física.
-                </p>
-                <hr class="border-zinc-100 mt-4" />
-              </div>
-              <!-- Q3 -->
-              <div class="space-y-2">
-                <h3 class="font-heading font-bold text-sm md:text-base text-zinc-900 leading-tight">
-                  O laudo de conformidade NR-20 garante aprovação legal automática?
-                </h3>
-                <p class="text-xs md:text-sm text-zinc-500 leading-relaxed font-sans">
-                  Não oferecemos promessas absolutas de conformidade jurídica ou ausência absoluta de passivo trabalhista. O laudo da SISPER aponta as desconformidades físicas do sistema e orienta as correções físicas necessárias. A conformidade contínua depende da efetiva realização das adequações propostas e da manutenção periódica dos tanques por parte do cliente.
-                </p>
-              </div>
-            </div>
-          </section>
-
-        </div>
-
-        <!-- COLUNA DIREITA - FORMULÁRIO DE CAPTURA -->
-        <div id="conversao" class="lg:col-span-5">
-          <div class="sticky top-24 bg-white border border-zinc-200 rounded-2xl p-6 md:p-8 shadow-sm">
-            <h3 class="font-heading font-bold text-lg text-zinc-900 mb-2 leading-tight">
-              Solicitar Laudo NR-20
-            </h3>
-            <p class="text-xs text-zinc-400 mb-6 font-sans">
-              Preencha para receber um contato técnico para vistoria e emissão de laudo.
-            </p>
-
-            <form class="lead-form space-y-4">
-              <input type="hidden" name="servico" value="Laudos de Conformidade NR-20" />
-              
-              <div>
-                <label class="block text-[10px] font-bold text-zinc-700 uppercase tracking-wider mb-1.5 font-sans">Nome Completo *</label>
-                <input
-                  type="text"
-                  name="nome"
-                  required
-                  placeholder="Seu nome"
-                  class="w-full border border-zinc-200 rounded-xl px-4 py-2.5 text-xs focus:outline-none focus:border-brand-green font-sans"
-                />
-              </div>
-
-              <div>
-                <label class="block text-[10px] font-bold text-zinc-700 uppercase tracking-wider mb-1.5 font-sans">Empresa / Condomínio *</label>
-                <input
-                  type="text"
-                  name="empresa"
-                  required
-                  placeholder="Nome da empresa ou condomínio"
-                  class="w-full border border-zinc-200 rounded-xl px-4 py-2.5 text-xs focus:outline-none focus:border-brand-green font-sans"
-                />
-              </div>
-
-              <div>
-                <label class="block text-[10px] font-bold text-zinc-700 uppercase tracking-wider mb-1.5 font-sans">E-mail Corporativo *</label>
-                <input
-                  type="email"
-                  name="email"
-                  required
-                  placeholder="exemplo@empresa.com.br"
-                  class="w-full border border-zinc-200 rounded-xl px-4 py-2.5 text-xs focus:outline-none focus:border-brand-green font-sans"
-                />
-              </div>
-
-              <div>
-                <label class="block text-[10px] font-bold text-zinc-700 uppercase tracking-wider mb-1.5 font-sans">Telefone / WhatsApp *</label>
-                <input
-                  type="tel"
-                  name="telefone"
-                  required
-                  placeholder="(11) 98888-8888"
-                  class="w-full border border-zinc-200 rounded-xl px-4 py-2.5 text-xs focus:outline-none focus:border-brand-green font-sans"
-                />
-              </div>
-
-              <div>
-                <label class="block text-[10px] font-bold text-zinc-700 uppercase tracking-wider mb-1.5 font-sans">Mensagem</label>
-                <textarea
-                  name="mensagem"
-                  rows="3"
-                  placeholder="Fale sobre seus tanques de combustível..."
-                  class="w-full border border-zinc-200 rounded-xl px-4 py-2.5 text-xs focus:outline-none focus:border-brand-green font-sans"
-                ></textarea>
-              </div>
-
-              <div class="pt-2">
-                <button
-                  type="submit"
-                  class="w-full relative btn-beam-container group"
-                >
-                  <div class="beam-border"></div>
-                  <span class="relative z-10 flex items-center justify-center bg-brand-green text-white px-5 py-3 rounded-full text-xs font-semibold shadow-lg hover:bg-green-800 transition-colors gap-2 w-full">
-                    Solicitar Laudo
-                    <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
-                  </span>
-                </button>
-              </div>
-            </form>
           </div>
-        </div>
+        </section>
 
+        <!-- Escopo do Serviço -->
+        <section class="animate-on-scroll space-y-6">
+          <h2 class="font-heading font-black text-xl md:text-2xl text-brand-lead">
+            Escopo de Atuação e Vistoria NR-20 e NR-16
+          </h2>
+          <div class="grid sm:grid-cols-2 gap-4">
+            <!-- Item 1 -->
+            <div class="bg-white border border-zinc-200 p-5 rounded-2xl">
+              <h3
+                class="font-heading font-bold text-sm md:text-base text-zinc-900 mb-2 flex items-start gap-2.5 leading-snug">
+                <i data-lucide="check-circle" class="w-4.5 h-4.5 text-brand-green shrink-0 mt-0.5"></i>
+                Inspeção Técnica de Tanques de Óleo Diesel e Grupos Geradores
+              </h3>
+              <p class="text-xs text-zinc-500 leading-relaxed font-sans">
+                A SISPER realiza vistoria presencial em tanques de óleo diesel, grupos geradores, motobombas de combate
+                a incêndio e sistemas associados. Avaliamos as condições físicas, a instalação, o entorno e os
+                requisitos aplicáveis de segurança.
+              </p>
+            </div>
+            <!-- Item 2 -->
+            <div class="bg-white border border-zinc-200 p-5 rounded-2xl">
+              <h3
+                class="font-heading font-bold text-sm md:text-base text-zinc-900 mb-2 flex items-start gap-2.5 leading-snug">
+                <i data-lucide="check-circle" class="w-4.5 h-4.5 text-brand-green shrink-0 mt-0.5"></i>
+                Verificação de Conformidade com NR-20 e NR-16
+              </h3>
+              <p class="text-xs text-zinc-500 leading-relaxed font-sans">
+                Analisamos aspectos técnicos relacionados ao armazenamento e manuseio de óleo diesel, riscos com
+                inflamáveis e atividades perigosas. A avaliação considera as exigências aplicáveis da NR-20, NR-16 e
+                demais referências técnicas pertinentes à instalação.
+              </p>
+            </div>
+            <!-- Item 3 -->
+            <div class="bg-white border border-zinc-200 p-5 rounded-2xl">
+              <h3
+                class="font-heading font-bold text-sm md:text-base text-zinc-900 mb-2 flex items-start gap-2.5 leading-snug">
+                <i data-lucide="check-circle" class="w-4.5 h-4.5 text-brand-green shrink-0 mt-0.5"></i>
+                Identificação de Não Conformidades e Pontos Críticos
+              </h3>
+              <p class="text-xs text-zinc-500 leading-relaxed font-sans">
+                Mapeamos não conformidades em tanques, bacias de contenção, tubulações, válvulas, conexões, aterramento,
+                sinalização e dispositivos de segurança. O objetivo é identificar riscos e prioridades de adequação de
+                forma objetiva.
+              </p>
+            </div>
+            <!-- Item 4 -->
+            <div class="bg-white border border-zinc-200 p-5 rounded-2xl">
+              <h3
+                class="font-heading font-bold text-sm md:text-base text-zinc-900 mb-2 flex items-start gap-2.5 leading-snug">
+                <i data-lucide="check-circle" class="w-4.5 h-4.5 text-brand-green shrink-0 mt-0.5"></i>
+                Avaliação de Bacias de Contenção e Sistemas de Alimentação
+              </h3>
+              <p class="text-xs text-zinc-500 leading-relaxed font-sans">
+                A inspeção abrange a integridade visual e as condições de contenção de vazamentos, bem como tubulações e
+                conexões do sistema de alimentação de óleo diesel. A SISPER verifica pontos que podem comprometer a
+                segurança da instalação e a operação dos equipamentos.
+              </p>
+            </div>
+            <!-- Item 5 -->
+            <div class="bg-white border border-zinc-200 p-5 rounded-2xl">
+              <h3
+                class="font-heading font-bold text-sm md:text-base text-zinc-900 mb-2 flex items-start gap-2.5 leading-snug">
+                <i data-lucide="check-circle" class="w-4.5 h-4.5 text-brand-green shrink-0 mt-0.5"></i>
+                Orientação Técnica para Adequações
+              </h3>
+              <p class="text-xs text-zinc-500 leading-relaxed font-sans">
+                Após a vistoria, a SISPER apresenta orientações de engenharia para correção das irregularidades
+                identificadas. As recomendações são direcionadas à melhoria das condições de segurança, organização da
+                instalação e atendimento aos requisitos técnicos aplicáveis.
+              </p>
+            </div>
+            <!-- Item 6 -->
+            <div class="bg-white border border-zinc-200 p-5 rounded-2xl">
+              <h3
+                class="font-heading font-bold text-sm md:text-base text-zinc-900 mb-2 flex items-start gap-2.5 leading-snug">
+                <i data-lucide="check-circle" class="w-4.5 h-4.5 text-brand-green shrink-0 mt-0.5"></i>
+                Emissão de Laudo Técnico com ART
+              </h3>
+              <p class="text-xs text-zinc-500 leading-relaxed font-sans">
+                A SISPER emite laudo técnico de conformidade para grupos geradores e tanques de armazenamento de óleo
+                diesel, assinado por engenheiro habilitado com mais de 25 anos de experiência, acompanhado de ART. O
+                documento registra as condições avaliadas, as não conformidades encontradas e as recomendações técnicas
+                necessárias.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- FAQ -->
+        <section class="animate-on-scroll bg-white p-8 rounded-2xl border border-zinc-200 shadow-sm space-y-6">
+          <h2
+            class="font-heading font-black text-xl md:text-2xl text-brand-lead border-b border-zinc-100 pb-4 flex items-center gap-2">
+            <i data-lucide="help-circle" class="w-6 h-6 text-brand-green"></i>
+            Perguntas Frequentes
+          </h2>
+          <div class="space-y-6">
+            <!-- Q1 -->
+            <div class="space-y-2">
+              <h3 class="font-heading font-bold text-sm md:text-base text-zinc-900 leading-tight">
+                O que é o laudo de conformidade NR-20 para grupo gerador?
+              </h3>
+              <p class="text-xs md:text-sm text-zinc-500 leading-relaxed font-sans">
+                O laudo de conformidade NR-20 é um documento técnico elaborado após a inspeção das condições de
+                segurança de instalações que armazenam ou utilizam óleo diesel, como grupos geradores e motobombas de
+                combate a incêndio. A SISPER avalia tanques, contenção, tubulações, sinalização, acessos e outros itens
+                aplicáveis, apontando não conformidades e recomendações de adequação.
+              </p>
+              <hr class="border-zinc-100 mt-4" />
+            </div>
+            <!-- Q2 -->
+            <div class="space-y-2">
+              <h3 class="font-heading font-bold text-sm md:text-base text-zinc-900 leading-tight">
+                A NR-20 se aplica a tanques de óleo diesel de grupos geradores?
+              </h3>
+              <p class="text-xs md:text-sm text-zinc-500 leading-relaxed font-sans">
+                Sim. A NR-20 estabelece requisitos de segurança para atividades com inflamáveis e líquidos combustíveis,
+                incluindo situações de armazenamento, transferência e manuseio de óleo diesel. A aplicação dos
+                requisitos depende das características e da capacidade da instalação, por isso a SISPER realiza uma
+                avaliação técnica específica para cada empreendimento.
+              </p>
+              <hr class="border-zinc-100 mt-4" />
+            </div>
+            <!-- Q3 -->
+            <div class="space-y-2">
+              <h3 class="font-heading font-bold text-sm md:text-base text-zinc-900 leading-tight">
+                Quando é necessário realizar uma inspeção em tanque de diesel e grupo gerador?
+              </h3>
+              <p class="text-xs md:text-sm text-zinc-500 leading-relaxed font-sans">
+                A inspeção é recomendada antes da entrada em operação da instalação, após reformas ou ampliações, em
+                caso de vazamentos, alterações no sistema de combustível, exigências de auditorias ou quando houver
+                necessidade de atualizar a documentação técnica. A SISPER também pode avaliar instalações existentes
+                para identificar riscos e necessidades de adequação.
+              </p>
+              <hr class="border-zinc-100 mt-4" />
+            </div>
+            <!-- Q4 -->
+            <div class="space-y-2">
+              <h3 class="font-heading font-bold text-sm md:text-base text-zinc-900 leading-tight">
+                O laudo NR-20 também analisa situações de periculosidade previstas na NR-16?
+              </h3>
+              <p class="text-xs md:text-sm text-zinc-500 leading-relaxed font-sans">
+                A SISPER realiza a avaliação técnica das condições físicas da instalação, dos tanques de óleo diesel,
+                grupos geradores e possíveis áreas de risco relacionadas a inflamáveis. Quando aplicável ao escopo
+                contratado, o laudo aborda os requisitos técnicos referentes ao pagamento ou não da periculosidade
+                prescrita na NR-16.
+              </p>
+              <hr class="border-zinc-100 mt-4" />
+            </div>
+            <!-- Q5 -->
+            <div class="space-y-2">
+              <h3 class="font-heading font-bold text-sm md:text-base text-zinc-900 leading-tight">
+                O que é verificado na vistoria de tanque de óleo diesel?
+              </h3>
+              <p class="text-xs md:text-sm text-zinc-500 leading-relaxed font-sans">
+                A vistoria pode abranger as condições do tanque, bacia de contenção, tubulações, conexões, válvulas,
+                sistema de abastecimento, aterramento, ventilação, sinalização, acessibilidade, proteção contra
+                vazamentos e integridade visual dos componentes. A SISPER define o escopo conforme as características do
+                sistema e a finalidade do laudo técnico.
+              </p>
+              <hr class="border-zinc-100 mt-4" />
+            </div>
+            <!-- Q6 -->
+            <div class="space-y-2">
+              <h3 class="font-heading font-bold text-sm md:text-base text-zinc-900 leading-tight">
+                O laudo técnico da SISPER é emitido com ART?
+              </h3>
+              <p class="text-xs md:text-sm text-zinc-500 leading-relaxed font-sans">
+                Sim. Os laudos técnicos elaborados pela SISPER são emitidos sob responsabilidade de engenheiro
+                habilitado e acompanhados da respectiva ART — Anotação de Responsabilidade Técnica. O documento
+                apresenta as condições encontradas, os desvios identificados e as recomendações técnicas para adequação.
+              </p>
+            </div>
+          </div>
+        </section>
+
+      </div>
+
+      <!-- COLUNA DIREITA - FORMULÁRIO DE CAPTURA -->
+      <div id="conversao" class="lg:col-span-5">
+        <div class="sticky top-24 bg-white border border-zinc-200 rounded-2xl p-6 md:p-8 shadow-sm">
+          <h3 class="font-heading font-bold text-lg text-zinc-900 mb-2 leading-tight">
+            Solicite uma Avaliação Técnica NR-20/NR-16
+          </h3>
+          <p class="text-xs text-zinc-400 mb-6 font-sans">
+            Preencha os dados e receba o contato da equipe técnica da SISPER para avaliar a conformidade de grupos
+            geradores, tanques de óleo diesel e sistemas associados.
+          </p>
+
+          <form class="lead-form space-y-4">
+            <input type="hidden" name="servico" value="Laudos de Conformidade NR-20" />
+
+            <div>
+              <label class="block text-[10px] font-bold text-zinc-700 uppercase tracking-wider mb-1.5 font-sans">Nome
+                Completo *</label>
+              <input type="text" name="nome" required placeholder="Seu nome"
+                class="w-full border border-zinc-200 rounded-xl px-4 py-2.5 text-xs focus:outline-none focus:border-brand-green font-sans" />
+            </div>
+
+            <div>
+              <label class="block text-[10px] font-bold text-zinc-700 uppercase tracking-wider mb-1.5 font-sans">Empresa
+                / Condomínio *</label>
+              <input type="text" name="empresa" required placeholder="Nome da empresa ou condomínio"
+                class="w-full border border-zinc-200 rounded-xl px-4 py-2.5 text-xs focus:outline-none focus:border-brand-green font-sans" />
+            </div>
+
+            <div>
+              <label class="block text-[10px] font-bold text-zinc-700 uppercase tracking-wider mb-1.5 font-sans">E-mail
+                Corporativo *</label>
+              <input type="email" name="email" required placeholder="exemplo@empresa.com.br"
+                class="w-full border border-zinc-200 rounded-xl px-4 py-2.5 text-xs focus:outline-none focus:border-brand-green font-sans" />
+            </div>
+
+            <div>
+              <label
+                class="block text-[10px] font-bold text-zinc-700 uppercase tracking-wider mb-1.5 font-sans">Telefone /
+                WhatsApp *</label>
+              <input type="tel" name="telefone" required placeholder="(11) 98888-8888"
+                class="w-full border border-zinc-200 rounded-xl px-4 py-2.5 text-xs focus:outline-none focus:border-brand-green font-sans" />
+            </div>
+
+            <div>
+              <label class="block text-[10px] font-bold text-zinc-700 uppercase tracking-wider mb-1.5 font-sans">Sobre a
+                instalação</label>
+              <textarea name="mensagem" rows="3"
+                placeholder="Informe, se possível, a quantidade de geradores, capacidade dos tanques de diesel, localização da instalação ou a principal necessidade."
+                class="w-full border border-zinc-200 rounded-xl px-4 py-2.5 text-xs focus:outline-none focus:border-brand-green font-sans"></textarea>
+            </div>
+
+            <div class="flex items-start gap-2 pt-1">
+              <input type="checkbox" id="lgpd-consent" name="lgpd" required
+                class="w-3.5 h-3.5 mt-0.5 accent-brand-green rounded border-zinc-300 cursor-pointer" />
+              <label for="lgpd-consent"
+                class="text-[10px] text-zinc-500 leading-tight select-none cursor-pointer font-sans">
+                Autorizo a SISPER a entrar em contato para tratar da minha solicitação, conforme a Política de
+                Privacidade.
+              </label>
+            </div>
+
+            <div class="pt-2">
+              <button type="submit" class="w-full relative btn-beam-container group">
+                <div class="beam-border"></div>
+                <span
+                  class="relative z-10 flex items-center justify-center bg-brand-green text-white px-5 py-3 rounded-full text-xs font-semibold shadow-lg hover:bg-green-800 transition-colors gap-2 w-full">
+                  Solicitar Avaliação Técnica
+                  <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+                </span>
+              </button>
+            </div>
+          </form>
+        </div>
       </div>
 
     </div>
 
-    <!-- FOOTER -->
-    <footer id="site-footer"></footer>
+  </div>
 
-    <!-- COMMON SCRIPTS -->
-    <script src="js/components.js"></script>
+  <!-- FOOTER -->
+  <footer id="site-footer"></footer>
+
+  <!-- COMMON SCRIPTS -->
+  <script src="js/components.js"></script>
 </body>
+
 </html>
