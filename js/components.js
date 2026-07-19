@@ -397,7 +397,7 @@ function injectFooter() {
             </a>
             <!-- Instagram -->
             <a
-              href="https://instagram.com/sisper.consultoria"
+              href="https://www.instagram.com/sisper_consultoria/"
               target="_blank"
               rel="noopener noreferrer"
               class="w-10 h-10 rounded-full bg-zinc-800 border border-white/10 flex items-center justify-center hover:bg-brand-green hover:text-white transition-colors group"
@@ -423,7 +423,7 @@ function injectFooter() {
             </a>
             <!-- Telegram -->
             <a
-              href="https://t.me/sisperconsultoria"
+              href="https://t.me/Sisper_consultoria"
               target="_blank"
               rel="noopener noreferrer"
               class="w-10 h-10 rounded-full bg-zinc-800 border border-white/10 flex items-center justify-center hover:bg-brand-green hover:text-white transition-colors group"
@@ -708,6 +708,7 @@ function initLeadForms() {
             const companyInput = form.querySelector('[name="empresa"]');
             const serviceSelect = form.querySelector('[name="servico"]');
             const messageInput = form.querySelector('[name="mensagem"]');
+            const radioNecessidade = form.querySelector('[name="necessidade"]:checked');
             
             // Validação simples
             if (!nameInput.value || !emailInput.value || !phoneInput.value || !companyInput.value) {
@@ -726,19 +727,33 @@ function initLeadForms() {
                 </svg>
                 Processando...
             `;
+
+            // Construir payload
+            const servicoText = serviceSelect ? serviceSelect.value : 'Contato Geral';
+            const payload = {
+                Nome: nameInput.value,
+                Empresa: companyInput.value,
+                Email: emailInput.value,
+                Telefone: phoneInput.value,
+                Servico: servicoText,
+                Necessidade: radioNecessidade ? radioNecessidade.value : '',
+                Mensagem: messageInput ? messageInput.value : '',
+                _subject: `Nova solicitação: ${servicoText}`,
+                _captcha: 'false'
+            };
             
-            // Simular chamada de API com delay de 1.5s
-            setTimeout(() => {
-                // Registrar localmente no localStorage como "leads" salvos para análise posterior
+            // Função auxiliar de salvamento e redirecionamento
+            const saveAndRedirect = () => {
                 const leads = JSON.parse(localStorage.getItem('sisper_local_leads') || '[]');
                 const newLead = {
                     id: Date.now(),
-                    nome: nameInput.value,
-                    email: emailInput.value,
-                    telefone: phoneInput.value,
-                    empresa: companyInput.value,
-                    servico: serviceSelect ? serviceSelect.value : 'Contato Geral',
-                    mensagem: messageInput ? messageInput.value : '',
+                    nome: payload.Nome,
+                    email: payload.Email,
+                    telefone: payload.Telefone,
+                    empresa: payload.Empresa,
+                    servico: payload.Servico,
+                    mensagem: payload.Mensagem,
+                    necessidade: payload.Necessidade,
                     data: new Date().toISOString()
                 };
                 leads.push(newLead);
@@ -750,7 +765,25 @@ function initLeadForms() {
                 
                 // Redirecionar
                 window.location.href = 'obrigado.html';
-            }, 1500);
+            };
+
+            // Enviar e-mail via FormSubmit AJAX
+            fetch("https://formsubmit.co/ajax/sisper.consultoria@gmail.com", {
+                method: "POST",
+                headers: { 
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify(payload)
+            })
+            .then(() => {
+                saveAndRedirect();
+            })
+            .catch((error) => {
+                console.error('Erro ao enviar e-mail via FormSubmit:', error);
+                // Se falhar o envio técnico, executa o fluxo local para garantir a conversão no frontend
+                saveAndRedirect();
+            });
         });
     });
 }

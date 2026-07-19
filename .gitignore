@@ -1,0 +1,32 @@
+# OS Metadata
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDE & Editor configurations
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Temporary & Log files
+*.tmp
+*.bak
+*.swp
+*.log
+
+# AI Coding Agent metadata and temporary files
+.agents/
+.gemini/
+brain/
+scratch/
+task.md
+implementation_plan.md
+walkthrough.md
+*.png
+*.webp
+*.mp4
+*.json
+!assets/**/*.png
+!assets/**/*.jpg
+!assets/**/*.jpeg
