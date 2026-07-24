@@ -4,6 +4,11 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="assets/image/favicon.png" sizes="512x512" />
+    <link rel="shortcut icon" href="assets/image/favicon.png" type="image/png" />
+
     <title>SISPER Consultoria e Projetos | Sistemas de Energia Crítica</title>
     <meta name="description"
         content="Consultoria técnica independente para auditoria de manutenção preventiva de geradores, dimensionamento, laudos NR-20 e inspeções termográficas." />
@@ -48,10 +53,13 @@
     </script>
 
     <style>
+        html,
         body {
             font-family: 'Inter', sans-serif;
             background-color: #FAFAFA;
             overflow-x: hidden;
+            max-width: 100%;
+            width: 100%;
         }
 
         h1,
@@ -211,7 +219,7 @@
     <header id="site-header"></header>
 
     <!-- 1. HERO SECTION -->
-    <section class="relative min-h-[90vh] flex items-center pt-12 pb-16 overflow-hidden bg-white">
+    <section class="relative min-h-[90vh] w-full flex flex-col justify-center pt-12 pb-16 overflow-hidden bg-white">
 
         <!-- Background Grid Animations -->
         <div class="absolute inset-0 grid grid-cols-6 md:grid-cols-12 gap-0 z-0 pointer-events-none opacity-40"
@@ -228,28 +236,32 @@
         </div>
 
         <div
-            class="relative z-10 max-w-[1300px] mx-auto px-6 w-full grid lg:grid-cols-12 gap-12 lg:gap-16 items-center lg:items-stretch">
+            class="relative z-10 max-w-[1300px] mx-auto px-6 min-w-0 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center lg:items-stretch">
 
             <!-- Coluna de Texto (Esquerda - Copywriting e CTAs) -->
             <div class="lg:col-span-7 flex flex-col lg:justify-between text-left">
 
                 <!-- Badge de Autoridade (Tagline) -->
                 <div
-                    class="inline-flex glass-card-light rounded-full px-4 py-2 items-center gap-2.5 mb-8 lg:mb-0 w-max animate-on-scroll">
-                    <span class="flex h-2 w-2 relative">
+                    class="inline-flex glass-card-light rounded-full px-3 py-1.5 sm:px-4 sm:py-2 items-center gap-2.5 mb-8 lg:mb-0 w-fit max-w-full animate-on-scroll">
+                    <span class="flex h-2 w-2 relative shrink-0">
                         <span
                             class="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-neon opacity-75"></span>
                         <span class="relative inline-flex rounded-full h-2 w-2 bg-brand-green"></span>
                     </span>
-                    <span class="text-xs font-bold text-brand-green tracking-widest uppercase">Consultoria de Engenharia
-                        Independente</span>
+                    <span
+                        class="text-[10px] sm:text-xs font-bold text-brand-green tracking-wider sm:tracking-widest uppercase">
+                        <span class="inline sm:hidden">Consultoria Independente</span>
+                        <span class="hidden sm:inline">Consultoria de Engenharia Independente</span>
+                    </span>
                 </div>
 
                 <!-- Conteúdo Centralizado (H1, H2, H3 agrupados) -->
                 <div class="my-8 lg:my-0 flex flex-col justify-center">
                     <!-- Headline (H1) - Impactante e Curta -->
-                    <h1 class="font-heading font-black text-4xl sm:text-5xl md:text-6xl tracking-tight text-brand-lead leading-[1.3] mb-8 lg:mb-10 text-left"
-                        id="hero-title">Energia crítica exige<br /><span class="text-brand-green">critério técnico antes de qualquer decisão.</span></h1>
+                    <h1 class="font-heading font-black text-3xl sm:text-5xl md:text-6xl tracking-tight text-brand-lead leading-[1.3] mb-8 lg:mb-10 text-left"
+                        id="hero-title">Energia crítica exige<br /><span class="text-brand-green">critério técnico antes
+                            de qualquer decisão.</span></h1>
 
                     <!-- Subheadline - Valor Agregado -->
                     <p
@@ -271,10 +283,10 @@
                         <button class="relative btn-beam-container group w-full">
                             <div class="beam-border"></div>
                             <span
-                                class="relative z-10 flex items-center justify-center bg-brand-green text-white px-8 py-4 rounded-full text-base font-semibold shadow-xl shadow-brand-green/30 hover:bg-green-800 transition-colors gap-2 w-full">
+                                class="relative z-10 flex items-center justify-center bg-brand-green text-white px-5 py-3 sm:px-8 sm:py-4 rounded-full text-sm sm:text-base font-semibold shadow-xl shadow-brand-green/30 hover:bg-green-800 transition-colors gap-1.5 sm:gap-2 w-full">
                                 Solicitar avaliação técnica
                                 <i data-lucide="arrow-right"
-                                    class="w-5 h-5 group-hover:translate-x-1 transition-transform"></i>
+                                    class="w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform"></i>
                             </span>
                         </button>
                     </a>
@@ -282,7 +294,7 @@
                     <!-- CTA Secundário -->
                     <a href="#servicos" class="w-full sm:w-auto">
                         <button
-                            class="w-full flex items-center justify-center gap-2 px-8 py-4 rounded-full text-base font-semibold text-zinc-700 bg-white border-2 border-zinc-200 hover:border-brand-lead hover:text-brand-lead hover:bg-zinc-50 shadow-sm transition-all">
+                            class="w-full flex items-center justify-center gap-1.5 sm:gap-2 px-5 py-3 sm:px-8 sm:py-4 rounded-full text-sm sm:text-base font-semibold text-zinc-700 bg-white border-2 border-zinc-200 hover:border-brand-lead hover:text-brand-lead hover:bg-zinc-50 shadow-sm transition-all">
                             Conhecer serviços
                         </button>
                     </a>
@@ -473,7 +485,8 @@
                         class="w-12 h-12 rounded-xl bg-brand-light text-brand-green flex items-center justify-center font-heading font-black text-lg group-hover:bg-brand-green group-hover:text-white transition-all duration-300">
                         01
                     </div>
-                    <h3 class="font-heading font-bold text-base md:text-lg text-zinc-900 mt-6 mb-3 leading-tight min-h-[3rem] md:min-h-[3.5rem]">
+                    <h3
+                        class="font-heading font-bold text-base md:text-lg text-zinc-900 mt-6 mb-3 leading-tight min-h-[3rem] md:min-h-[3.5rem]">
                         Diagnóstico Técnico Inicial
                     </h3>
                     <p class="text-xs md:text-sm text-zinc-500 leading-relaxed">
@@ -489,7 +502,8 @@
                         class="w-12 h-12 rounded-xl bg-brand-light text-brand-green flex items-center justify-center font-heading font-black text-lg group-hover:bg-brand-green group-hover:text-white transition-all duration-300">
                         02
                     </div>
-                    <h3 class="font-heading font-bold text-base md:text-lg text-zinc-900 mt-6 mb-3 leading-tight min-h-[3rem] md:min-h-[3.5rem]">
+                    <h3
+                        class="font-heading font-bold text-base md:text-lg text-zinc-900 mt-6 mb-3 leading-tight min-h-[3rem] md:min-h-[3.5rem]">
                         Acompanhamento e Auditoria Técnica
                     </h3>
                     <p class="text-xs md:text-sm text-zinc-500 leading-relaxed">
@@ -505,7 +519,8 @@
                         class="w-12 h-12 rounded-xl bg-brand-light text-brand-green flex items-center justify-center font-heading font-black text-lg group-hover:bg-brand-green group-hover:text-white transition-all duration-300">
                         03
                     </div>
-                    <h3 class="font-heading font-bold text-base md:text-lg text-zinc-900 mt-6 mb-3 leading-tight min-h-[3rem] md:min-h-[3.5rem]">
+                    <h3
+                        class="font-heading font-bold text-base md:text-lg text-zinc-900 mt-6 mb-3 leading-tight min-h-[3rem] md:min-h-[3.5rem]">
                         Identificação de Riscos
                     </h3>
                     <p class="text-xs md:text-sm text-zinc-500 leading-relaxed">
@@ -520,7 +535,8 @@
                         class="w-12 h-12 rounded-xl bg-brand-light text-brand-green flex items-center justify-center font-heading font-black text-lg group-hover:bg-brand-green group-hover:text-white transition-all duration-300">
                         04
                     </div>
-                    <h3 class="font-heading font-bold text-base md:text-lg text-zinc-900 mt-6 mb-3 leading-tight min-h-[3rem] md:min-h-[3.5rem]">
+                    <h3
+                        class="font-heading font-bold text-base md:text-lg text-zinc-900 mt-6 mb-3 leading-tight min-h-[3rem] md:min-h-[3.5rem]">
                         Recomendações Decisórias
                     </h3>
                     <p class="text-xs md:text-sm text-zinc-500 leading-relaxed">
@@ -635,103 +651,94 @@
                 <!-- Diferencial 1 -->
                 <div>
                     <div class="flex items-center gap-3 mb-2">
-                        <img
-                            src="assets/image/logo_sisper_v2_neon_full.png"
-                            alt="Check SISPER"
+                        <img src="assets/image/logo_sisper_v2_neon_full.png" alt="Check SISPER"
                             class="w-5 h-5 object-contain shrink-0"
-                            onerror="this.src='https://via.placeholder.com/20x20/76e025/ffffff?text=✓';"
-                        />
+                            onerror="this.src='https://via.placeholder.com/20x20/76e025/ffffff?text=✓';" />
                         <h3 class="font-heading font-bold text-base text-brand-neon leading-tight">
                             Consultoria independente
                         </h3>
                     </div>
                     <p class="text-xs md:text-sm text-zinc-400 leading-relaxed pl-8">
-                        Não vendemos peças nem executamos manutenção corretiva. Nossa atuação é exclusivamente técnica e imparcial, focada em identificar riscos, melhorar a confiabilidade dos sistemas e orientar a melhor decisão para o seu investimento.
+                        Não vendemos peças nem executamos manutenção corretiva. Nossa atuação é exclusivamente técnica e
+                        imparcial, focada em identificar riscos, melhorar a confiabilidade dos sistemas e orientar a
+                        melhor decisão para o seu investimento.
                     </p>
                 </div>
                 <!-- Diferencial 2 -->
                 <div>
                     <div class="flex items-center gap-3 mb-2">
-                        <img
-                            src="assets/image/logo_sisper_v2_neon_full.png"
-                            alt="Check SISPER"
+                        <img src="assets/image/logo_sisper_v2_neon_full.png" alt="Check SISPER"
                             class="w-5 h-5 object-contain shrink-0"
-                            onerror="this.src='https://via.placeholder.com/20x20/76e025/ffffff?text=✓';"
-                        />
+                            onerror="this.src='https://via.placeholder.com/20x20/76e025/ffffff?text=✓';" />
                         <h3 class="font-heading font-bold text-base text-brand-neon leading-tight">
                             Experiência em energia crítica
                         </h3>
                     </div>
                     <p class="text-xs md:text-sm text-zinc-400 leading-relaxed pl-8">
-                        Mais de 25 anos de experiência prática em sistemas elétricos, grupos geradores e contingências de energia em ambientes corporativos, comerciais e industriais de alta complexidade.
+                        Mais de 25 anos de experiência prática em sistemas elétricos, grupos geradores e contingências
+                        de energia em ambientes corporativos, comerciais e industriais de alta complexidade.
                     </p>
                 </div>
                 <!-- Diferencial 3 -->
                 <div>
                     <div class="flex items-center gap-3 mb-2">
-                        <img
-                            src="assets/image/logo_sisper_v2_neon_full.png"
-                            alt="Check SISPER"
+                        <img src="assets/image/logo_sisper_v2_neon_full.png" alt="Check SISPER"
                             class="w-5 h-5 object-contain shrink-0"
-                            onerror="this.src='https://via.placeholder.com/20x20/76e025/ffffff?text=✓';"
-                        />
+                            onerror="this.src='https://via.placeholder.com/20x20/76e025/ffffff?text=✓';" />
                         <h3 class="font-heading font-bold text-base text-brand-neon leading-tight">
                             Engenharia multidisciplinar
                         </h3>
                     </div>
                     <p class="text-xs md:text-sm text-zinc-400 leading-relaxed pl-8">
-                        Atuamos com engenharia elétrica, mecânica e hidráulica aplicada a projetos de grupos geradores, inspeções termográficas e laudos de conformidade com as normas NR-10 e NR-20.
+                        Atuamos com engenharia elétrica, mecânica e hidráulica aplicada a projetos de grupos geradores,
+                        inspeções termográficas e laudos de conformidade com as normas NR-10 e NR-20.
                     </p>
                 </div>
                 <!-- Diferencial 4 -->
                 <div>
                     <div class="flex items-center gap-3 mb-2">
-                        <img
-                            src="assets/image/logo_sisper_v2_neon_full.png"
-                            alt="Check SISPER"
+                        <img src="assets/image/logo_sisper_v2_neon_full.png" alt="Check SISPER"
                             class="w-5 h-5 object-contain shrink-0"
-                            onerror="this.src='https://via.placeholder.com/20x20/76e025/ffffff?text=✓';"
-                        />
+                            onerror="this.src='https://via.placeholder.com/20x20/76e025/ffffff?text=✓';" />
                         <h3 class="font-heading font-bold text-base text-brand-neon leading-tight">
                             Prevenção de falhas e incêndios
                         </h3>
                     </div>
                     <p class="text-xs md:text-sm text-zinc-400 leading-relaxed pl-8">
-                        Identificamos anomalias térmicas, elétricas e mecânicas antes que evoluam para falhas operacionais, interrupções de energia, danos a equipamentos ou incêndios elétricos.
+                        Identificamos anomalias térmicas, elétricas e mecânicas antes que evoluam para falhas
+                        operacionais, interrupções de energia, danos a equipamentos ou incêndios elétricos.
                     </p>
                 </div>
                 <!-- Diferencial 5 -->
                 <div>
                     <div class="flex items-center gap-3 mb-2">
-                        <img
-                            src="assets/image/logo_sisper_v2_neon_full.png"
-                            alt="Check SISPER"
+                        <img src="assets/image/logo_sisper_v2_neon_full.png" alt="Check SISPER"
                             class="w-5 h-5 object-contain shrink-0"
-                            onerror="this.src='https://via.placeholder.com/20x20/76e025/ffffff?text=✓';"
-                        />
+                            onerror="this.src='https://via.placeholder.com/20x20/76e025/ffffff?text=✓';" />
                         <h3 class="font-heading font-bold text-base text-brand-neon leading-tight">
                             Relatórios técnicos objetivos
                         </h3>
                     </div>
                     <p class="text-xs md:text-sm text-zinc-400 leading-relaxed pl-8">
-                        Transformamos informações complexas em relatórios técnicos claros, com evidências, classificação de criticidade e recomendações práticas para gestores, equipes de manutenção e responsáveis técnicos.
+                        Transformamos informações complexas em relatórios técnicos claros, com evidências, classificação
+                        de criticidade e recomendações práticas para gestores, equipes de manutenção e responsáveis
+                        técnicos.
                     </p>
                 </div>
                 <!-- Diferencial 6 -->
                 <div>
                     <div class="flex items-center gap-3 mb-2">
-                        <img
-                            src="assets/image/logo_sisper_v2_neon_full.png"
-                            alt="Check SISPER"
+                        <img src="assets/image/logo_sisper_v2_neon_full.png" alt="Check SISPER"
                             class="w-5 h-5 object-contain shrink-0"
-                            onerror="this.src='https://via.placeholder.com/20x20/76e025/ffffff?text=✓';"
-                        />
+                            onerror="this.src='https://via.placeholder.com/20x20/76e025/ffffff?text=✓';" />
                         <h3 class="font-heading font-bold text-base text-brand-neon leading-tight">
                             Apoio para decisões e investimentos
                         </h3>
                     </div>
                     <p class="text-xs md:text-sm text-zinc-400 leading-relaxed pl-8">
-                        Realizamos análises técnicas e equalização de propostas para apoiar a contratação, substituição ou adequação de equipamentos, evitando custos desnecessários, subdimensionamento e investimentos inadequados.
+                        Realizamos análises técnicas e equalização de propostas para apoiar a contratação, substituição
+                        ou adequação de equipamentos, evitando custos desnecessários, subdimensionamento e investimentos
+                        inadequados.
                     </p>
                 </div>
             </div>
@@ -749,7 +756,9 @@
                     Soluções para operações em que a energia não pode falhar
                 </h2>
                 <p class="text-sm text-zinc-500 mt-4 leading-relaxed">
-                    Atuamos com consultoria em infraestrutura elétrica crítica, projetos de grupos geradores, inspeção termográfica e laudos de conformidade para empresas onde uma interrupção de energia pode gerar perdas financeiras, paralisações operacionais, riscos à segurança e impactos à vida.
+                    Atuamos com consultoria em infraestrutura elétrica crítica, projetos de grupos geradores, inspeção
+                    termográfica e laudos de conformidade para empresas onde uma interrupção de energia pode gerar
+                    perdas financeiras, paralisações operacionais, riscos à segurança e impactos à vida.
                 </p>
             </div>
 
@@ -763,7 +772,8 @@
                         Condomínios Comerciais
                     </h3>
                     <p class="text-xs md:text-sm text-zinc-500 leading-relaxed">
-                        Proteção da continuidade operacional de elevadores, sistemas de pressurização de escadas, iluminação de emergência, bombas e cargas essenciais em edifícios corporativos de alto fluxo.
+                        Proteção da continuidade operacional de elevadores, sistemas de pressurização de escadas,
+                        iluminação de emergência, bombas e cargas essenciais em edifícios corporativos de alto fluxo.
                     </p>
                 </div>
                 <!-- Setor 2 -->
@@ -775,7 +785,9 @@
                         Hospitais e Serviços de Saúde
                     </h3>
                     <p class="text-xs md:text-sm text-zinc-500 leading-relaxed">
-                        Confiabilidade para operações hospitalares em que uma falha no fornecimento de energia ou nos grupos geradores pode comprometer UTIs, centros cirúrgicos, equipamentos médicos e a segurança de pacientes.
+                        Confiabilidade para operações hospitalares em que uma falha no fornecimento de energia ou nos
+                        grupos geradores pode comprometer UTIs, centros cirúrgicos, equipamentos médicos e a segurança
+                        de pacientes.
                     </p>
                 </div>
                 <!-- Setor 3 -->
@@ -787,7 +799,9 @@
                         Data Centers
                     </h3>
                     <p class="text-xs md:text-sm text-zinc-500 leading-relaxed">
-                        Avaliação da infraestrutura elétrica crítica, grupos geradores e sistemas de climatização para reduzir riscos de indisponibilidade, superaquecimento, perda de dados e interrupção de serviços digitais.
+                        Avaliação da infraestrutura elétrica crítica, grupos geradores e sistemas de climatização para
+                        reduzir riscos de indisponibilidade, superaquecimento, perda de dados e interrupção de serviços
+                        digitais.
                     </p>
                 </div>
                 <!-- Setor 4 -->
@@ -799,7 +813,9 @@
                         Indústrias
                     </h3>
                     <p class="text-xs md:text-sm text-zinc-500 leading-relaxed">
-                        Prevenção de paradas não programadas em linhas de produção, processos contínuos e equipamentos industriais. Identificamos riscos que podem causar perdas produtivas, danos a ativos e prejuízos operacionais.
+                        Prevenção de paradas não programadas em linhas de produção, processos contínuos e equipamentos
+                        industriais. Identificamos riscos que podem causar perdas produtivas, danos a ativos e prejuízos
+                        operacionais.
                     </p>
                 </div>
                 <!-- Setor 5 -->
@@ -811,7 +827,9 @@
                         Centros Logísticos e Cadeia Fria
                     </h3>
                     <p class="text-xs md:text-sm text-zinc-500 leading-relaxed">
-                        Confiabilidade elétrica para centros de distribuição, armazenagem refrigerada, automação e operações de expedição. Reduza o risco de perdas de produtos, atrasos e interrupções na cadeia de suprimentos.
+                        Confiabilidade elétrica para centros de distribuição, armazenagem refrigerada, automação e
+                        operações de expedição. Reduza o risco de perdas de produtos, atrasos e interrupções na cadeia
+                        de suprimentos.
                     </p>
                 </div>
                 <!-- Setor 6 -->
@@ -823,7 +841,8 @@
                         Prédios Corporativos
                     </h3>
                     <p class="text-xs md:text-sm text-zinc-500 leading-relaxed">
-                        Segurança e continuidade para sistemas de telecomunicação, climatização, elevadores, iluminação, redes de TI e demais cargas essenciais de grandes edifícios empresariais.
+                        Segurança e continuidade para sistemas de telecomunicação, climatização, elevadores, iluminação,
+                        redes de TI e demais cargas essenciais de grandes edifícios empresariais.
                     </p>
                 </div>
             </div>
@@ -835,7 +854,8 @@
                         <span
                             class="relative z-10 flex items-center justify-center bg-brand-green text-white px-8 py-4 rounded-full text-base font-semibold shadow-xl shadow-brand-green/30 hover:bg-green-800 transition-colors gap-2">
                             Conheça os setores atendidos pela SISPER
-                            <i data-lucide="arrow-right" class="w-5 h-5 group-hover:translate-x-1 transition-transform"></i>
+                            <i data-lucide="arrow-right"
+                                class="w-5 h-5 group-hover:translate-x-1 transition-transform"></i>
                         </span>
                     </button>
                 </a>
@@ -855,7 +875,9 @@
                 Seu grupo gerador e sua infraestrutura elétrica estão prontos para uma falta de energia?
             </h2>
             <p class="text-base md:text-lg text-zinc-500 mb-10 leading-relaxed animate-on-scroll">
-                A SISPER realiza avaliações técnicas independentes, inspeção termográfica, projetos de grupos geradores e laudos de conformidade para identificar falhas, reduzir riscos de interrupção e apoiar decisões seguras de investimento e manutenção.
+                A SISPER realiza avaliações técnicas independentes, inspeção termográfica, projetos de grupos geradores
+                e laudos de conformidade para identificar falhas, reduzir riscos de interrupção e apoiar decisões
+                seguras de investimento e manutenção.
             </p>
 
             <div class="flex flex-col sm:flex-row items-center justify-center gap-4 animate-on-scroll">
@@ -863,7 +885,7 @@
                     <button class="relative btn-beam-container group w-full">
                         <div class="beam-border"></div>
                         <span
-                            class="relative z-10 flex items-center justify-center bg-brand-green text-white px-8 py-4 rounded-full text-base font-semibold shadow-xl shadow-brand-green/30 hover:bg-green-800 transition-colors gap-2 w-full">
+                            class="relative z-10 flex items-center justify-center bg-brand-green text-white px-5 py-3 sm:px-8 sm:py-4 rounded-full text-sm sm:text-base font-semibold shadow-xl shadow-brand-green/30 hover:bg-green-800 transition-colors gap-1.5 sm:gap-2 w-full">
                             Solicitar avaliação técnica
                         </span>
                     </button>
@@ -872,7 +894,7 @@
                 <a href="https://wa.me/5511988949290?text=Ol%C3%A1%2C%20gostaria%20de%20solicitar%20uma%20avalia%C3%A7%C3%A3o%20técnica%20de%20geradores."
                     target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto">
                     <button
-                        class="w-full flex items-center justify-center gap-2 px-8 py-4 rounded-full text-base font-semibold text-zinc-700 bg-white border border-zinc-200 hover:border-brand-lead hover:text-brand-lead hover:bg-zinc-50 shadow-sm transition-all">
+                        class="w-full flex items-center justify-center gap-1.5 sm:gap-2 px-5 py-3 sm:px-8 sm:py-4 rounded-full text-sm sm:text-base font-semibold text-zinc-700 bg-white border border-zinc-200 hover:border-brand-lead hover:text-brand-lead hover:bg-zinc-50 shadow-sm transition-all">
                         Falar com um especialista
                     </button>
                 </a>
@@ -890,6 +912,13 @@
         document.addEventListener("DOMContentLoaded", () => {
             const title = document.getElementById('hero-title');
             if (!title) return;
+
+            // Em telas mobile, não divide em caracteres para evitar bugs de quebra de layout e corte lateral
+            if (window.innerWidth < 768) {
+                title.classList.add('animate-on-scroll');
+                return;
+            }
+
             const originalHTML = title.innerHTML;
             title.innerHTML = '';
 

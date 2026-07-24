@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gerador de Favicon - SISPER</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f4f6f9;
+      color: #333;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-h: 100vh;
+      margin: 0;
+      padding: 20px;
+    }
+    .container {
+      background: white;
+      padding: 30px;
+      border-radius: 16px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+      text-align: center;
+      max-width: 600px;
+    }
+    h1 {
+      color: #277928;
+      margin-top: 0;
+    }
+    p {
+      color: #666;
+      line-height: 1.6;
+    }
+    #canvas-container {
+      margin: 20px 0;
+      border: 2px dashed #ccc;
+      border-radius: 8px;
+      padding: 10px;
+      background: #fafafa;
+      display: inline-block;
+    }
+    canvas {
+      display: block;
+      background-image: linear-gradient(45deg, #ccc 25%, transparent 25%), linear-gradient(-45deg, #ccc 25%, transparent 25%), linear-gradient(45deg, transparent 75%, #ccc 75%), linear-gradient(-45deg, transparent 75%, #ccc 75%);
+      background-size: 20px 20px;
+      background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+      max-width: 100%;
+      height: auto;
+    }
+    .btn {
+      background-color: #277928;
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      font-size: 16px;
+      font-weight: 600;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.2s;
+      margin-top: 15px;
+      text-decoration: none;
+      display: inline-block;
+    }
+    .btn:hover {
+      background-color: #1e5e1f;
+    }
+    .btn-secondary {
+      background-color: #6c757d;
+      margin-left: 10px;
+    }
+    .btn-secondary:hover {
+      background-color: #5a6268;
+    }
+    #status {
+      margin-top: 15px;
+      font-weight: bold;
+      color: #277928;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Gerador de Favicon SISPER</h1>
+    <p>
+      Esta ferramenta carrega o logotipo <strong>logo_sisper_v2_transparente.png</strong>, centraliza-o e o redimensiona em uma proporção perfeita em um quadrado de <strong>512 x 512 pixels</strong> com fundo transparente.
+    </p>
+
+    <div id="canvas-container">
+      <canvas id="favicon-canvas" width="512" height="512"></canvas>
+    </div>
+
+    <div>
+      <button id="download-btn" class="btn" style="display: none;">Baixar favicon.png</button>
+    </div>
+    <div id="status">Carregando imagem de origem...</div>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const canvas = document.getElementById("favicon-canvas");
+      const ctx = canvas.getContext("2d");
+      const downloadBtn = document.getElementById("download-btn");
+      const statusDiv = document.getElementById("status");
+
+      const img = new Image();
+      // Caminho relativo da logo de origem
+      img.src = "assets/image/logo_sisper_v2_transparente.png";
+
+      img.onload = () => {
+        statusDiv.textContent = "Processando imagem...";
+        
+        // Limpar canvas
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        // Definir margem interna (deixar 10% de padding nas laterais)
+        const targetSize = 512;
+        const padding = targetSize * 0.1;
+        const maxContentSize = targetSize - (padding * 2); // 410px
+
+        // Calcular escala mantendo a proporção da imagem original
+        let scale = 1;
+        if (img.width > img.height) {
+          scale = maxContentSize / img.width;
+        } else {
+          scale = maxContentSize / img.height;
+        }
+
+        const drawWidth = img.width * scale;
+        const drawHeight = img.height * scale;
+
+        // Centralizar
+        const x = (targetSize - drawWidth) / 2;
+        const y = (targetSize - drawHeight) / 2;
+
+        // Desenhar imagem no canvas
+        ctx.drawImage(img, x, y, drawWidth, drawHeight);
+
+        statusDiv.textContent = "Favicon gerado com sucesso!";
+        downloadBtn.style.display = "inline-block";
+
+        // Lógica de download
+        downloadBtn.addEventListener("click", () => {
+          const link = document.createElement("a");
+          link.download = "favicon.png";
+          link.href = canvas.toDataURL("image/png");
+          link.click();
+          statusDiv.textContent = "Pronto! Agora salve o arquivo baixado na pasta 'assets/image/' com o nome 'favicon.png'.";
+        });
+      };
+
+      img.onerror = () => {
+        statusDiv.textContent = "Erro: Não foi possível carregar a imagem em 'assets/image/logo_sisper_v2_transparente.png'. Verifique se o arquivo está na pasta correta.";
+        statusDiv.style.color = "red";
+      };
+    });
+  </script>
+</body>
+</html>
