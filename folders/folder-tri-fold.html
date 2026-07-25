@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Folder Tri-Fold Impresso | SISPER Consultoria e Projetos</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        heading: ['Montserrat', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            green: '#277928',
+                            neon: '#76E025',
+                            lead: '#4F4F4F',
+                            gray: '#6D6D6D',
+                            light: '#F4F7F4',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* CSS para visualização em tela (Desktop Mockup) */
+        @media screen {
+            body {
+                background-color: #1e1e24;
+                padding-top: 80px;
+                padding-bottom: 80px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 40px;
+                font-family: 'Inter', sans-serif;
+            }
+
+            .page-container {
+                width: 297mm;
+                height: 210mm;
+                background-color: #ffffff;
+                box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+                position: relative;
+                box-sizing: border-box;
+                display: flex;
+                overflow: hidden;
+                border-radius: 4px;
+            }
+
+            .fold-guide {
+                position: absolute;
+                top: 0;
+                bottom: 0;
+                width: 1px;
+                border-left: 1px dashed rgba(39, 121, 40, 0.25);
+                z-index: 50;
+                pointer-events: none;
+            }
+
+            .fold-guide-1 {
+                left: 99mm;
+            }
+
+            .fold-guide-2 {
+                left: 198mm;
+            }
+
+            .page-label {
+                position: absolute;
+                bottom: -28px;
+                left: 0;
+                right: 0;
+                text-align: center;
+                color: #a1a1aa;
+                font-family: 'Montserrat', sans-serif;
+                font-size: 14px;
+                font-weight: 700;
+                text-transform: uppercase;
+                letter-spacing: 0.1em;
+            }
+        }
+
+        /* CSS para Impressão e geração de PDF */
+        @media print {
+            @page {
+                size: A4 landscape;
+                margin: 0;
+            }
+
+            html,
+            body {
+                width: 297mm;
+                height: 210mm;
+                margin: 0;
+                padding: 0;
+                background-color: #ffffff !important;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+
+            .no-print {
+                display: none !important;
+            }
+
+            .page-container {
+                width: 297mm;
+                height: 210mm;
+                page-break-after: always;
+                page-break-inside: avoid;
+                display: flex;
+                position: relative;
+                box-sizing: border-box;
+                overflow: hidden;
+                background-color: #ffffff !important;
+            }
+
+            .fold-guide {
+                display: none !important;
+            }
+        }
+
+        /* Classes Utilitárias do Folder */
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .column-content {
+            width: 99mm;
+            height: 210mm;
+            padding: 12mm 9mm;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+            overflow: hidden;
+        }
+    </style>
+</head>
+
+<body class="antialiased text-zinc-800">
+
+    <!-- BARRA DE CONTROLE (NO-PRINT) -->
+    <div
+        class="no-print fixed top-0 left-0 right-0 h-16 bg-zinc-900 border-b border-zinc-800 flex items-center justify-between px-6 z-50 shadow-md">
+        <div class="flex items-center gap-3">
+            <div class="w-8 h-8 rounded bg-brand-green flex items-center justify-center text-white font-bold text-lg">S
+            </div>
+            <span class="text-white font-heading font-semibold text-sm">SISPER <span
+                    class="text-brand-neon">Folders</span></span>
+        </div>
+        <div class="flex items-center gap-6">
+            <span class="text-xs text-zinc-400 max-w-md hidden md:block">
+                <strong>Dica de Impressão:</strong> Ctrl + P -> Escolha "Salvar como PDF" -> Layout: "Paisagem" ->
+                Margens: "Nenhuma" -> Marque "Gráficos de segundo plano".
+            </span>
+            <div class="flex items-center gap-3">
+                <button id="toggle-guides"
+                    class="px-4 py-2 text-xs font-semibold text-zinc-300 hover:text-white bg-zinc-800 hover:bg-zinc-700 rounded transition-colors flex items-center gap-2 border border-zinc-700">
+                    <i data-lucide="eye" class="w-3.5 h-3.5"></i>
+                    <span>Esconder Guias de Dobra</span>
+                </button>
+                <button onclick="window.print()"
+                    class="px-5 py-2 text-xs font-semibold text-white bg-brand-green hover:bg-green-700 rounded transition-colors flex items-center gap-2 shadow-lg shadow-brand-green/20">
+                    <i data-lucide="printer" class="w-3.5 h-3.5"></i>
+                    <span>Imprimir / Salvar PDF</span>
+                </button>
+                <a href="../index.html"
+                    class="px-4 py-2 text-xs font-semibold text-zinc-400 hover:text-zinc-300 transition-colors">
+                    Voltar ao Site
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- PÁGINA 1: PARTE EXTERNA (Aba Interna, Contracapa, Capa) -->
+    <div class="page-container relative" id="page-1">
+        <!-- Guias de Dobra -->
+        <div class="fold-guide fold-guide-1"></div>
+        <div class="fold-guide fold-guide-2"></div>
+        <span class="no-print page-label">Página 1 (Externa: Dobra Interna / Contracapa / Capa)</span>
+
+        <!-- COLUNA 1: ABA INTERNA - SERVIÇO 1: AUDITORIA DE MANUTENÇÃO (Dobra para dentro) -->
+        <div class="column-content bg-zinc-50 border-r border-zinc-100 !pb-4">
+            <!-- Background detail -->
+            <div class="absolute -top-12 -left-12 w-32 h-32 bg-brand-green/5 rounded-full blur-xl pointer-events-none">
+            </div>
+
+            <div class="flex flex-col relative z-10 space-y-2">
+                <!-- Top Header (Aligned with Contato Institucional) -->
+                <div class="flex items-center gap-2 text-brand-green h-[64px]">
+                    <i data-lucide="clipboard-check" class="w-4 h-4 text-brand-green"></i>
+                    <span class="text-[11.5px] font-black tracking-widest uppercase block font-heading">Serviço
+                        01</span>
+                </div>
+
+                <div class="space-y-2.5">
+                    <h3 class="text-[17px] font-black text-brand-lead font-heading leading-tight uppercase">
+                        Auditoria de Manutenção Preventiva em Geradores
+                    </h3>
+                    <div class="w-10 h-0.5 bg-brand-green rounded"></div>
+
+                    <p class="text-[11px] text-zinc-600 leading-relaxed font-sans font-medium">
+                        Evite intervenções desnecessárias, custos elevados e falhas inesperadas com uma auditoria
+                        técnica independente do plano de manutenção do seu gerador.
+                    </p>
+
+                    <!-- 3 Cards Informativos de Escopo -->
+                    <div class="space-y-2.5 pt-1.5 border-t border-zinc-200/60 mt-1">
+                        <!-- Card 1 -->
+                        <div
+                            class="p-2.5 bg-white border border-zinc-200/50 rounded-xl flex items-start gap-2.5 shadow-sm">
+                            <i data-lucide="check-circle" class="w-4.5 h-4.5 text-brand-green shrink-0 mt-0.5"></i>
+                            <div>
+                                <span class="text-[11px] font-extrabold text-zinc-800 block leading-tight">Mapeamento de
+                                    Riscos e Falhas Incipientes</span>
+                                <p class="text-[9.5px] text-zinc-500 leading-relaxed mt-1">Análise técnica dos
+                                    relatórios mensais da empresa de manutenção contratada, identificando não
+                                    conformidades, pendências e riscos que possam causar falhas ou paradas nos
+                                    geradores.</p>
+                            </div>
+                        </div>
+                        <!-- Card 2 -->
+                        <div
+                            class="p-2.5 bg-white border border-zinc-200/50 rounded-xl flex items-start gap-2.5 shadow-sm">
+                            <i data-lucide="check-circle" class="w-4.5 h-4.5 text-brand-green shrink-0 mt-0.5"></i>
+                            <div>
+                                <span class="text-[11px] font-extrabold text-zinc-800 block leading-tight">Apoio à
+                                    Gestão de Facilities</span>
+                                <p class="text-[9.5px] text-zinc-500 leading-relaxed mt-1">Informações técnicas claras
+                                    para síndicos, gestores prediais, facilities e responsáveis pela operação tomarem
+                                    decisões seguras.</p>
+                            </div>
+                        </div>
+                        <!-- Card 3 -->
+                        <div
+                            class="p-2.5 bg-white border border-zinc-200/50 rounded-xl flex items-start gap-2.5 shadow-sm">
+                            <i data-lucide="check-circle" class="w-4.5 h-4.5 text-brand-green shrink-0 mt-0.5"></i>
+                            <div>
+                                <span class="text-[11px] font-extrabold text-zinc-800 block leading-tight">Priorização
+                                    de Ações Técnicas</span>
+                                <p class="text-[9.5px] text-zinc-500 leading-relaxed mt-1">Relatório com as não
+                                    conformidades e recomendações organizadas conforme criticidade, impacto operacional
+                                    e urgência de atuação.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Cards de Diferenciais (Imparcialidade e Redução de Custos em duas colunas com frase de destaque) -->
+            <div class="space-y-3 pt-2.5 border-t border-zinc-200/60 relative z-10">
+                <p
+                    class="text-[11px] font-semibold font-sans text-zinc-600 leading-relaxed text-left italic border-l-2 border-brand-green pl-3">
+                    "A SISPER atua com isenção técnica para avaliar o plano de manutenção, as condições reais do
+                    equipamento e os diagnósticos emitidos pelas empresas contratadas."
+                </p>
+
+                <div class="grid grid-cols-2 gap-2.5">
+                    <!-- Card 1: Imparcialidade Técnica -->
+                    <div
+                        class="p-2.5 bg-zinc-100/50 border border-zinc-200/40 rounded-xl flex flex-col gap-2 justify-between">
+                        <div class="flex items-center gap-2">
+                            <div
+                                class="w-7 h-7 bg-brand-green/10 text-brand-green flex items-center justify-center rounded-md shrink-0">
+                                <i data-lucide="shield-check" class="w-4 h-4"></i>
+                            </div>
+                            <span class="text-[12px] font-extrabold text-zinc-800 leading-none">Imparcialidade</span>
+                        </div>
+                        <p class="text-[10px] text-zinc-500 leading-normal">Análise independente, sem interesse na venda
+                            de peças ou contratos.</p>
+                    </div>
+                    <!-- Card 2: Redução de Custos -->
+                    <div
+                        class="p-2.5 bg-zinc-100/50 border border-zinc-200/40 rounded-xl flex flex-col gap-2 justify-between">
+                        <div class="flex items-center gap-2">
+                            <div
+                                class="w-7 h-7 bg-brand-green/10 text-brand-green flex items-center justify-center rounded-md shrink-0">
+                                <i data-lucide="trending-down" class="w-4 h-4"></i>
+                            </div>
+                            <span class="text-[12px] font-extrabold text-zinc-800 leading-none">Economia</span>
+                        </div>
+                        <p class="text-[10px] text-zinc-500 leading-normal">Validação para evitar substituições e gastos
+                            desnecessários.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Rodapé da coluna -->
+            <div class="border-t border-zinc-200/80 pt-2 relative z-10 flex justify-between items-center">
+                <span class="text-[8.5px] font-bold text-brand-green tracking-wider uppercase">Auditoria de
+                    Manutenção</span>
+                <span class="text-[8.5px] font-bold text-zinc-400">SISPER</span>
+            </div>
+        </div>
+
+        <!-- COLUNA 2: CONTRACAPA (Meio - Parte Traseira do folder fechado) -->
+        <div class="column-content bg-zinc-900 text-white border-r border-zinc-950">
+            <!-- Background element -->
+            <div
+                class="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,_var(--tw-gradient-stops))] from-zinc-800 to-zinc-950 pointer-events-none">
+            </div>
+
+            <!-- Top Header (Aligned with Serviço 01) -->
+            <div class="relative z-10 flex items-center gap-2 text-brand-neon h-[64px]">
+                <i data-lucide="info" class="w-4 h-4 text-brand-neon"></i>
+                <span class="text-[11.5px] font-black tracking-widest uppercase block font-heading">Contato
+                    Institucional</span>
+            </div>
+
+            <!-- Centered Fale Conosco Block -->
+            <div class="flex-1 flex flex-col justify-between relative z-10 w-full pt-2">
+                <div class="space-y-4">
+                    <h3
+                        class="text-[19px] font-black font-heading leading-tight uppercase text-zinc-100 tracking-tight">
+                        Fale Conosco
+                    </h3>
+                    <div class="w-10 h-0.5 bg-brand-neon rounded"></div>
+                    <p class="text-[12px] text-zinc-200 leading-relaxed font-sans font-medium">
+                        A SISPER atua de forma independente na avaliação da manutenção, no desenvolvimento de projetos,
+                        na
+                        análise de conformidade e na inspeção de sistemas elétricos e grupos geradores.
+                    </p>
+
+                    <!-- List of contacts -->
+                    <div class="space-y-4 pt-4 border-t border-white/10 mt-2">
+                        <div class="flex items-center gap-4">
+                            <div
+                                class="w-9 h-9 bg-zinc-800 text-brand-neon flex items-center justify-center rounded-xl border border-zinc-700/50 shrink-0">
+                                <i data-lucide="phone" class="w-4.5 h-4.5"></i>
+                            </div>
+                            <div class="flex-1 min-w-0">
+                                <span class="text-[9px] text-zinc-400 block uppercase font-bold tracking-wider">WhatsApp
+                                    Comercial</span>
+                                <span class="text-[13px] font-black text-zinc-100 block tracking-wide truncate">+55 (11)
+                                    9 8894-9290</span>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <div
+                                class="w-9 h-9 bg-zinc-800 text-brand-neon flex items-center justify-center rounded-xl border border-zinc-700/50 shrink-0">
+                                <i data-lucide="mail" class="w-4.5 h-4.5"></i>
+                            </div>
+                            <div class="flex-1 min-w-0">
+                                <span class="text-[9px] text-zinc-400 block uppercase font-bold tracking-wider">E-mail
+                                    Corporativo</span>
+                                <span
+                                    class="text-[13px] font-black text-zinc-100 block tracking-wide truncate">sisper.consultoria@gmail.com</span>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <div
+                                class="w-9 h-9 bg-zinc-800 text-brand-neon flex items-center justify-center rounded-xl border border-zinc-700/50 shrink-0">
+                                <i data-lucide="map-pin" class="w-4.5 h-4.5"></i>
+                            </div>
+                            <div class="flex-1 min-w-0">
+                                <span
+                                    class="text-[9px] text-zinc-400 block uppercase font-bold tracking-wider">Localização</span>
+                                <span class="text-[13px] font-black text-zinc-100 block tracking-wide truncate">São
+                                    Paulo
+                                    - SP</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- QR Code muito ampliado e centralizado no espaço inferior -->
+                <div class="flex flex-col items-center justify-center gap-2.5 pb-2">
+                    <div
+                        class="w-36 h-36 bg-white p-2.5 rounded-2xl flex items-center justify-center shadow-2xl shadow-black/80 shrink-0">
+                        <img src="../assets/image/Sisper_qr-code.png" alt="QR Code SISPER"
+                            class="w-full h-full object-contain" />
+                    </div>
+                    <span
+                        class="text-[12px] font-black tracking-wider uppercase text-brand-neon font-heading mt-1">Acesse
+                        nosso site</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- COLUNA 3: CAPA (Direita - Frente do folder fechado) -->
+        <div class="column-content bg-zinc-900 text-white">
+            <!-- Background element -->
+            <div
+                class="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,_var(--tw-gradient-stops))] from-zinc-800 to-zinc-950 pointer-events-none">
+            </div>
+
+            <!-- Top Header (Logo aligned horizontally with Contato Institucional) -->
+            <div class="relative z-10 flex justify-center items-center w-full h-[64px]">
+                <img src="../assets/image/Logo_definitiva_pt.png" alt="SISPER Logo"
+                    class="w-[85%] h-auto max-h-[120px] object-contain scale-[2.3] transform origin-center" />
+            </div>
+
+            <!-- Main Title (Uses Hero H1) -->
+            <div class="my-auto space-y-4 relative z-10">
+                <div class="space-y-4">
+                    <!-- H1 da Hero do Site -->
+                    <h1
+                        class="text-base sm:text-lg md:text-[28px] font-black font-heading tracking-tight leading-snug text-zinc-100 uppercase">
+                        Energia crítica exige <span class="text-brand-neon font-black">critério técnico</span> antes de
+                        qualquer decisão.
+                    </h1>
+                    <div class="w-12 h-1 bg-brand-neon rounded"></div>
+                    <p class="text-[14px] text-zinc-200 font-sans font-medium tracking-wide leading-relaxed">
+                        Auditoria, Consultoria, Projetos e Laudos Técnicos de Conformidade.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Bottom Slogan -->
+            <div class="border-t border-zinc-800 pt-4 h-[72px] flex items-center relative z-10">
+                <p class="text-[12px] font-medium font-sans italic text-zinc-300 leading-relaxed text-left">
+                    "Com experiência de mais de 25 anos, ajudamos empresas e condomínios a antecipar riscos, validar
+                    intervenções e proteger a continuidade de operações críticas"
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- PÁGINA 2: PARTE INTERNA (Serviços 2, 3 e 4) -->
+    <div class="page-container mt-12 relative" id="page-2">
+        <!-- Guias de Dobra -->
+        <div class="fold-guide fold-guide-1"></div>
+        <div class="fold-guide fold-guide-2"></div>
+        <span class="no-print page-label">Página 2 (Interna: Serviços & Diferenciais)</span>
+
+        <!-- COLUNA 1: SERVIÇO 2 - PROJETOS E DIMENSIONAMENTO (Lado Esquerdo) -->
+        <div class="column-content bg-white border-r border-zinc-100 !pb-4">
+            <!-- Decorative circle -->
+            <div class="absolute -top-12 -left-12 w-28 h-28 bg-brand-green/5 rounded-full blur-xl pointer-events-none">
+            </div>
+
+            <div class="flex flex-col relative z-10 space-y-2">
+                <!-- Top Header (Aligned with other columns) -->
+                <div class="flex items-center gap-2 text-brand-green h-[64px]">
+                    <i data-lucide="zap" class="w-4 h-4 text-brand-green"></i>
+                    <span class="text-[11.5px] font-black tracking-widest uppercase block font-heading">Serviço
+                        02</span>
+                </div>
+
+                <div class="space-y-2.5">
+                    <h3 class="text-[17px] font-black text-brand-lead font-heading leading-tight uppercase">
+                        Projetos e Dimensionamento de Grupos Geradores
+                    </h3>
+                    <div class="w-10 h-0.5 bg-brand-green rounded"></div>
+
+                    <p class="text-[10px] text-zinc-600 leading-relaxed font-sans font-medium">
+                        Projetos de instalação de grupos geradores para energia de emergência, dimensionados conforme as
+                        cargas críticas e requisitos elétricos da sua operação.
+                    </p>
+
+                    <!-- 3 Cards Informativos de Escopo -->
+                    <div class="space-y-2.5 pt-1.5 border-t border-zinc-200/60 mt-1">
+                        <!-- Card 1 -->
+                        <div
+                            class="p-2.5 bg-zinc-50 border border-zinc-200/40 rounded-xl flex items-start gap-2.5 shadow-sm">
+                            <i data-lucide="check-circle" class="w-4.5 h-4.5 text-brand-green shrink-0 mt-0.5"></i>
+                            <div>
+                                <span class="text-[11px] font-extrabold text-zinc-800 block leading-tight">Cargas
+                                    Críticas</span>
+                                <p class="text-[9.5px] text-zinc-500 leading-relaxed mt-1">Análise detalhada das cargas
+                                    essenciais da instalação que precisam de fornecimento contínuo de energia durante
+                                    interrupções na rede elétrica.</p>
+                            </div>
+                        </div>
+                        <!-- Card 2 -->
+                        <div
+                            class="p-2.5 bg-zinc-50 border border-zinc-200/40 rounded-xl flex items-start gap-2.5 shadow-sm">
+                            <i data-lucide="check-circle" class="w-4.5 h-4.5 text-brand-green shrink-0 mt-0.5"></i>
+                            <div>
+                                <span class="text-[11px] font-extrabold text-zinc-800 block leading-tight">Projetos
+                                    Mecânicos</span>
+                                <p class="text-[9.5px] text-zinc-500 leading-relaxed mt-1">Especificações físicas e
+                                    mecânicas completas para instalação do gerador, incluindo bases de concreto,
+                                    ventilação, exaustão e atenuação acústica.</p>
+                            </div>
+                        </div>
+                        <!-- Card 3 -->
+                        <div
+                            class="p-2.5 bg-zinc-50 border border-zinc-200/40 rounded-xl flex items-start gap-2.5 shadow-sm">
+                            <i data-lucide="check-circle" class="w-4.5 h-4.5 text-brand-green shrink-0 mt-0.5"></i>
+                            <div>
+                                <span class="text-[11px] font-extrabold text-zinc-800 block leading-tight">Projeto
+                                    Elétrico</span>
+                                <p class="text-[9.5px] text-zinc-500 leading-relaxed mt-1">Diagramas elétricos de
+                                    interligação, chaves de transferência automática (QTA/QTM), circuits de força,
+                                    comando e malha de aterramento.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Cards de Diferenciais -->
+            <div class="space-y-3 pt-2.5 border-t border-zinc-200/60 relative z-10">
+                <p
+                    class="text-[12px] font-semibold font-sans text-zinc-600 leading-relaxed text-left italic border-l-2 border-brand-green pl-3">
+                    "A SISPER atua com isenção técnica para avaliar o plano de manutenção, as condições reais do
+                    equipamento e os diagnósticos emitidos pelas empresas contratadas."
+                </p>
+
+                <div class="grid grid-cols-2 gap-2.5">
+                    <div
+                        class="p-2.5 bg-zinc-100/50 border border-zinc-200/40 rounded-xl flex flex-col gap-2 justify-between">
+                        <div class="flex items-center gap-2">
+                            <div
+                                class="w-7 h-7 bg-brand-green/10 text-brand-green flex items-center justify-center rounded-md shrink-0">
+                                <i data-lucide="shield-check" class="w-4 h-4"></i>
+                            </div>
+                            <span class="text-[12px] font-extrabold text-zinc-800 leading-none">Imparcialidade</span>
+                        </div>
+                        <p class="text-[10px] text-zinc-500 leading-normal">Análise independente, sem interesse na venda
+                            de peças ou contratos.</p>
+                    </div>
+                    <div
+                        class="p-2.5 bg-zinc-100/50 border border-zinc-200/40 rounded-xl flex flex-col gap-2 justify-between">
+                        <div class="flex items-center gap-2">
+                            <div
+                                class="w-7 h-7 bg-brand-green/10 text-brand-green flex items-center justify-center rounded-md shrink-0">
+                                <i data-lucide="trending-down" class="w-4 h-4"></i>
+                            </div>
+                            <span class="text-[12px] font-extrabold text-zinc-800 leading-none">Economia</span>
+                        </div>
+                        <p class="text-[10px] text-zinc-500 leading-normal">Validação para evitar substituições e gastos
+                            desnecessários.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Rodapé de apoio -->
+            <div
+                class="border-t border-zinc-200/80 pt-2 text-[8.5px] text-zinc-400 font-sans relative z-10 flex justify-between">
+                <span>Projetos & Dimensionamento</span>
+                <span class="font-bold text-brand-green">01 / 03</span>
+            </div>
+        </div>
+
+        <!-- COLUNA 2: SERVIÇO 3 - LAUDOS DE CONFORMIDADE NR-20 (Meio) -->
+        <div class="column-content bg-white border-r border-zinc-100 !pb-4">
+            <!-- Decorative circle or background elements can go here -->
+
+            <div class="flex flex-col relative z-10 space-y-2">
+                <!-- Top Header (Aligned with other columns) -->
+                <div class="flex items-center gap-2 text-brand-green h-[64px]">
+                    <i data-lucide="shield" class="w-4 h-4 text-brand-green"></i>
+                    <span class="text-[11.5px] font-black tracking-widest uppercase block font-heading">Serviço
+                        03</span>
+                </div>
+
+                <div class="space-y-2.5">
+                    <h3 class="text-[17px] font-black text-brand-lead font-heading leading-tight uppercase">
+                        Laudos de Conformidade NR-20 e NR-16
+                    </h3>
+                    <div class="w-10 h-0.5 bg-brand-green rounded"></div>
+
+                    <p class="text-[10px] text-zinc-600 leading-relaxed font-sans font-medium">
+                        Diagnóstico técnico de conformidade para instalações com óleo diesel, incluindo tanques,
+                        sistemas de abastecimento e grupos geradores.
+                    </p>
+
+                    <!-- 3 Cards Informativos de Escopo -->
+                    <div class="space-y-2.5 pt-1.5 border-t border-zinc-200/60 mt-1">
+                        <!-- Card 1 -->
+                        <div
+                            class="p-2.5 bg-zinc-50 border border-zinc-200/40 rounded-xl flex items-start gap-2.5 shadow-sm">
+                            <i data-lucide="check-circle" class="w-4.5 h-4.5 text-brand-green shrink-0 mt-0.5"></i>
+                            <div>
+                                <span class="text-[11px] font-extrabold text-zinc-800 block leading-tight">Vistoria
+                                    Presencial</span>
+                                <p class="text-[9.5px] text-zinc-500 leading-relaxed mt-1">Vistoria técnica presencial
+                                    em tanques de combustível, grupos geradores e motobombas para validação de sistemas
+                                    de contenção e combate.</p>
+                            </div>
+                        </div>
+                        <!-- Card 2 -->
+                        <div
+                            class="p-2.5 bg-zinc-50 border border-zinc-200/40 rounded-xl flex items-start gap-2.5 shadow-sm">
+                            <i data-lucide="check-circle" class="w-4.5 h-4.5 text-brand-green shrink-0 mt-0.5"></i>
+                            <div>
+                                <span class="text-[11px] font-extrabold text-zinc-800 block leading-tight">Conformidade
+                                    Legal</span>
+                                <p class="text-[9.5px] text-zinc-500 leading-relaxed mt-1">Análise dos limites legais de
+                                    armazenamento de diesel segundo a NR-20 e verificação de condições de periculosidade
+                                    trabalhista da NR-16.</p>
+                            </div>
+                        </div>
+                        <!-- Card 3 -->
+                        <div
+                            class="p-2.5 bg-zinc-50 border border-zinc-200/40 rounded-xl flex items-start gap-2.5 shadow-sm">
+                            <i data-lucide="check-circle" class="w-4.5 h-4.5 text-brand-green shrink-0 mt-0.5"></i>
+                            <div>
+                                <span class="text-[11px] font-extrabold text-zinc-800 block leading-tight">Mapeamento de
+                                    Riscos</span>
+                                <p class="text-[9.5px] text-zinc-500 leading-relaxed mt-1">Inspeção detalhada de bacias
+                                    de contenção, linhas de alimentação de combustível, conexões, válvulas de segurança
+                                    e aterramento estático.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Cards de Diferenciais -->
+            <div class="space-y-3 pt-2.5 border-t border-zinc-200/60 relative z-10">
+                <p
+                    class="text-[12px] font-semibold font-sans text-zinc-600 leading-relaxed text-left italic border-l-2 border-brand-green pl-3">
+                    "A SISPER atua com isenção técnica para avaliar o plano de manutenção, as condições reais do
+                    equipamento e os diagnósticos emitidos pelas empresas contratadas."
+                </p>
+
+                <div class="grid grid-cols-2 gap-2.5">
+                    <div
+                        class="p-2.5 bg-zinc-100/50 border border-zinc-200/40 rounded-xl flex flex-col gap-2 justify-between">
+                        <div class="flex items-center gap-2">
+                            <div
+                                class="w-7 h-7 bg-brand-green/10 text-brand-green flex items-center justify-center rounded-md shrink-0">
+                                <i data-lucide="shield-check" class="w-4 h-4"></i>
+                            </div>
+                            <span class="text-[12px] font-extrabold text-zinc-800 leading-none">Imparcialidade</span>
+                        </div>
+                        <p class="text-[10px] text-zinc-500 leading-normal">Análise independente, sem interesse na venda
+                            de peças ou contratos.</p>
+                    </div>
+                    <div
+                        class="p-2.5 bg-zinc-100/50 border border-zinc-200/40 rounded-xl flex flex-col gap-2 justify-between">
+                        <div class="flex items-center gap-2">
+                            <div
+                                class="w-7 h-7 bg-brand-green/10 text-brand-green flex items-center justify-center rounded-md shrink-0">
+                                <i data-lucide="trending-down" class="w-4 h-4"></i>
+                            </div>
+                            <span class="text-[12px] font-extrabold text-zinc-800 leading-none">Economia</span>
+                        </div>
+                        <p class="text-[10px] text-zinc-500 leading-normal">Validação para evitar substituições e gastos
+                            desnecessários.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Rodapé de apoio -->
+            <div
+                class="border-t border-zinc-200/80 pt-2 text-[8.5px] text-zinc-400 font-sans relative z-10 flex justify-between">
+                <span>Laudos NR-20 / NR-16</span>
+                <span class="font-bold text-brand-green">02 / 03</span>
+            </div>
+        </div>
+
+        <!-- COLUNA 3: SERVIÇO 4 - INSPEÇÃO ELÉTRICA E TERMOGRAFIA (Lado Direito) -->
+        <div class="column-content bg-zinc-50 !pb-4">
+            <!-- Decorative circle -->
+            <div
+                class="absolute -bottom-12 -right-12 w-28 h-28 bg-brand-green/5 rounded-full blur-xl pointer-events-none">
+            </div>
+
+            <div class="flex flex-col relative z-10 space-y-2">
+                <!-- Top Header (Aligned with other columns) -->
+                <div class="flex items-center gap-2 text-brand-green h-[64px]">
+                    <i data-lucide="file-text" class="w-4 h-4 text-brand-green"></i>
+                    <span class="text-[11.5px] font-black tracking-widest uppercase block font-heading">Serviço
+                        04</span>
+                </div>
+
+                <div class="space-y-2.5">
+                    <h3 class="text-[17px] font-black text-brand-lead font-heading leading-tight uppercase">
+                        Inspeção Elétrica e Termografia (NR-10)
+                    </h3>
+                    <div class="w-10 h-0.5 bg-brand-green rounded"></div>
+
+                    <p class="text-[10px] text-zinc-600 leading-relaxed font-sans font-medium">
+                        Identifique pontos de sobreaquecimento, falhas de conexão e riscos elétricos antes que causem
+                        paradas, danos ou acidentes.
+                    </p>
+
+                    <!-- 3 Cards Informativos de Escopo -->
+                    <div class="space-y-2.5 pt-1.5 border-t border-zinc-200/60 mt-1">
+                        <!-- Card 1 -->
+                        <div
+                            class="p-2.5 bg-white border border-zinc-200/50 rounded-xl flex items-start gap-2.5 shadow-sm">
+                            <i data-lucide="check-circle" class="w-4.5 h-4.5 text-brand-green shrink-0 mt-0.5"></i>
+                            <div>
+                                <span class="text-[11px] font-extrabold text-zinc-800 block leading-tight">Leitura
+                                    Térmica</span>
+                                <p class="text-[9.5px] text-zinc-500 leading-relaxed mt-1">Termografia infravermelha com
+                                    painéis energizados e sob carga real para detecção de anomalias invisíveis a olho
+                                    nu.</p>
+                            </div>
+                        </div>
+                        <!-- Card 2 -->
+                        <div
+                            class="p-2.5 bg-white border border-zinc-200/50 rounded-xl flex items-start gap-2.5 shadow-sm">
+                            <i data-lucide="check-circle" class="w-4.5 h-4.5 text-brand-green shrink-0 mt-0.5"></i>
+                            <div>
+                                <span class="text-[11px] font-extrabold text-zinc-800 block leading-tight">Vistoria
+                                    Visual NR-10</span>
+                                <p class="text-[9.5px] text-zinc-500 leading-relaxed mt-1">Inspeção minuciosa do estado
+                                    de conservação, montagem física, proteções e barreira mecânicas contra contatos
+                                    diretos.</p>
+                            </div>
+                        </div>
+                        <!-- Card 3 -->
+                        <div
+                            class="p-2.5 bg-white border border-zinc-200/50 rounded-xl flex items-start gap-2.5 shadow-sm">
+                            <i data-lucide="check-circle" class="w-4.5 h-4.5 text-brand-green shrink-0 mt-0.5"></i>
+                            <div>
+                                <span class="text-[11px] font-extrabold text-zinc-800 block leading-tight">Laudo
+                                    Técnico</span>
+                                <p class="text-[9.5px] text-zinc-500 leading-relaxed mt-1">Elaboração de relatório
+                                    formal acompanhado de termogramas detalhados, diagnósticos técnicos e recomendações
+                                    com ART.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Cards de Diferenciais -->
+            <div class="space-y-3 pt-2.5 border-t border-zinc-200/60 relative z-10">
+                <p
+                    class="text-[12px] font-semibold font-sans text-zinc-600 leading-relaxed text-left italic border-l-2 border-brand-green pl-3">
+                    "A SISPER atua com isenção técnica para avaliar o plano de manutenção, as condições reais do
+                    equipamento e os diagnósticos emitidos pelas empresas contratadas."
+                </p>
+
+                <div class="grid grid-cols-2 gap-2.5">
+                    <div
+                        class="p-2.5 bg-zinc-100/50 border border-zinc-200/40 rounded-xl flex flex-col gap-2 justify-between">
+                        <div class="flex items-center gap-2">
+                            <div
+                                class="w-7 h-7 bg-brand-green/10 text-brand-green flex items-center justify-center rounded-md shrink-0">
+                                <i data-lucide="shield-check" class="w-4 h-4"></i>
+                            </div>
+                            <span class="text-[12px] font-extrabold text-zinc-800 leading-none">Imparcialidade</span>
+                        </div>
+                        <p class="text-[10px] text-zinc-500 leading-normal">Análise independente, sem interesse na venda
+                            de peças ou contratos.</p>
+                    </div>
+                    <div
+                        class="p-2.5 bg-zinc-100/50 border border-zinc-200/40 rounded-xl flex flex-col gap-2 justify-between">
+                        <div class="flex items-center gap-2">
+                            <div
+                                class="w-7 h-7 bg-brand-green/10 text-brand-green flex items-center justify-center rounded-md shrink-0">
+                                <i data-lucide="trending-down" class="w-4 h-4"></i>
+                            </div>
+                            <span class="text-[12px] font-extrabold text-zinc-800 leading-none">Economia</span>
+                        </div>
+                        <p class="text-[10px] text-zinc-500 leading-normal">Validação para evitar substituições e gastos
+                            desnecessários.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Rodapé de apoio -->
+            <div
+                class="border-t border-zinc-200/80 pt-2 text-[8.5px] text-zinc-400 font-sans relative z-10 flex justify-between">
+                <span>Inspeção & Termografia</span>
+                <span class="font-bold text-brand-green">03 / 03</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- SCRIPT DE INTERATIVIDADE -->
+    <script>
+        // Inicializar ícones Lucide
+        lucide.createIcons();
+
+        // Alternar visualização das guias de dobra
+        const toggleBtn = document.getElementById('toggle-guides');
+        const guides = document.querySelectorAll('.fold-guide');
+        let showGuides = true;
+
+        toggleBtn.addEventListener('click', () => {
+            showGuides = !showGuides;
+            guides.forEach(guide => {
+                guide.style.display = showGuides ? 'block' : 'none';
+            });
+
+            const btnSpan = toggleBtn.querySelector('span');
+
+            if (showGuides) {
+                btnSpan.textContent = 'Esconder Guias de Dobra';
+            } else {
+                btnSpan.textContent = 'Mostrar Guias de Dobra';
+            }
+        });
+    </script>
+</body>
+
+</html>

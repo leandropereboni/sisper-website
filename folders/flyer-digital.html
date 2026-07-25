@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Flyer Digital WhatsApp | SISPER Consultoria e Projetos</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        heading: ['Montserrat', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            green: '#277928',
+                            neon: '#76E025',
+                            lead: '#4F4F4F',
+                            gray: '#6D6D6D',
+                            light: '#F4F7F4',
+                        }
+                    },
+                    boxShadow: {
+                        'glow-green': '0 0 20px rgba(118, 224, 37, 0.4)',
+                        'card': '0 15px 35px rgba(0, 0, 0, 0.25)',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* CSS para visualização no Navegador (Desktop) */
+        @media screen {
+            body {
+                background-color: #121214;
+                padding-top: 80px;
+                padding-bottom: 40px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 20px;
+                font-family: 'Inter', sans-serif;
+            }
+
+            .flyer-container {
+                width: 450px;
+                height: 800px;
+                background: linear-gradient(135deg, #184419 0%, #111b11 50%, #0c0f0c 100%);
+                box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6);
+                position: relative;
+                box-sizing: border-box;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                padding: 35px 30px;
+                overflow: hidden;
+                border: 1px solid rgba(255, 255, 255, 0.05);
+                border-radius: 16px;
+            }
+        }
+
+        /* CSS para Impressão / Exportação PDF */
+        @media print {
+            @page {
+                size: 108mm 192mm; /* Proporção 9:16 para impressão direta em formato cartão */
+                margin: 0;
+            }
+
+            html, body {
+                width: 108mm;
+                height: 192mm;
+                margin: 0;
+                padding: 0;
+                background-color: #0c0f0c !important;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+
+            .no-print {
+                display: none !important;
+            }
+
+            .flyer-container {
+                width: 108mm;
+                height: 192mm;
+                padding: 8mm 7mm;
+                box-sizing: border-box;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                overflow: hidden;
+                background: linear-gradient(135deg, #184419 0%, #111b11 50%, #0c0f0c 100%) !important;
+                border: none;
+                border-radius: 0;
+            }
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        /* Efeito de brilho pulsante no botão do WhatsApp */
+        .pulse-btn {
+            animation: pulse-animation 2s infinite;
+        }
+
+        @keyframes pulse-animation {
+            0% {
+                box-shadow: 0 0 0 0 rgba(118, 224, 37, 0.5);
+            }
+            70% {
+                box-shadow: 0 0 0 10px rgba(118, 224, 37, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(118, 224, 37, 0);
+            }
+        }
+    </style>
+</head>
+
+<body class="antialiased text-white">
+
+    <!-- BARRA DE CONTROLE (NO-PRINT) -->
+    <div class="no-print fixed top-0 left-0 right-0 h-16 bg-zinc-900 border-b border-zinc-800 flex items-center justify-between px-6 z-50 shadow-md">
+        <div class="flex items-center gap-3">
+            <div class="w-8 h-8 rounded bg-brand-green flex items-center justify-center text-white font-bold text-lg">S</div>
+            <span class="text-white font-heading font-semibold text-sm">SISPER <span class="text-brand-neon">Digital Flyer</span></span>
+        </div>
+        <div class="flex items-center gap-6">
+            <span class="text-xs text-zinc-400 max-w-md hidden md:block">
+                <strong>Compartilhamento:</strong> Salve como PDF (Ctrl+P -> 108x192mm ou Retrato -> Margem nenhuma) ou capture uma tela com boa resolução para enviar como imagem.
+            </span>
+            <div class="flex items-center gap-3">
+                <button onclick="window.print()" class="px-5 py-2 text-xs font-semibold text-white bg-brand-green hover:bg-green-700 rounded transition-colors flex items-center gap-2 shadow-lg shadow-brand-green/20">
+                    <i data-lucide="download" class="w-3.5 h-3.5"></i>
+                    <span>Exportar PDF</span>
+                </button>
+                <a href="../index.html" class="px-4 py-2 text-xs font-semibold text-zinc-400 hover:text-zinc-300 transition-colors">
+                    Voltar ao Site
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- CONTENT CONTAINER (Flyer) -->
+    <div class="flyer-container text-white">
+        <!-- Background glows -->
+        <div class="absolute -top-24 -right-24 w-48 h-48 bg-brand-neon/10 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="absolute -bottom-24 -left-24 w-48 h-48 bg-brand-green/20 rounded-full blur-3xl pointer-events-none"></div>
+
+        <!-- TOP BAR (Logo + Stamp) -->
+        <div class="flex items-center justify-between relative z-10">
+            <img src="../assets/image/Logo_definitiva_br_transparente.png" alt="SISPER Logo" class="h-8 object-contain" onerror="this.src='../assets/image/logo_sisper_v2_transparente.png'"/>
+            <span class="text-[7.5px] font-black tracking-widest text-brand-neon uppercase border border-brand-neon/30 px-2 py-0.5 rounded bg-black/35">
+                Engenharia de Energia
+            </span>
+        </div>
+
+        <!-- HERO SECTION -->
+        <div class="space-y-2 mt-4 relative z-10">
+            <h1 class="text-sm sm:text-base font-black tracking-tight leading-snug uppercase font-heading text-zinc-100">
+                Energia crítica exige <span class="text-brand-neon">critério técnico</span> antes de qualquer decisão.
+            </h1>
+            <p class="text-[9.5px] text-zinc-300 leading-relaxed font-sans max-w-sm">
+                A SISPER atua de forma independente na avaliação da manutenção, no desenvolvimento de projetos, na análise de conformidade e na inspeção de sistemas elétricos e grupos geradores.
+            </p>
+        </div>
+
+        <!-- SOLUTIONS/SERVICES BOX -->
+        <div class="bg-black/30 border border-white/5 rounded-2xl p-4 my-auto relative z-10 backdrop-blur-md space-y-3">
+            <span class="text-[8px] font-bold text-brand-neon tracking-widest uppercase block border-b border-white/5 pb-1">
+                Nossas Soluções Técnicas
+            </span>
+            
+            <div class="grid gap-2.5">
+                <!-- Solução 1 -->
+                <div class="flex items-start gap-2.5">
+                    <div class="p-1 bg-brand-green/20 text-brand-neon rounded shrink-0">
+                        <i data-lucide="check-square" class="w-3.5 h-3.5"></i>
+                    </div>
+                    <div>
+                        <span class="text-[10px] font-bold text-zinc-100 block font-heading uppercase leading-tight">Auditoria em Geradores</span>
+                        <span class="text-[8.5px] text-zinc-400 leading-tight block font-sans">Auditoria técnica independente do plano de manutenção do seu gerador, validando procedimentos e testes.</span>
+                    </div>
+                </div>
+
+                <!-- Solução 2 -->
+                <div class="flex items-start gap-2.5">
+                    <div class="p-1 bg-brand-green/20 text-brand-neon rounded shrink-0">
+                        <i data-lucide="check-square" class="w-3.5 h-3.5"></i>
+                    </div>
+                    <div>
+                        <span class="text-[10px] font-bold text-zinc-100 block font-heading uppercase leading-tight">Projetos e Dimensionamento</span>
+                        <span class="text-[8.5px] text-zinc-400 leading-tight block font-sans">Projetos de instalação de grupos geradores para energia de emergência, dimensionados conforme as cargas críticas.</span>
+                    </div>
+                </div>
+
+                <!-- Solução 3 -->
+                <div class="flex items-start gap-2.5">
+                    <div class="p-1 bg-brand-green/20 text-brand-neon rounded shrink-0">
+                        <i data-lucide="check-square" class="w-3.5 h-3.5"></i>
+                    </div>
+                    <div>
+                        <span class="text-[10px] font-bold text-zinc-100 block font-heading uppercase leading-tight">Laudos NR-20 e NR-16</span>
+                        <span class="text-[8.5px] text-zinc-400 leading-tight block font-sans">Diagnóstico técnico de conformidade para instalações com óleo diesel, tanques e bacias de contenção.</span>
+                    </div>
+                </div>
+
+                <!-- Solução 4 -->
+                <div class="flex items-start gap-2.5">
+                    <div class="p-1 bg-brand-green/20 text-brand-neon rounded shrink-0">
+                        <i data-lucide="check-square" class="w-3.5 h-3.5"></i>
+                    </div>
+                    <div>
+                        <span class="text-[10px] font-bold text-zinc-100 block font-heading uppercase leading-tight">Termografia Preditiva</span>
+                        <span class="text-[8.5px] text-zinc-400 leading-tight block font-sans">Inspeções térmicas por infravermelho em painéis elétricos energizados, identificando aquecimentos anômalos.</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- DIFFERENTIAL BADGES -->
+        <div class="grid grid-cols-2 gap-2 mt-1 relative z-10">
+            <div class="bg-white/5 border border-white/5 rounded-xl p-2 flex items-center gap-2">
+                <i data-lucide="shield-check" class="w-4 h-4 text-brand-neon shrink-0"></i>
+                <div class="leading-none">
+                    <span class="text-[8px] font-bold text-zinc-200 uppercase block font-heading">Isenção Comercial</span>
+                    <span class="text-[7px] text-zinc-500 font-sans">Sem venda de peças</span>
+                </div>
+            </div>
+            <div class="bg-white/5 border border-white/5 rounded-xl p-2 flex items-center gap-2">
+                <i data-lucide="award" class="w-4 h-4 text-brand-neon shrink-0"></i>
+                <div class="leading-none">
+                    <span class="text-[8px] font-bold text-zinc-200 uppercase block font-heading">ART (CREA)</span>
+                    <span class="text-[7px] text-zinc-500 font-sans">Responsabilidade técnica</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- CALL TO ACTION (CTA) -->
+        <div class="mt-4 space-y-3 relative z-10 text-center">
+            <!-- Pulsing WhatsApp Button -->
+            <a href="https://wa.me/5511988949290?text=Olá!%20Gostaria%20de%20solicitar%20um%20diagnóstico%20técnico%20da%20SISPER." target="_blank" class="pulse-btn flex items-center justify-center gap-2 bg-brand-green hover:bg-green-700 text-white font-semibold rounded-full py-2.5 px-4 text-[10px] sm:text-xs transition-colors shadow-lg shadow-brand-green/30">
+                <i data-lucide="message-square" class="w-4 h-4"></i>
+                <span>FALAR COM UM ENGENHEIRO NO WHATSAPP</span>
+            </a>
+            
+            <p class="text-[8px] text-zinc-400 font-sans uppercase tracking-wider leading-none">
+                Clique no botão acima ou fale pelo número abaixo
+            </p>
+        </div>
+
+        <!-- FOOTER CONTACT INFO -->
+        <div class="border-t border-white/10 pt-3 mt-2 flex justify-between items-center relative z-10 text-[8px] text-zinc-400 font-sans">
+            <div class="space-y-0.5">
+                <span class="text-[9px] font-semibold text-zinc-300 block font-heading">SISPER Consultoria</span>
+                <span>São Paulo, SP | Registro CREA ativo</span>
+            </div>
+            <div class="text-right space-y-0.5">
+                <span class="block text-zinc-300 font-medium font-sans">sisper.consultoria@gmail.com</span>
+                <span class="block text-brand-neon font-semibold font-sans">www.sisper.eng.br</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- SCRIPT DE INICIALIZAÇÃO -->
+    <script>
+        // Inicializar ícones Lucide
+        lucide.createIcons();
+    </script>
+</body>
+
+</html>
