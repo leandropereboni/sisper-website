@@ -115,6 +115,19 @@
             text-align: left !important;
         }
 
+        /* Mobile specific H1 entry animation state to prevent initial text flash and coordinate sequence */
+        @media (max-width: 767px) {
+            #hero-title:not(.in-view) {
+                opacity: 0.01;
+                filter: blur(10px);
+                transform: translateY(20px);
+            }
+            #hero-title {
+                transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+                transition-delay: 100ms;
+            }
+        }
+
         /* Primary button border beam effect */
         .btn-beam-container {
             position: relative;
@@ -915,7 +928,16 @@
 
             // Em telas mobile, não divide em caracteres para evitar bugs de quebra de layout e corte lateral
             if (window.innerWidth < 768) {
-                title.classList.add('animate-on-scroll');
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('in-view');
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                }, { threshold: 0.1 });
+                
+                observer.observe(title);
                 return;
             }
 
