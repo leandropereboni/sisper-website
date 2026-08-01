@@ -10,8 +10,60 @@
     <link rel="shortcut icon" href="assets/image/favicon.png" type="image/png" />
 
     <title>SISPER Consultoria e Projetos | Sistemas de Energia Crítica</title>
+
     <meta name="description"
-        content="Consultoria técnica independente para auditoria de manutenção preventiva de geradores, dimensionamento, laudos NR-20 e inspeções termográficas." />
+        content="Auditoria independente da manutenção preventiva de grupos geradores, laudos NR-20 e NR-16, projetos e inspeção termográfica elétrica." />
+
+    <link rel="canonical" href="https://www.sisper.eng.br/" />
+
+    <meta name="robots" content="index, follow" />
+    <meta name="theme-color" content="#277928" />
+
+    <!-- Open Graph: compartilhamento em WhatsApp, LinkedIn e Facebook -->
+    <meta property="og:locale" content="pt_BR" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="SISPER Consultoria e Projetos" />
+    <meta property="og:title" content="SISPER Consultoria e Projetos | Sistemas de Energia Crítica" />
+    <meta property="og:description"
+        content="Auditoria independente da manutenção preventiva de grupos geradores, laudos NR-20 e NR-16, projetos e inspeção termográfica elétrica." />
+    <meta property="og:url" content="https://www.sisper.eng.br/" />
+    <meta property="og:image" content="https://www.sisper.eng.br/assets/image/og-sisper.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="SISPER Consultoria e Projetos — Sistemas de Energia Crítica" />
+
+    <!-- Dados estruturados da empresa para Google -->
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "@id": "https://www.sisper.eng.br/#empresa",
+  "name": "SISPER Consultoria e Projetos",
+  "url": "https://www.sisper.eng.br/",
+  "logo": "https://www.sisper.eng.br/assets/image/favicon.png",
+  "image": "https://www.sisper.eng.br/assets/image/og-sisper.jpg",
+  "description": "Consultoria técnica independente especializada em sistemas de energia crítica, auditoria de manutenção preventiva de geradores, elaboração de laudos NR-20 e NR-16, projetos para grupos geradores e inspeções termográficas em sistemas elétricos de baixa e média tensão.",
+  "areaServed": {
+    "@type": "Country",
+    "name": "Brasil"
+  },
+  "serviceType": [
+    "Consultoria para sistemas de energia crítica",
+    "Auditoria de manutenção preventiva de geradores",
+    "Elaboração de laudos de conformidade NR-20",
+    "Elaboração de laudos de conformidade NR-16",
+    "Projetos para grupos geradores",
+    "Inspeção termográfica em sistemas elétricos de baixa tensão",
+    "Inspeção termográfica em sistemas elétricos de média tensão"
+  ],
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Atibaia",
+    "addressRegion": "SP",
+    "addressCountry": "BR"
+  }
+}
+</script>
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -122,6 +174,7 @@
                 filter: blur(10px);
                 transform: translateY(20px);
             }
+
             #hero-title {
                 transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
                 transition-delay: 100ms;
@@ -936,7 +989,7 @@
                         }
                     });
                 }, { threshold: 0.1 });
-                
+
                 observer.observe(title);
                 return;
             }
